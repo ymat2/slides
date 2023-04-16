@@ -13,4 +13,4 @@ format:
 
 # Slides
 
-- [技術輪読会第1回: 皆さんはエディタ何使ってますか](src/20230425-tech-circle-1/tech-circle-20230425.html)
+- [技術輪読会第1回: 皆さんはエディタ何使ってますか](/slides/src/20230425-tech-circle-1/tech-circle-20230425.html)
