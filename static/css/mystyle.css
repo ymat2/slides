@@ -1,0 +1,134 @@
+/*-- scss:defaults --*/
+
+// fonts
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Yu Gothic UI", "Noto Sans", 
+Helvetica, Arial, sans-serif, system-ui, "Segoe UI", "Hiragino Sans", "Meiryo" !default;
+$presentation-font-size-root: 24px !default;
+$presentation-line-height: 1.4 !default;
+$presentation-h1-font-size: 1.75em !default; 
+$presentation-h2-font-size: 1.35em !default; 
+$presentation-h3-font-size: 1.25em !default; 
+$presentation-h4-font-size: 1.15em !default; 
+
+// colors
+$body-bg: #eee !default;
+$code-bg: #eee !default;
+$body-color: #444 !default;
+$code-color: $body-color !default;
+$link-color: #3066a0 !default;
+
+// code-block
+$code-block-bg: $code-bg !default;
+$code-block-font-size: 85% !default;
+$border-width: 0 !default;
+$border-radius: 0 !default;
+
+/*-- scss:rules --*/
+h2 {
+  position: relative;
+  padding-bottom: 0.5em !important;
+  margin-bottom: 1em !important;
+  border-bottom: 1px solid #ccc;
+}
+
+h2:before {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 20%;
+  height: 1px;
+  content: '';
+  background: #444;
+}
+
+code {
+  font-size: 0.875em;
+  padding: 0.1em 0.2em;
+}
+
+pre {
+  padding: 0.3em;
+  width: auto !important;
+}
+
+pre.sourceCode {
+  background-color: #e4e4e4;
+}
+
+pre code {
+  background-color: transparent !important;
+}
+
+.reveal ol, .reveal ul {
+  display: block;
+  padding-inline-start: 0.5em;
+  list-style-type: disc;
+}
+
+.reveal ul ul {
+  list-style-type: circle;
+}
+
+.reveal ul ul ul {
+  list-style-type: square;
+}
+
+.reveal dl {
+  display: block;
+  margin-left: 0em;
+}
+
+.reveal dl dt {
+  font-weight: bold;
+  margin-block-start: 1em;
+}
+
+.reveal dl dd {
+	margin-block: 0.3em;
+	margin-inline: 1em 0;
+	position: relative;
+}
+
+.reveal dl dd::before {
+  content: ":";
+  color: #ccc;
+  position: absolute;
+  left: -0.8em;
+}
+
+ul.task-list {
+  padding-left: 0em;
+}
+
+.reveal small {
+  display: inline-block;
+  color: #777;
+  font-size: .85em;
+  vertical-align: inherit !important;
+}
+
+.reveal kbd {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0.85rem;
+	padding: 1px 4px;
+	margin: -4px 2px 0 0;
+	box-shadow: 1px 1px 1px #808080;
+	border: solid 1px #ccc;
+	border-radius: 3px;
+}
+
+.reveal div.slides {
+  background-color: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px 1px #c0c0c0;
+}
+
+.reveal section {
+  box-sizing: border-box;
+  padding: 1.2em;
+}
+
+.subtitle {
+  font-size: 1.25em;
+}
