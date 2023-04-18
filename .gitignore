@@ -2,3 +2,6 @@
 /local
 image/
 
+.Rproj.user
+
+/.quarto/

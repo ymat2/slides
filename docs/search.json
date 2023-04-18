@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "QuartoP",
+    "section": "",
+    "text": "牧野研 技術輪読会: 皆さんはエディタ何使ってますか"
+  },
+  {
+    "objectID": "local/test.html",
+    "href": "local/test.html",
+    "title": "Test slides",
+    "section": "",
+    "text": "マークダウン記法の見え方はこんな感じ\n\n太字\n斜体+太字\n斜体\n打ち消し\n\n引用\n\n\nここは引用\n\n\nインラインコードはprint()こんな感じ。\nリンク: Google\n\n\n\n\n左揃え\n中央揃え\n右揃え\n\n\n\n\n1\n2\n3\n\n\n4\n5\n6\n\n\n\n\n用語\n\n説明文１~~~~~\n\n\n説明文２~~~~~\n\n\n\nタスク1\nタスク2"
+  },
+  {
+    "objectID": "local/test.html#code-r",
+    "href": "local/test.html#code-r",
+    "title": "Test slides",
+    "section": "Code: R",
+    "text": "Code: R\n\nggplot(mpg) + \n  aes(x=displ, y=cty, color=drv) +\n  geom_point() +\n  scale_color_viridis_d() +\n  theme_classic(base_size=18)"
+  },
+  {
+    "objectID": "local/test.html#code-python",
+    "href": "local/test.html#code-python",
+    "title": "Test slides",
+    "section": "Code: Python",
+    "text": "Code: Python\n\nlst = [2, 6, 9]\n\ndef square(i):\n  return i * i\n\nlst2 = [square(i) for i in lst]\n\nfor j in lst2:\n  print(\"version: \" + str(j))\n\nversion: 4\nversion: 36\nversion: 81"
+  },
+  {
+    "objectID": "local/test.html#multiple-columns",
+    "href": "local/test.html#multiple-columns",
+    "title": "Test slides",
+    "section": "Multiple columns",
+    "text": "Multiple columns\n\n\nこっちは4割幅\n\nhoge\nfuga\npiyo\n\n\nこっちは6割幅\n\nほげ\nふが\nぴよ"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html",
+    "href": "tech-circle/tech-circle-20230425.html",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "",
+    "text": "GNUnanoはMacにもLinuxにも元から入っているテキストエディタ。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linuxならaptでインストール\nsudo apt install nano"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html#基本的な使い方",
+    "href": "tech-circle/tech-circle-20230425.html#基本的な使い方",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "基本的な使い方",
+    "text": "基本的な使い方\nファイル名を指定して開く。ファイルが存在しない場合は新しく作られる。\nnano sample.md\n\nControlX\n\n編集画面から出る。内容を変更している場合は上書きするかどうか聞かれる。\n\nControlO\n\n編集内容を反映。上書き保存のイメージ。\n\nControlK\n\n選択範囲を切り取る。範囲を選択していない場合カーソルのある行が切り取られる。\n\nControlU\n\n切り取った内容をカーソル位置に張り付ける。"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration",
+    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "nanoを便利に使う1: Configuration",
+    "text": "nanoを便利に使う1: Configuration\n~/.bash_profileみたいに、nanoも設定をファイルに書いておくことができる。\n読み込まれる順番は、以下の通り。\n\n/etc/nanorc # おそらくデフォルトで存在する\n~/.nanorc # これが一番楽\n~/.config/nano/nanorc # 遺伝研の古いnanoだとこれは読んでくれない\n\n\nホームに.nanorcを作ってみる:\ncd  # homeディレクトリに移動\nnano .nanorc  # .nanorcをnanoで編集"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration-1",
+    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration-1",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "nanoを便利に使う1: Configuration",
+    "text": "nanoを便利に使う1: Configuration\nset <option>という書き方で設定をどんどん追加していく。\nよく使う&便利そうな設定を抜粋:\nset tabsize 4     # Tabでインデントするときの幅をspace 4個分に。\nset autoindent    # 改行時にインデントを揃える\nset smooth        # スクロールがスムーズに\nset linenumbers   # 行番号を表示する\nその他のオプションは公式ドキュメントを参照。"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト",
+    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "nanoを便利に使う2: シンタクスハイライト",
+    "text": "nanoを便利に使う2: シンタクスハイライト\n\nシンタクスハイライトとは\n\n関数、文字列、予約語とかに色をつけてコードを見やすくするあれ。\n\n\n\n\n\n(/etc/nanorcの設定にもよるが、)Macのデフォルトのnanoはハイライトされていない…\nそれも.nanorcで設定できます!!"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト-1",
+    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト-1",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "nanoを便利に使う2: シンタクスハイライト",
+    "text": "nanoを便利に使う2: シンタクスハイライト\n\nハイライト定義ファイルが置かれている場所を探す。\n\nMac: /usr/local/share/nano/\nhomebrewで入れた場合: /usr/local/Cellar/nano/%v/share/doc/nano/\nLinux: /usr/share/nano/\n\n.nanorcに以下を追記:\ninclude '/usr/share/nano/*.nanorc'\n適当なスクリプトをnanoで開いて、ハイライトされているか見てみる。"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html#みなさんのおすすめエディタも教えてください",
+    "href": "tech-circle/tech-circle-20230425.html#みなさんのおすすめエディタも教えてください",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "みなさんのおすすめエディタも教えてください!!",
+    "text": "みなさんのおすすめエディタも教えてください!!\n\n私はnanoの設定こうしています！\nvimの方がはるかに高機能だというのを教えてあげよう\n何言ってんの、時代はvscodeでしょ\n\n個人的にvscodeを食わず嫌いしているのでぜひ誰かにやってほしい…\n\netc.\n\n\n\n技術輪読会のネタについて\n皆さんの意向をお聞きした上で、希望者が多ければgitを学ぶ回をやりたい。"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-20230425.html#smallでfriendlyなテキストエディタ-nano",
+    "href": "tech-circle/tech-circle-20230425.html#smallでfriendlyなテキストエディタ-nano",
+    "title": "皆さんはエディタ何使ってますか",
+    "section": "smallでfriendlyなテキストエディタ nano",
+    "text": "smallでfriendlyなテキストエディタ nano\nGNUnanoはMacにもLinuxにも元から入っているテキストエディタ。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linuxならaptでインストール\nsudo apt install nano"
+  }
+]

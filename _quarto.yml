@@ -1,0 +1,10 @@
+project:
+  title: "QuartoP"
+  type: website
+  output-dir: docs
+
+format: 
+  html:
+    css: static/top-page.css
+  revealjs:
+    theme: static/theme.css
