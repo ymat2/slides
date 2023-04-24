@@ -2,3 +2,6 @@
 /*.Rproj.user
 /local
 /.quarto
+.Rproj.user
+
+/.quarto/

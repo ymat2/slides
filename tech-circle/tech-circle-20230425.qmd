@@ -1,6 +1,5 @@
 ---
-title: "皆さんはエディタ何使ってますか"
-subtitle: "~ 私はnanoを使ってます ~"
+title: "GNU nanoエディタを便利に使う"
 format: 
   revealjs:
     scrollable: true
@@ -24,7 +23,7 @@ GNU`nano`はMacにもLinuxにも元から入っているテキストエディタ
 ## Macならhomebrewでインストール
 brew install nano
 
-## Linuxならaptでインストール
+## Linux(Ubuntu)ならaptでインストール
 sudo apt install nano
 ```
 
@@ -58,7 +57,7 @@ nano sample.md
 
 1. `/etc/nanorc`    <small># おそらくデフォルトで存在する</small>
 2. `~/.nanorc`    <small># これが一番楽</small>
-3. `~/.config/nano/nanorc`    <small># 遺伝研の古いnanoだとこれは読んでくれない</small>
+3. `~/.config/nano/nanorc`    <small># 遺伝研のnanoは古すぎてこれは読んでくれない</small>
 
 <br>
 
@@ -73,7 +72,7 @@ nano .nanorc  # .nanorcをnanoで編集
 
 `set <option>`という書き方で設定をどんどん追加していく。
 
-よく使う&便利そうな設定を抜粋:
+よく使う & 便利そうな設定を抜粋:
 
 ```bash
 set tabsize 4     # Tabでインデントするときの幅をspace 4個分に。

@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.335">
 
-  <title>QuartoP - 皆さんはエディタ何使ってますか</title>
+  <title>Slides - GNU nanoエディタを便利に使う</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -388,8 +388,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">皆さんはエディタ何使ってますか</h1>
-  <p class="subtitle">~ 私はnanoを使ってます ~</p>
+  <h1 class="title">GNU nanoエディタを便利に使う</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -407,7 +406,7 @@
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Macならhomebrewでインストール</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install nano</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Linuxならaptでインストール</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Linux(Ubuntu)ならaptでインストール</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nano</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="基本的な使い方" class="slide level2">
@@ -440,7 +439,7 @@
 <ol type="1">
 <li><code>/etc/nanorc</code> <small># おそらくデフォルトで存在する</small></li>
 <li><code>~/.nanorc</code> <small># これが一番楽</small></li>
-<li><code>~/.config/nano/nanorc</code> <small># 遺伝研の古いnanoだとこれは読んでくれない</small></li>
+<li><code>~/.config/nano/nanorc</code> <small># 遺伝研のnanoは古すぎてこれは読んでくれない</small></li>
 </ol>
 <p><br></p>
 <p>ホームに<code>.nanorc</code>を作ってみる:</p>
@@ -450,7 +449,7 @@
 <section id="nanoを便利に使う1-configuration-1" class="slide level2">
 <h2><code>nano</code>を便利に使う1: Configuration</h2>
 <p><code>set &lt;option&gt;</code>という書き方で設定をどんどん追加していく。</p>
-<p>よく使う&amp;便利そうな設定を抜粋:</p>
+<p>よく使う &amp; 便利そうな設定を抜粋:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> tabsize 4     <span class="co"># Tabでインデントするときの幅をspace 4個分に。</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> autoindent    <span class="co"># 改行時にインデントを揃える</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> smooth        <span class="co"># スクロールがスムーズに</span></span>
