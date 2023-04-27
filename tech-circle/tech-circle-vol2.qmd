@@ -1,0 +1,118 @@
+---
+title: "遺伝研スパコンで外部パッケージを使う"
+subtitle: "2023-MM-DD 牧野研 技術輪読回"
+format: 
+  revealjs:
+    scrollable: true
+    slide-number: c/t
+    code-line-numbers: false
+highlight-style: breeze
+---
+
+## 遺伝研スパコンで外部の解析ソフトウェアを使う方法
+
+`paml`, `vcftools`, `blast`などを解析で使いたい。
+
+<br>
+
+遺伝研スパコンでこれらの解析ソフトウェアを使うには:
+
+1. ユーザーの`home/`下にインストールして`$PATH`を通す。(めんどい。最終手段。)
+
+2. [BioContainers Apptainer (Singularity) Images](https://sc.ddbj.nig.ac.jp/software/BioContainers/)を使う。(手軽。)
+
+3. [用意されているパッケージ管理ツール](https://sc.ddbj.nig.ac.jp/software/#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3)を使ってインストールする。(上手く使えば便利。)
+    - [Guix](https://sc.ddbj.nig.ac.jp/software/guix)の使い方を紹介
+    - Spackってのも使えるらしい
+    
+## ユーザーの`home/`下にインストールして`$PATH`を通す
+
+例えば`orthofinder`を使いたいとき:
+```bash
+mkdir ~/bin/  # パッケージを入れる用のディレクトリを準備
+cd bin
+
+wget https://github.com/davidemms/OrthoFinder/releases/download/2.5.4/OrthoFinder.tar.gz  # ソフトウェアをダウンロード
+tar xzf OrthoFinder.tar.gz  # 解凍
+./OrthoFinder/orthofinder -h  # テスト
+```
+
+ここまでできたら`~/.bashrc`に`$PATH`を通す
+
+```{.bash filename=.bashrc}
+export PATH=$PATH:${HOME}/bin/OrthoFinder/
+```
+<br>
+かなりめんどくさい。できればやりたくない。
+
+## [BioContainers Apptainer (Singularity) Images](https://sc.ddbj.nig.ac.jp/software/BioContainers/)を使う
+
+バイオインフォでよく使われる解析ソフトウェアが用意されている。
+
+```bash
+ls /usr/local/biotools/   # ツールの頭文字ごとに各ディレクトリにある
+```
+<br>
+例えば`orthofinder`を使いたいとき:
+
+```bash
+ls /usr/local/biotools/o/orthofinder*   # 使えるバージョンを探す
+# ...
+# /usr/local/biotools/o/orthofinder:2.4.1--1  /usr/local/biotools/o/orthofinder:2.5.2--hdfd78af_1
+# /usr/local/biotools/o/orthofinder:2.5.1--0  /usr/local/biotools/o/orthofinder:2.5.3--hdfd78af_0
+# /usr/local/biotools/o/orthofinder:2.5.2--0  /usr/local/biotools/o/orthofinder:2.5.4--hdfd78af_0
+```
+
+バージョンのパスを指定してコマンドを実行:
+
+```bash
+module load singularity  # Apptainerを使えるようにする。
+singularity exec /usr/local/biotools/o/orthofinder:2.5.2--0 orthofinder -f sample/
+```
+
+## パッケージ管理ツールを使ってインストールする
+パッケージ管理ツール?
+:   `apt`, `homebrew`のように、ソフトウェアのインストール、バージョン管理を行えるツール。PATHも通るのでインストールしたらすぐ使える。
+
+遺伝研でもいくつかのパッケージ管理ツールが利用可能
+:   ![](image/ddbj_package_mangement.png){width="800"}
+
+
+## デフォルト、ユーザー権限で使える`Guix`
+
+遺伝研が書いてる使い方ページ: [https://sc.ddbj.nig.ac.jp/software/guix](https://sc.ddbj.nig.ac.jp/software/guix)
+
+前準備:
+```{.bash filename=.bashrc}
+export GUIX_DAEMON_SOCKET=guix://at111
+export GUIX_PROFILE="$HOME/.guix-profile"
+source "$GUIX_PROFILE/etc/profile"
+```
+
+パッケージ検索:
+```bash
+guix serach paml
+```
+
+インストール:
+```bash
+guix install paml
+```
+
+<br>
+デフォルトのインストールパスは`~/.guix_profile/bin/`
+
+
+## まとめ
+
+外部の解析ソフトウェアを遺伝研で使いたいとき:
+
+1. [Apptainer Images](https://sc.ddbj.nig.ac.jp/software/BioContainers/)にあるかどうか探す。
+
+    ↓
+    
+2. `Guix`で探してインストールする。
+
+    ↓
+
+3. それでもなければ公式から落としてきてパスを通す。

@@ -7,4 +7,5 @@ format: html
 
 ## Slides
 
-- [牧野研 技術輪読会: GNU nanoエディタを便利に使う](tech-circle/tech-circle-20230425.qmd)
+- [牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う](tech-circle/tech-circle-vol2.qmd)
+- [牧野研 技術輪読会: GNU nanoエディタを便利に使う](tech-circle/tech-circle-vol1.qmd)

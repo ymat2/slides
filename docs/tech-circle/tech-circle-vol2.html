@@ -9,7 +9,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.335">
 
-  <title>Slides - GNU nanoエディタを便利に使う</title>
+  <title>Slides - 遺伝研スパコンで外部パッケージを使う</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -388,117 +388,101 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">GNU nanoエディタを便利に使う</h1>
+  <h1 class="title">遺伝研スパコンで外部パッケージを使う</h1>
+  <p class="subtitle">2023-MM-DD 牧野研 技術輪読回</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="smallでfriendlyなテキストエディタ-nano" class="slide level2">
-<h2>smallでfriendlyなテキストエディタ <code>nano</code></h2>
-<p>GNU<code>nano</code>はMacにもLinuxにも元から入っているテキストエディタ。</p>
-<ul>
-<li>公式ドキュメント: <a href="https://www.nano-editor.org/dist/latest/nano.html">nano-editor.org/dist/latest/nano.html</a></li>
-<li>こちらもよろしくお願いします: <a href="https://ymat2.github.io/commandline/nano/">ymat2.github.io/commandline/nano/</a></li>
-</ul>
+<section id="遺伝研スパコンで外部の解析ソフトウェアを使う方法" class="slide level2">
+<h2>遺伝研スパコンで外部の解析ソフトウェアを使う方法</h2>
+<p><code>paml</code>, <code>vcftools</code>, <code>blast</code>などを解析で使いたい。</p>
 <p><br></p>
-<p>新しいバージョンを入れて使うのもよい:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Macならhomebrewでインストール</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install nano</span>
+<p>遺伝研スパコンでこれらの解析ソフトウェアを使うには:</p>
+<ol type="1">
+<li><p>ユーザーの<code>home/</code>下にインストールして<code>$PATH</code>を通す。(めんどい。最終手段。)</p></li>
+<li><p><a href="https://sc.ddbj.nig.ac.jp/software/BioContainers/">BioContainers Apptainer (Singularity) Images</a>を使う。(手軽。)</p></li>
+<li><p><a href="https://sc.ddbj.nig.ac.jp/software/#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">用意されているパッケージ管理ツール</a>を使ってインストールする。(上手く使えば便利。)</p>
+<ul>
+<li><a href="https://sc.ddbj.nig.ac.jp/software/guix">Guix</a>の使い方を紹介</li>
+<li>Spackってのも使えるらしい</li>
+</ul></li>
+</ol>
+</section>
+<section id="ユーザーのhome下にインストールしてpathを通す" class="slide level2">
+<h2>ユーザーの<code>home/</code>下にインストールして<code>$PATH</code>を通す</h2>
+<p>例えば<code>orthofinder</code>を使いたいとき:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/bin/  <span class="co"># パッケージを入れる用のディレクトリを準備</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> bin</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Linux(Ubuntu)ならaptでインストール</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install nano</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/davidemms/OrthoFinder/releases/download/2.5.4/OrthoFinder.tar.gz  <span class="co"># ソフトウェアをダウンロード</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xzf OrthoFinder.tar.gz  <span class="co"># 解凍</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./OrthoFinder/orthofinder</span> <span class="at">-h</span>  <span class="co"># テスト</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>ここまでできたら<code>~/.bashrc</code>に<code>$PATH</code>を通す</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.bashrc</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:<span class="va">${HOME}</span>/bin/OrthoFinder/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br> かなりめんどくさい。できればやりたくない。</p>
 </section>
-<section id="基本的な使い方" class="slide level2">
-<h2>基本的な使い方</h2>
-<p>ファイル名を指定して開く。ファイルが存在しない場合は新しく作られる。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> sample.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="biocontainers-apptainer-singularity-imagesを使う" class="slide level2">
+<h2><a href="https://sc.ddbj.nig.ac.jp/software/BioContainers/">BioContainers Apptainer (Singularity) Images</a>を使う</h2>
+<p>バイオインフォでよく使われる解析ソフトウェアが用意されている。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /usr/local/biotools/   <span class="co"># ツールの頭文字ごとに各ディレクトリにある</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br> 例えば<code>orthofinder</code>を使いたいとき:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /usr/local/biotools/o/orthofinder<span class="pp">*</span>   <span class="co"># 使えるバージョンを探す</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/biotools/o/orthofinder:2.4.1--1  /usr/local/biotools/o/orthofinder:2.5.2--hdfd78af_1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/biotools/o/orthofinder:2.5.1--0  /usr/local/biotools/o/orthofinder:2.5.3--hdfd78af_0</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/biotools/o/orthofinder:2.5.2--0  /usr/local/biotools/o/orthofinder:2.5.4--hdfd78af_0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>バージョンのパスを指定してコマンドを実行:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load singularity  <span class="co"># Apptainerを使えるようにする。</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec /usr/local/biotools/o/orthofinder:2.5.2--0 orthofinder <span class="at">-f</span> sample/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="パッケージ管理ツールを使ってインストールする" class="slide level2">
+<h2>パッケージ管理ツールを使ってインストールする</h2>
 <dl>
-<dt><kbd>Control</kbd><kbd>X</kbd></dt>
+<dt>パッケージ管理ツール?</dt>
 <dd>
-編集画面から出る。内容を変更している場合は上書きするかどうか聞かれる。
+<code>apt</code>, <code>homebrew</code>のように、ソフトウェアのインストール、バージョン管理を行えるツール。PATHも通るのでインストールしたらすぐ使える。
 </dd>
-<dt><kbd>Control</kbd><kbd>O</kbd></dt>
+<dt>遺伝研でもいくつかのパッケージ管理ツールが利用可能</dt>
 <dd>
-編集内容を反映。上書き保存のイメージ。
-</dd>
-<dt><kbd>Control</kbd><kbd>K</kbd></dt>
-<dd>
-選択範囲を切り取る。範囲を選択していない場合カーソルのある行が切り取られる。
-</dd>
-<dt><kbd>Control</kbd><kbd>U</kbd></dt>
-<dd>
-切り取った内容をカーソル位置に張り付ける。
+<img data-src="image/ddbj_package_mangement.png" width="800">
 </dd>
 </dl>
 </section>
-<section id="nanoを便利に使う1-configuration" class="slide level2">
-<h2><code>nano</code>を便利に使う1: Configuration</h2>
-<p><code>~/.bash_profile</code>みたいに、<code>nano</code>も設定をファイルに書いておくことができる。</p>
-<p>読み込まれる順番は、以下の通り。</p>
+<section id="デフォルトユーザー権限で使えるguix" class="slide level2">
+<h2>デフォルト、ユーザー権限で使える<code>Guix</code></h2>
+<p>遺伝研が書いてる使い方ページ: <a href="https://sc.ddbj.nig.ac.jp/software/guix">https://sc.ddbj.nig.ac.jp/software/guix</a></p>
+<p>前準備:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>.bashrc</strong></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GUIX_DAEMON_SOCKET</span><span class="op">=</span>guix://at111</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GUIX_PROFILE</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.guix-profile"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="st">"</span><span class="va">$GUIX_PROFILE</span><span class="st">/etc/profile"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>パッケージ検索:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">guix</span> serach paml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>インストール:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">guix</span> install paml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br> デフォルトのインストールパスは<code>~/.guix_profile/bin/</code></p>
+</section>
+<section id="まとめ" class="slide level2">
+<h2>まとめ</h2>
+<p>外部の解析ソフトウェアを遺伝研で使いたいとき:</p>
 <ol type="1">
-<li><code>/etc/nanorc</code> <small># おそらくデフォルトで存在する</small></li>
-<li><code>~/.nanorc</code> <small># これが一番楽</small></li>
-<li><code>~/.config/nano/nanorc</code> <small># 遺伝研のnanoは古すぎてこれは読んでくれない</small></li>
+<li><p><a href="https://sc.ddbj.nig.ac.jp/software/BioContainers/">Apptainer Images</a>にないかどうか探す。</p>
+<p>↓</p></li>
+<li><p><code>Guix</code>で探してインストールする。</p>
+<p>↓</p></li>
+<li><p>それでもなければ公式から落としてきてパスを通す。</p></li>
 </ol>
-<p><br></p>
-<p>ホームに<code>.nanorc</code>を作ってみる:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span>  <span class="co"># homeディレクトリに移動</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .nanorc  <span class="co"># .nanorcをnanoで編集</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="nanoを便利に使う1-configuration-1" class="slide level2">
-<h2><code>nano</code>を便利に使う1: Configuration</h2>
-<p><code>set &lt;option&gt;</code>という書き方で設定をどんどん追加していく。</p>
-<p>よく使う &amp; 便利そうな設定を抜粋:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> tabsize 4     <span class="co"># Tabでインデントするときの幅をspace 4個分に。</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> autoindent    <span class="co"># 改行時にインデントを揃える</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> smooth        <span class="co"># スクロールがスムーズに</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> linenumbers   <span class="co"># 行番号を表示する</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>その他のオプションは<a href="https://www.nano-editor.org/dist/latest/nano.html#Settings">公式ドキュメント</a>を参照。</p>
-</section>
-<section id="nanoを便利に使う2-シンタクスハイライト" class="slide level2">
-<h2><code>nano</code>を便利に使う2: シンタクスハイライト</h2>
-<dl>
-<dt>シンタクスハイライトとは</dt>
-<dd>
-関数、文字列、予約語とかに色をつけてコードを見やすくするあれ。
-</dd>
-<dd>
-<img data-src="image/nano_highlight.png" width="450">
-</dd>
-</dl>
-<p>(<code>/etc/nanorc</code>の設定にもよるが、)Macのデフォルトの<code>nano</code>はハイライトされていない…</p>
-<p>それも<code>.nanorc</code>で設定できます!!</p>
-</section>
-<section id="nanoを便利に使う2-シンタクスハイライト-1" class="slide level2">
-<h2><code>nano</code>を便利に使う2: シンタクスハイライト</h2>
-<ol type="1">
-<li><p>ハイライト定義ファイルが置かれている場所を探す。</p>
-<ul>
-<li>Mac: <code>/usr/local/share/nano/</code></li>
-<li>homebrewで入れた場合: <code>/usr/local/Cellar/nano/%v/share/doc/nano/</code></li>
-<li>Linux: <code>/usr/share/nano/</code></li>
-</ul></li>
-<li><p><code>.nanorc</code>に以下を追記:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">include</span> <span class="st">'/usr/share/nano/*.nanorc'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>適当なスクリプトを<code>nano</code>で開いて、ハイライトされているか見てみる。</p></li>
-</ol>
-</section>
-<section id="みなさんのおすすめエディタも教えてください" class="slide level2">
-<h2>みなさんのおすすめエディタも教えてください!!</h2>
-<ul>
-<li>私は<code>nano</code>の設定こうしています！</li>
-<li><code>vim</code>の方がはるかに高機能だというのを教えてあげよう</li>
-<li>何言ってんの、時代は<code>vscode</code>でしょ
-<ul>
-<li><small>個人的にvscodeを食わず嫌いしているのでぜひ誰かにやってほしい…</small></li>
-</ul></li>
-<li>etc.</li>
-</ul>
-<br>
-<hr>
-<h4 id="技術輪読会のネタについて">技術輪読会のネタについて</h4>
-<p>皆さんの意向をお聞きした上で、希望者が多ければ<code>git</code>を学ぶ回をやりたい。</p>
 
 <div class="footer footer-default">
 

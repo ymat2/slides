@@ -1,5 +1,6 @@
 ---
 title: "GNU nanoエディタを便利に使う"
+subtitle: "2023-05-09 牧野研 技術輪読回"
 format: 
   revealjs:
     scrollable: true
@@ -74,7 +75,7 @@ nano .nanorc  # .nanorcをnanoで編集
 
 よく使う & 便利そうな設定を抜粋:
 
-```bash
+```{.bash filename=".nanorc"}
 set tabsize 4     # Tabでインデントするときの幅をspace 4個分に。
 set autoindent    # 改行時にインデントを揃える
 set smooth        # スクロールがスムーズに
@@ -102,7 +103,7 @@ set linenumbers   # 行番号を表示する
 
 2. `.nanorc`に以下を追記:
     
-    ```bash
+    ```{.bash filename=".nanorc"}
     include '/usr/share/nano/*.nanorc'
     ```
 

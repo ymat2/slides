@@ -59,6 +59,10 @@ pre code {
   background-color: transparent !important;
 }
 
+.code-with-filename .code-with-filename-file {
+    padding-left: 0 !important;
+}
+
 .reveal ol, .reveal ul {
   display: block;
   padding-inline-start: 0.5em;
