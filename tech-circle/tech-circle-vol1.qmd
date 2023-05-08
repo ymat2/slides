@@ -1,6 +1,6 @@
 ---
 title: "GNU nanoエディタを便利に使う"
-subtitle: "2023-05-09 牧野研 技術輪読回"
+subtitle: "2023-05-09 牧野研 技術輪読会"
 format: 
   revealjs:
     scrollable: true

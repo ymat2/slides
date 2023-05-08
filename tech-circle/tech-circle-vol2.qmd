@@ -1,6 +1,6 @@
 ---
 title: "遺伝研スパコンで外部パッケージを使う"
-subtitle: "2023-MM-DD 牧野研 技術輪読回"
+subtitle: "2023-MM-DD 牧野研 技術輪読会"
 format: 
   revealjs:
     scrollable: true
@@ -75,7 +75,7 @@ singularity exec /usr/local/biotools/o/orthofinder:2.5.2--0 orthofinder -f sampl
 :   `apt`, `homebrew`のように、ソフトウェアのインストール、バージョン管理を行えるツール。PATHも通るのでインストールしたらすぐ使える。
 
 遺伝研でもいくつかのパッケージ管理ツールが利用可能
-:   ![](image/ddbj_package_mangement.png){width="800"}
+:   ![](image/ddbj_package_mangement.png){width="750"}
 
 
 ## デフォルト、ユーザー権限で使える`Guix`
