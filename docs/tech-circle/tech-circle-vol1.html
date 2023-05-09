@@ -455,10 +455,11 @@
 <div class="code-with-filename-file">
 <pre><strong>.nanorc</strong></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> tabsize 4     <span class="co"># Tabでインデントするときの幅をspace 4個分に。</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> tabsize 4     <span class="co"># Tabでインデントするときの幅をspace4個分に。</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> autoindent    <span class="co"># 改行時にインデントを揃える</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> smooth        <span class="co"># スクロールがスムーズに</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> linenumbers   <span class="co"># 行番号を表示する</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> linenumbers   <span class="co"># 行番号を表示する</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> mouse         <span class="co"># カーソル移動や範囲選択でマウスを使えるように</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>その他のオプションは<a href="https://www.nano-editor.org/dist/latest/nano.html#Settings">公式ドキュメント</a>を参照。</p>
 </section>
@@ -510,6 +511,37 @@
 <hr>
 <h4 id="技術輪読会のネタについて">技術輪読会のネタについて</h4>
 <p>皆さんの意向をお聞きした上で、希望者が多ければ<code>git</code>を学ぶ回をやりたい。</p>
+</section>
+<section id="補遺-遺伝研でnanoを使うとき" class="slide level2">
+<h2>補遺: 遺伝研で<code>nano</code>を使うとき</h2>
+<p>遺伝研のデフォルトの<code>nano</code>は、version 2.3.1とかなり古い。(2023-05-09)</p>
+<ul>
+<li>キーバインドが結構違う。(<kbd>Control</kbd><kbd>X</kbd>とか基本的なやつは同じ。)</li>
+<li><code>~/.config/nano/nanorc</code>を読んでくれない。</li>
+<li><code>.nanorc</code>のワイルドカード<code>*</code>が効かない。</li>
+</ul>
+<dl>
+<dt>デフォルトの<code>nano</code>を使う場合、</dt>
+<dd>
+設定ファイルは<code>~/.nanorc</code>
+</dd>
+<dd>
+キーバインドは自分で設定したり、<a href="https://github.com/davidhcefx/Modern-Nano-Keybindings">野生のやつ</a>を借りたり。
+</dd>
+<dd>
+シンタックスハイライトは1つ1つ直接指定: <code>include "usr/share/nano/python.nanorc"</code>
+</dd>
+<dt>おすすめは新しい<code>nano</code>を入れること</dt>
+<dd>
+<a href="https://sc.ddbj.nig.ac.jp/software/guix">guix</a>ならversion 5.6.1が入る。(これもそこそこ古いけど。)
+</dd>
+<dd>
+<code>*.nanorc</code>もついてくる。(<code>~/.guix-profile/share/nano/*.nanorc</code>)
+</dd>
+<dd>
+<a href="https://www.nano-editor.org/download.php">公式</a>から最新版(version 7.2)を落としてきてもいいかも。
+</dd>
+</dl>
 
 <div class="footer footer-default">
 

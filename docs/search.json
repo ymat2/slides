@@ -158,7 +158,7 @@
     "href": "tech-circle/tech-circle-vol1.html#nanoを便利に使う1-configuration-1",
     "title": "GNU nanoエディタを便利に使う",
     "section": "nanoを便利に使う1: Configuration",
-    "text": "nanoを便利に使う1: Configuration\nset <option>という書き方で設定をどんどん追加していく。\nよく使う & 便利そうな設定を抜粋:\n\n\n.nanorc\n\nset tabsize 4     # Tabでインデントするときの幅をspace 4個分に。\nset autoindent    # 改行時にインデントを揃える\nset smooth        # スクロールがスムーズに\nset linenumbers   # 行番号を表示する\n\nその他のオプションは公式ドキュメントを参照。"
+    "text": "nanoを便利に使う1: Configuration\nset <option>という書き方で設定をどんどん追加していく。\nよく使う & 便利そうな設定を抜粋:\n\n\n.nanorc\n\nset tabsize 4     # Tabでインデントするときの幅をspace4個分に。\nset autoindent    # 改行時にインデントを揃える\nset smooth        # スクロールがスムーズに\nset linenumbers   # 行番号を表示する\nset mouse         # カーソル移動や範囲選択でマウスを使えるように\n\nその他のオプションは公式ドキュメントを参照。"
   },
   {
     "objectID": "tech-circle/tech-circle-vol1.html#nanoを便利に使う2-シンタクスハイライト",
@@ -208,5 +208,12 @@
     "title": "遺伝研スパコンで外部パッケージを使う",
     "section": "まとめ",
     "text": "まとめ\n外部の解析ソフトウェアを遺伝研で使いたいとき:\n\nApptainer Imagesにあるかどうか探す。\n↓\nGuixで探してインストールする。\n↓\nそれでもなければ公式から落としてきてパスを通す。"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-vol1.html#補遺-遺伝研でnanoを使うとき",
+    "href": "tech-circle/tech-circle-vol1.html#補遺-遺伝研でnanoを使うとき",
+    "title": "GNU nanoエディタを便利に使う",
+    "section": "補遺: 遺伝研でnanoを使うとき",
+    "text": "補遺: 遺伝研でnanoを使うとき\n遺伝研のデフォルトのnanoは、version 2.3.1とかなり古い。(2023-05-09)\n\nキーバインドが結構違う。(ControlXとか基本的なやつは同じ。)\n~/.config/nano/nanorcを読んでくれない。\n.nanorcのワイルドカード*が効かない。\n\n\nデフォルトのnanoを使う場合、\n\n設定ファイルは~/.nanorc\n\n\nキーバインドは自分で設定したり、野生のやつを借りたり。\n\n\nシンタックスハイライトは1つ1つ直接指定: include \"usr/share/nano/python.nanorc\"\n\nおすすめは新しいnanoを入れること\n\nguixならversion 5.6.1が入る。(これもそこそこ古いけど。)\n\n\n*.nanorcもついてくる。(~/.guix-profile/share/nano/*.nanorc)\n\n\n公式から最新版(version 7.2)を落としてきてもいいかも。"
   }
 ]

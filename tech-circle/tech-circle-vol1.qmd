@@ -76,10 +76,11 @@ nano .nanorc  # .nanorcをnanoで編集
 よく使う & 便利そうな設定を抜粋:
 
 ```{.bash filename=".nanorc"}
-set tabsize 4     # Tabでインデントするときの幅をspace 4個分に。
+set tabsize 4     # Tabでインデントするときの幅をspace4個分に。
 set autoindent    # 改行時にインデントを揃える
 set smooth        # スクロールがスムーズに
 set linenumbers   # 行番号を表示する
+set mouse         # カーソル移動や範囲選択でマウスを使えるように
 ```
 
 その他のオプションは[公式ドキュメント](https://www.nano-editor.org/dist/latest/nano.html#Settings)を参照。
@@ -123,3 +124,22 @@ set linenumbers   # 行番号を表示する
 #### 技術輪読会のネタについて
 
 皆さんの意向をお聞きした上で、希望者が多ければ`git`を学ぶ回をやりたい。
+
+
+## 補遺: 遺伝研で`nano`を使うとき
+
+遺伝研のデフォルトの`nano`は、version 2.3.1とかなり古い。(2023-05-09)
+
+- キーバインドが結構違う。(<kbd>Control</kbd><kbd>X</kbd>とか基本的なやつは同じ。)
+- `~/.config/nano/nanorc`を読んでくれない。
+- `.nanorc`のワイルドカード`*`が効かない。
+
+デフォルトの`nano`を使う場合、
+:   設定ファイルは`~/.nanorc`
+:   キーバインドは自分で設定したり、[野生のやつ](https://github.com/davidhcefx/Modern-Nano-Keybindings)を借りたり。
+:   シンタックスハイライトは1つ1つ直接指定: `include "usr/share/nano/python.nanorc"`
+
+おすすめは新しい`nano`を入れること
+:   [guix](https://sc.ddbj.nig.ac.jp/software/guix)ならversion 5.6.1が入る。(これもそこそこ古いけど。)
+:   `*.nanorc`もついてくる。(`~/.guix-profile/share/nano/*.nanorc`)
+:   [公式](https://www.nano-editor.org/download.php)から最新版(version 7.2)を落としてきてもいいかも。
