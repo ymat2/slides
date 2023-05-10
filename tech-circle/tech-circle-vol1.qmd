@@ -1,7 +1,7 @@
 ---
 title: "GNU nanoエディタを便利に使う"
 subtitle: "2023-05-09 牧野研 技術輪読会"
-format: 
+format:
   revealjs:
     scrollable: true
     slide-number: c/t
@@ -11,7 +11,7 @@ highlight-style: breeze
 
 ## smallでfriendlyなテキストエディタ `nano`
 
-GNU`nano`はMacにもLinuxにも元から入っているテキストエディタ。
+GNU`nano`はMacにもLinuxにも元から入っているテキストエディタ。ただしmacOS 12.3 Monterey以降、Macで`nano`を打って起動するのは`pico`なので、新しいのを`homebrew`で入れる。
 
 - 公式ドキュメント: [nano-editor.org/dist/latest/nano.html](https://www.nano-editor.org/dist/latest/nano.html)
 - こちらもよろしくお願いします: [ymat2.github.io/commandline/nano/](https://ymat2.github.io/commandline/nano/)
@@ -27,7 +27,6 @@ brew install nano
 ## Linux(Ubuntu)ならaptでインストール
 sudo apt install nano
 ```
-
 
 
 ## 基本的な使い方
@@ -56,7 +55,7 @@ nano sample.md
 
 読み込まれる順番は、以下の通り。
 
-1. `/etc/nanorc`    <small># おそらくデフォルトで存在する</small>
+1. `/etc/nanorc`    <small># システムのデフォルト</small>
 2. `~/.nanorc`    <small># これが一番楽</small>
 3. `~/.config/nano/nanorc`    <small># 遺伝研のnanoは古すぎてこれは読んでくれない</small>
 
@@ -98,14 +97,13 @@ set mouse         # カーソル移動や範囲選択でマウスを使えるよ
 ## `nano`を便利に使う2: シンタクスハイライト
 
 1. ハイライト定義ファイルが置かれている場所を探す。
-    - Mac: `/usr/local/share/nano/`
-    - homebrewで入れた場合: `/usr/local/Cellar/nano/%v/share/doc/nano/`
+    - Mac(homebrew): `/usr/local/share/nano/` / `/usr/local/Cellar/nano/%v/share/nano/`
     - Linux: `/usr/share/nano/`
 
 2. `.nanorc`に以下を追記:
-    
+
     ```{.bash filename=".nanorc"}
-    include '/usr/share/nano/*.nanorc'
+    include "/usr/share/nano/*.nanorc"
     ```
 
 3. 適当なスクリプトを`nano`で開いて、ハイライトされているか見てみる。
@@ -118,7 +116,7 @@ set mouse         # カーソル移動や範囲選択でマウスを使えるよ
 - 何言ってんの、時代は`vscode`でしょ
     - <small>個人的にvscodeを食わず嫌いしているのでぜひ誰かにやってほしい...</small>
 - etc.
-    
+
 <br><hr>
 
 #### 技術輪読会のネタについて

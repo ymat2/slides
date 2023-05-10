@@ -151,14 +151,14 @@
     "href": "tech-circle/tech-circle-vol1.html#nanoを便利に使う1-configuration",
     "title": "GNU nanoエディタを便利に使う",
     "section": "nanoを便利に使う1: Configuration",
-    "text": "nanoを便利に使う1: Configuration\n~/.bash_profileみたいに、nanoも設定をファイルに書いておくことができる。\n読み込まれる順番は、以下の通り。\n\n/etc/nanorc # おそらくデフォルトで存在する\n~/.nanorc # これが一番楽\n~/.config/nano/nanorc # 遺伝研のnanoは古すぎてこれは読んでくれない\n\n\nホームに.nanorcを作ってみる:\ncd  # homeディレクトリに移動\nnano .nanorc  # .nanorcをnanoで編集"
+    "text": "nanoを便利に使う1: Configuration\n~/.bash_profileみたいに、nanoも設定をファイルに書いておくことができる。\n読み込まれる順番は、以下の通り。\n\n/etc/nanorc # システムのデフォルト\n~/.nanorc # これが一番楽\n~/.config/nano/nanorc # 遺伝研のnanoは古すぎてこれは読んでくれない\n\n\nホームに.nanorcを作ってみる:\ncd  # homeディレクトリに移動\nnano .nanorc  # .nanorcをnanoで編集"
   },
   {
     "objectID": "tech-circle/tech-circle-vol1.html#nanoを便利に使う1-configuration-1",
     "href": "tech-circle/tech-circle-vol1.html#nanoを便利に使う1-configuration-1",
     "title": "GNU nanoエディタを便利に使う",
     "section": "nanoを便利に使う1: Configuration",
-    "text": "nanoを便利に使う1: Configuration\nset <option>という書き方で設定をどんどん追加していく。\nよく使う & 便利そうな設定を抜粋:\n\n\n.nanorc\n\nset tabsize 4     # Tabでインデントするときの幅をspace4個分に。\nset autoindent    # 改行時にインデントを揃える\nset smooth        # スクロールがスムーズに\nset linenumbers   # 行番号を表示する\nset mouse         # カーソル移動や範囲選択でマウスを使えるように\n\nその他のオプションは公式ドキュメントを参照。"
+    "text": "nanoを便利に使う1: Configuration\nset &lt;option&gt;という書き方で設定をどんどん追加していく。\nよく使う & 便利そうな設定を抜粋:\n\n\n.nanorc\n\nset tabsize 4     # Tabでインデントするときの幅をspace4個分に。\nset autoindent    # 改行時にインデントを揃える\nset smooth        # スクロールがスムーズに\nset linenumbers   # 行番号を表示する\nset mouse         # カーソル移動や範囲選択でマウスを使えるように\n\nその他のオプションは公式ドキュメントを参照。"
   },
   {
     "objectID": "tech-circle/tech-circle-vol1.html#nanoを便利に使う2-シンタクスハイライト",
@@ -172,7 +172,7 @@
     "href": "tech-circle/tech-circle-vol1.html#nanoを便利に使う2-シンタクスハイライト-1",
     "title": "GNU nanoエディタを便利に使う",
     "section": "nanoを便利に使う2: シンタクスハイライト",
-    "text": "nanoを便利に使う2: シンタクスハイライト\n\nハイライト定義ファイルが置かれている場所を探す。\n\nMac: /usr/local/share/nano/\nhomebrewで入れた場合: /usr/local/Cellar/nano/%v/share/doc/nano/\nLinux: /usr/share/nano/\n\n.nanorcに以下を追記:\n\n\n.nanorc\n\ninclude '/usr/share/nano/*.nanorc'\n\n適当なスクリプトをnanoで開いて、ハイライトされているか見てみる。"
+    "text": "nanoを便利に使う2: シンタクスハイライト\n\nハイライト定義ファイルが置かれている場所を探す。\n\nMac(homebrew): /usr/local/share/nano/ / /usr/local/Cellar/nano/%v/share/nano/\nLinux: /usr/share/nano/\n\n.nanorcに以下を追記:\n\n\n.nanorc\n\ninclude \"/usr/share/nano/*.nanorc\"\n\n適当なスクリプトをnanoで開いて、ハイライトされているか見てみる。"
   },
   {
     "objectID": "tech-circle/tech-circle-vol1.html#みなさんのおすすめエディタも教えてください",
@@ -186,7 +186,7 @@
     "href": "tech-circle/tech-circle-vol1.html#smallでfriendlyなテキストエディタ-nano",
     "title": "GNU nanoエディタを便利に使う",
     "section": "smallでfriendlyなテキストエディタ nano",
-    "text": "smallでfriendlyなテキストエディタ nano\nGNUnanoはMacにもLinuxにも元から入っているテキストエディタ。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linux(Ubuntu)ならaptでインストール\nsudo apt install nano"
+    "text": "smallでfriendlyなテキストエディタ nano\nGNUnanoはMacにもLinuxにも元から入っているテキストエディタ。ただしmacOS 12.3 Monterey以降、Macでnanoを打って起動するのはpicoなので、新しいのをhomebrewで入れる。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linux(Ubuntu)ならaptでインストール\nsudo apt install nano"
   },
   {
     "objectID": "tech-circle/tech-circle-vol2.html#パッケージ管理ツールを使ってインストールする",
