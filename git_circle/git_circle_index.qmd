@@ -1,0 +1,44 @@
+---
+format:
+  html:
+    code-line-numbers: false
+highlight-style: breeze
+---
+
+# Git, Githubを学ぶ
+<img height="64" width="64" align="right" src="https://cdn.simpleicons.org/git">
+
+<img height="64" width="64" align="right" src="https://cdn.simpleicons.org/github">
+
+2023-05-23 牧野研 技術輪読会
+
+Members
+: Aminaga, Matsuda, Suzuki, Takara
+
+Observer
+: Metal
+
+
+## なにを学ぶか、どこまで学ぶか
+### 基本操作
+`clone`, `init`, `add`, `commit`, `status`, `log`, `diff`, etc.
+
+### リモートリポジトリ
+`push`, `pull`, `fetch`, `merge`, etc.
+
+### Branching and Merging
+`branch`, `checkout`, `merge`, etc.
+
+### Collaboration
+Fork, Pull request, `merge`, etc.
+
+
+## 誰がどこをやるか
+|Date|Who|Topic|
+|:---|:---|:---|
+|2023-05-23|Matsuda|introduction for `git` reading ciecle|
+
+
+## 参考
+- [過去の牧野研での `git` 講習資料](https://heavywatal.github.io/lectures/git2019makino.html)
+- [`git` 公式リファレンス](https://git-scm.com/docs)

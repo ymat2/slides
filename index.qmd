@@ -5,7 +5,11 @@ website:
 format: html
 ---
 
-## Slides
+# Slides
 
+## LT
 - [牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う](tech-circle/tech-circle-vol2.qmd)
 - [牧野研 技術輪読会: GNU nanoエディタを便利に使う](tech-circle/tech-circle-vol1.qmd)
+
+## Git
+- [Kickoff](git_circle/git_circle_index.qmd)

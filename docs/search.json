@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Slides",
     "section": "",
-    "text": "牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う\n牧野研 技術輪読会: GNU nanoエディタを便利に使う"
+    "text": "牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う\n牧野研 技術輪読会: GNU nanoエディタを便利に使う\n\n\n\n\n\nKickoff"
   },
   {
     "objectID": "local/test.html",
@@ -215,5 +215,54 @@
     "title": "GNU nanoエディタを便利に使う",
     "section": "補遺: 遺伝研でnanoを使うとき",
     "text": "補遺: 遺伝研でnanoを使うとき\n遺伝研のデフォルトのnanoは、version 2.3.1とかなり古い。(2023-05-09)\n\nキーバインドが結構違う。(ControlXとか基本的なやつは同じ。)\n~/.config/nano/nanorcを読んでくれない。\n.nanorcのワイルドカード*が効かない。\n\n\nデフォルトのnanoを使う場合、\n\n設定ファイルは~/.nanorc\n\n\nキーバインドは自分で設定したり、野生のやつを借りたり。\n\n\nシンタックスハイライトは1つ1つ直接指定: include \"usr/share/nano/python.nanorc\"\n\nおすすめは新しいnanoを入れること\n\nguixならversion 5.6.1が入る。(これもそこそこ古いけど。)\n\n\n*.nanorcもついてくる。(~/.guix-profile/share/nano/*.nanorc)\n\n\n公式から最新版(version 7.2)を落としてきてもいいかも。"
+  },
+  {
+    "objectID": "git_circle/git_circle_index.html",
+    "href": "git_circle/git_circle_index.html",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "2023-05-23 牧野研 技術輪読会\n\nMembers\n\nAminaga, Matsuda, Suzuki, Takara\n\nObserver\n\nMetal\n\n\n\n\n\n\nclone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc.\n\n\n\n\n\n\n\nDate\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nintroduction for git reading ciecle\n\n\n\n\n\n\n\n過去の牧野研での git 講習資料\ngit 公式リファレンス"
+  },
+  {
+    "objectID": "git_circle/git_circle_index.html#git-githubを学ぶ",
+    "href": "git_circle/git_circle_index.html#git-githubを学ぶ",
+    "title": "Slides",
+    "section": "",
+    "text": "2023-MM-DD 牧野研 技術輪読会\n\nMembers\n\nAminaga, Suzuki, Matsuda\n\nObserver\n\nMetal"
+  },
+  {
+    "objectID": "git_circle/git_circle_index.html#なにを学ぶかどこまで学ぶか",
+    "href": "git_circle/git_circle_index.html#なにを学ぶかどこまで学ぶか",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "clone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc."
+  },
+  {
+    "objectID": "git_circle/git_circle_index.html#誰がどこをやるか",
+    "href": "git_circle/git_circle_index.html#誰がどこをやるか",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "Date\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nintroduction for git reading ciecle"
+  },
+  {
+    "objectID": "git_circle/git_circle_index.html#参考",
+    "href": "git_circle/git_circle_index.html#参考",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "過去の牧野研での git 講習資料\ngit 公式リファレンス"
+  },
+  {
+    "objectID": "index.html#lt",
+    "href": "index.html#lt",
+    "title": "Slides",
+    "section": "",
+    "text": "牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う\n牧野研 技術輪読会: GNU nanoエディタを便利に使う"
+  },
+  {
+    "objectID": "index.html#git",
+    "href": "index.html#git",
+    "title": "Slides",
+    "section": "",
+    "text": "Kickoff"
   }
 ]
