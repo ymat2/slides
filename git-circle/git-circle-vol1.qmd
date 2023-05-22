@@ -1,0 +1,80 @@
+---
+title: "Git 入門①"
+subtitle: "2023-MM~DD 牧野研 技術輪読会 `git`編"
+format:
+  revealjs:
+    scrollable: true
+    slide-number: c/t
+    code-line-numbers: false
+highlight-style: breeze
+---
+
+## 目次
+
+1. 新しいリポジトリを作る
+2. 手元の変更をローカルリポジトリに反映させる: `push`
+3. ローカルリポジトリの変更を手元に反映させる: `pull`
+4. あえて競合を起こしてそれを解決する
+
+参考
+: https://heavywatal.github.io/lectures/git2019makino.html
+: https://ymat2.github.io/commandline/git/
+
+
+## 新しいリポジトリを作る
+1. githubのページ右上の"+"から"New repository"を選択
+2. "Repository name"を決めて <kbd>Create repojitory</kbd> 。他の部分はそのままでOK。(あとで変更できる。)
+
+![](image/create_new_repository.png){width="800"}
+
+
+## 新しいリポジトリを作る
+1. githubのページ右上の"+"から"New repository"を選択
+2. "Repository name"を決めて <kbd>Create repojitory</kbd> 。他の部分はそのままでOK。(あとで変更できる。)
+
+![](image/name_new_repository.png){width="800"}
+
+
+## 新しいリポジトリを作る
+github上で新しいリポジトリを作ると、その後の手順を教えてくれるので基本的にそれに従う。
+
+1. 手元にもリポジトリを作る。
+```bash
+mkdir practice && cd practice  # 手元に同名リポジトリを作って移動
+echo "# practice" >> README.md  # 新しいファイル(README.md)を作成
+```
+<br>
+
+2. ローカルリポジトリへの操作
+```bash
+git init  # ローカルリポジトリを作成
+# git status and/or git log
+git add README.md  # README.mdの変更をインデックスに登録
+# git status and/or git log
+git commit -m "first commit"  # ローカルリポジトリにコミット
+# git status and/or git log
+```
+
+## 手元の変更をローカルリポジトリに反映させる: `push`
+
+1. もうひとつ別のファイルを作ってローカルリポジトリに `commit`
+```bash
+echo "Hello, Git" >> sample.txt
+git add sample.txt
+git commit -m "Create sample.txt"
+```
+
+適宜 `git status` や `git log` で確認
+
+<br>
+
+2. リモートリポジトリを紐づけて `push`
+```bash
+git branch -M main  # ブランチを明示的にmainと命名
+git remote -v
+git remote add origin https://github.com/ymat2/practice.git  # リモートリポジトリをoriginと命名して紐づける
+git remote -v
+git push -u origin main  # アップストリームブランチをoriginに設定して変更をpush
+```
+
+githubの方で`README.md`が見えるかどうか確認する。

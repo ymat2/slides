@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.340">
 
-  <title>Slides - 遺伝研スパコンで外部パッケージを使う</title>
+  <title>Slides - Git 入門①</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,101 +390,85 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">遺伝研スパコンで外部パッケージを使う</h1>
-  <p class="subtitle">2023-MM-DD 牧野研 技術輪読会</p>
+  <h1 class="title">Git 入門①</h1>
+  <p class="subtitle">2023-MM~DD 牧野研 技術輪読会 <code>git</code>編</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="遺伝研スパコンで外部の解析ソフトウェアを使う方法" class="slide level2">
-<h2>遺伝研スパコンで外部の解析ソフトウェアを使う方法</h2>
-<p><code>paml</code>, <code>vcftools</code>, <code>blast</code>などを解析で使いたい。</p>
-<p><br></p>
-<p>遺伝研スパコンでこれらの解析ソフトウェアを使うには:</p>
+<section id="目次" class="slide level2">
+<h2>目次</h2>
 <ol type="1">
-<li><p>ユーザーの<code>home/</code>下にインストールして<code>$PATH</code>を通す。(めんどい。最終手段。)</p></li>
-<li><p><a href="https://sc.ddbj.nig.ac.jp/software/BioContainers/">BioContainers Apptainer (Singularity) Images</a>を使う。(手軽。)</p></li>
-<li><p><a href="https://sc.ddbj.nig.ac.jp/software/#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3">用意されているパッケージ管理ツール</a>を使ってインストールする。(上手く使えば便利。)</p>
-<ul>
-<li><a href="https://sc.ddbj.nig.ac.jp/software/guix">Guix</a>の使い方を紹介</li>
-<li>Spackってのも使えるらしい</li>
-</ul></li>
+<li>新しいリポジトリを作る</li>
+<li>手元の変更をローカルリポジトリに反映させる: <code>push</code></li>
+<li>ローカルリポジトリの変更を手元に反映させる: <code>pull</code></li>
+<li>あえて競合を起こしてそれを解決する</li>
 </ol>
-</section>
-<section id="ユーザーのhome下にインストールしてpathを通す" class="slide level2">
-<h2>ユーザーの<code>home/</code>下にインストールして<code>$PATH</code>を通す</h2>
-<p>例えば<code>orthofinder</code>を使いたいとき:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/bin/  <span class="co"># パッケージを入れる用のディレクトリを準備</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> bin</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/davidemms/OrthoFinder/releases/download/2.5.4/OrthoFinder.tar.gz  <span class="co"># ソフトウェアをダウンロード</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> xzf OrthoFinder.tar.gz  <span class="co"># 解凍</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">./OrthoFinder/orthofinder</span> <span class="at">-h</span>  <span class="co"># テスト</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>ここまでできたら<code>~/.bashrc</code>に<code>$PATH</code>を通す</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>.bashrc</strong></pre>
-</div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:<span class="va">${HOME}</span>/bin/OrthoFinder/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br> かなりめんどくさい。できればやりたくない。</p>
-</section>
-<section id="biocontainers-apptainer-singularity-imagesを使う" class="slide level2">
-<h2><a href="https://sc.ddbj.nig.ac.jp/software/BioContainers/">BioContainers Apptainer (Singularity) Images</a>を使う</h2>
-<p>バイオインフォでよく使われる解析ソフトウェアが用意されている。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /usr/local/biotools/   <span class="co"># ツールの頭文字ごとに各ディレクトリにある</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> 例えば<code>orthofinder</code>を使いたいとき:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /usr/local/biotools/o/orthofinder<span class="pp">*</span>   <span class="co"># 使えるバージョンを探す</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/biotools/o/orthofinder:2.4.1--1  /usr/local/biotools/o/orthofinder:2.5.2--hdfd78af_1</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/biotools/o/orthofinder:2.5.1--0  /usr/local/biotools/o/orthofinder:2.5.3--hdfd78af_0</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/biotools/o/orthofinder:2.5.2--0  /usr/local/biotools/o/orthofinder:2.5.4--hdfd78af_0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>バージョンのパスを指定してコマンドを実行:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load singularity  <span class="co"># Apptainerを使えるようにする。</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec /usr/local/biotools/o/orthofinder:2.5.2--0 orthofinder <span class="at">-f</span> sample/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="パッケージ管理ツールを使ってインストールする" class="slide level2">
-<h2>パッケージ管理ツールを使ってインストールする</h2>
 <dl>
-<dt>パッケージ管理ツール?</dt>
+<dt>参考</dt>
 <dd>
-<code>apt</code>, <code>homebrew</code>のように、ソフトウェアのインストール、バージョン管理を行えるツール。PATHも通るのでインストールしたらすぐ使える。
+https://heavywatal.github.io/lectures/git2019makino.html
 </dd>
-<dt>遺伝研でもいくつかのパッケージ管理ツールが利用可能</dt>
 <dd>
-<img data-src="image/ddbj_package_mangement.png" width="750">
+https://ymat2.github.io/commandline/git/
 </dd>
 </dl>
 </section>
-<section id="デフォルトユーザー権限で使えるguix" class="slide level2">
-<h2>デフォルト、ユーザー権限で使える<code>Guix</code></h2>
-<p>遺伝研が書いてる使い方ページ: <a href="https://sc.ddbj.nig.ac.jp/software/guix">https://sc.ddbj.nig.ac.jp/software/guix</a></p>
-<p>前準備:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>.bashrc</strong></pre>
-</div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GUIX_DAEMON_SOCKET</span><span class="op">=</span>guix://at111</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GUIX_PROFILE</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/.guix-profile"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="st">"</span><span class="va">$GUIX_PROFILE</span><span class="st">/etc/profile"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>パッケージ検索:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">guix</span> serach paml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>インストール:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">guix</span> install paml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> デフォルトのインストールパスは<code>~/.guix_profile/bin/</code></p>
-</section>
-<section id="まとめ" class="slide level2">
-<h2>まとめ</h2>
-<p>外部の解析ソフトウェアを遺伝研で使いたいとき:</p>
+<section id="新しいリポジトリを作る" class="slide level2">
+<h2>新しいリポジトリを作る</h2>
 <ol type="1">
-<li><p><a href="https://sc.ddbj.nig.ac.jp/software/BioContainers/">Apptainer Images</a>にあるかどうか探す。</p>
-<p>↓</p></li>
-<li><p><code>Guix</code>で探してインストールする。</p>
-<p>↓</p></li>
-<li><p>それでもなければ公式から落としてきてパスを通す。</p></li>
+<li>githubのページ右上の”+“から”New repository”を選択</li>
+<li>“Repository name”を決めて <kbd>Create repojitory</kbd> 。他の部分はそのままでOK。(あとで変更できる。)</li>
 </ol>
+
+<img data-src="image/create_new_repository.png" width="800" class="r-stretch"></section>
+<section id="新しいリポジトリを作る-1" class="slide level2">
+<h2>新しいリポジトリを作る</h2>
+<ol type="1">
+<li>githubのページ右上の”+“から”New repository”を選択</li>
+<li>“Repository name”を決めて <kbd>Create repojitory</kbd> 。他の部分はそのままでOK。(あとで変更できる。)</li>
+</ol>
+
+<img data-src="image/name_new_repository.png" width="800" class="r-stretch"></section>
+<section id="新しいリポジトリを作る-2" class="slide level2">
+<h2>新しいリポジトリを作る</h2>
+<p>github上で新しいリポジトリを作ると、その後の手順を教えてくれるので基本的にそれに従う。</p>
+<ol type="1">
+<li>手元にもリポジトリを作る。</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> practice <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> practice  <span class="co"># 手元に同名リポジトリを作って移動</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"# practice"</span> <span class="op">&gt;&gt;</span> README.md  <span class="co"># 新しいファイル(README.md)を作成</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<ol start="2" type="1">
+<li>ローカルリポジトリへの操作</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init  <span class="co"># ローカルリポジトリを作成</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># git status and/or git log</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md  <span class="co"># README.mdの変更をインデックスに登録</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># git status and/or git log</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"first commit"</span>  <span class="co"># ローカルリポジトリにコミット</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># git status and/or git log</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="手元の変更をローカルリポジトリに反映させる-push" class="slide level2">
+<h2>手元の変更をローカルリポジトリに反映させる: <code>push</code></h2>
+<ol type="1">
+<li>もうひとつ別のファイルを作ってローカルリポジトリに <code>commit</code></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello, Git"</span> <span class="op">&gt;&gt;</span> sample.txt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add sample.txt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Create sample.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>適宜 <code>git status</code> や <code>git log</code> で確認</p>
+<p><br></p>
+<ol start="2" type="1">
+<li>リモートリポジトリを紐づけて <code>push</code></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main  <span class="co"># ブランチを明示的にmainと命名</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/ymat2/practice.git  <span class="co"># リモートリポジトリをoriginと命名して紐づける</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main  <span class="co"># アップストリームブランチをoriginに設定して変更をpush</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>githubの方で<code>README.md</code>が見えるかどうか確認する。</p>
 
 <div class="footer footer-default">
 

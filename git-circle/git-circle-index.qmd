@@ -7,13 +7,12 @@ highlight-style: breeze
 
 # Git, Githubを学ぶ
 <img height="64" width="64" align="right" src="https://cdn.simpleicons.org/git">
-
 <img height="64" width="64" align="right" src="https://cdn.simpleicons.org/github">
 
 2023-05-23 牧野研 技術輪読会
 
 Members
-: Aminaga, Matsuda, Suzuki, Takara
+: Aminaga, Ishida, Matsuda, Suzuki, Takara
 
 Observer
 : Metal
@@ -32,11 +31,25 @@ Observer
 ### Collaboration
 Fork, Pull request, `merge`, etc.
 
+### その他
+- [Github Pages](https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages)
+- [Actions](https://github.co.jp/features/actions)
+- とか？
+
+
+## どういう形式でやるか
+### 案1
+トピックを小分けにして今までの輪読会形式でやる。
+
+### 案2
+課題を設定して各自が進める。輪読会ではできなかったところの共有やトラブルシューティングなどをやる。
+
+例: 次回までに新しいリポジトリを作ってテキストファイルを`push`する。
 
 ## 誰がどこをやるか
 |Date|Who|Topic|
 |:---|:---|:---|
-|2023-05-23|Matsuda|introduction for `git` reading ciecle|
+|2023-05-23|Matsuda|Kickoff of `git` reading ciecle|
 
 
 ## 参考

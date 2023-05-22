@@ -264,5 +264,75 @@
     "title": "Slides",
     "section": "",
     "text": "Kickoff"
+  },
+  {
+    "objectID": "git-circle/git-circle-index.html",
+    "href": "git-circle/git-circle-index.html",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "2023-05-23 牧野研 技術輪読会\n\nMembers\n\nAminaga, Ishida, Matsuda, Suzuki, Takara\n\nObserver\n\nMetal\n\n\n\n\n\n\nclone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc.\n\n\n\n\nGithub Pages\nActions\nとか？\n\n\n\n\n\n\n\nトピックを小分けにして今までの輪読会形式でやる。\n\n\n\n課題を設定して各自が進める。輪読会ではできなかったところの共有やトラブルシューティングなどをやる。\n例: 次回までに新しいリポジトリを作ってテキストファイルをpushする。\n\n\n\n\n\n\n\nDate\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nKickoff of git reading ciecle\n\n\n\n\n\n\n\n過去の牧野研での git 講習資料\ngit 公式リファレンス"
+  },
+  {
+    "objectID": "git-circle/git-circle-index.html#なにを学ぶかどこまで学ぶか",
+    "href": "git-circle/git-circle-index.html#なにを学ぶかどこまで学ぶか",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "clone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc.\n\n\n\n\nGithub Pages\nActions\nとか？"
+  },
+  {
+    "objectID": "git-circle/git-circle-index.html#誰がどこをやるか",
+    "href": "git-circle/git-circle-index.html#誰がどこをやるか",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "Date\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nKickoff of git reading ciecle"
+  },
+  {
+    "objectID": "git-circle/git-circle-index.html#参考",
+    "href": "git-circle/git-circle-index.html#参考",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "過去の牧野研での git 講習資料\ngit 公式リファレンス"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#目次",
+    "href": "git-circle/git-circle-vol1.html#目次",
+    "title": "Git 入門①",
+    "section": "目次",
+    "text": "目次\n\n新しいリポジトリを作る\n手元の変更をローカルリポジトリに反映させる: push\nローカルリポジトリの変更を手元に反映させる: pull\nあえて競合を起こしてそれを解決する\n\n\n参考\n\nhttps://heavywatal.github.io/lectures/git2019makino.html\n\n\nhttps://ymat2.github.io/commandline/git/"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#新しいリポジトリを作る",
+    "href": "git-circle/git-circle-vol1.html#新しいリポジトリを作る",
+    "title": "Git 入門①",
+    "section": "新しいリポジトリを作る",
+    "text": "新しいリポジトリを作る\n\ngithubのページ右上の”+“から”New repository”を選択\n“Repository name”を決めて Create repojitory 。他の部分はそのままでOK。(あとで変更できる。)"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#新しいリポジトリを作る-1",
+    "href": "git-circle/git-circle-vol1.html#新しいリポジトリを作る-1",
+    "title": "Git 入門①",
+    "section": "新しいリポジトリを作る",
+    "text": "新しいリポジトリを作る\n\ngithubのページ右上の”+“から”New repository”を選択\n“Repository name”を決めて Create repojitory 。他の部分はそのままでOK。(あとで変更できる。)"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#新しいリポジトリを作る-2",
+    "href": "git-circle/git-circle-vol1.html#新しいリポジトリを作る-2",
+    "title": "Git 入門①",
+    "section": "新しいリポジトリを作る",
+    "text": "新しいリポジトリを作る\ngithub上で新しいリポジトリを作ると、その後の手順を教えてくれるので基本的にそれに従う。\n\n手元にもリポジトリを作る。\n\nmkdir practice && cd practice  # 手元に同名リポジトリを作って移動\necho \"# practice\" &gt;&gt; README.md  # 新しいファイル(README.md)を作成\n\n\nローカルリポジトリへの操作\n\ngit init  # ローカルリポジトリを作成\n# git status and/or git log\ngit add README.md  # README.mdの変更をインデックスに登録\n# git status and/or git log\ngit commit -m \"first commit\"  # ローカルリポジトリにコミット\n# git status and/or git log"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#手元の変更をローカルリポジトリに反映させる-push",
+    "href": "git-circle/git-circle-vol1.html#手元の変更をローカルリポジトリに反映させる-push",
+    "title": "Git 入門①",
+    "section": "手元の変更をローカルリポジトリに反映させる: push",
+    "text": "手元の変更をローカルリポジトリに反映させる: push\n\nもうひとつ別のファイルを作ってローカルリポジトリに commit\n\necho \"Hello, Git\" &gt;&gt; sample.txt\ngit add sample.txt\ngit commit -m \"Create sample.txt\"\n適宜 git status や git log で確認\n\n\nリモートリポジトリを紐づけて push\n\ngit branch -M main  # ブランチを明示的にmainと命名\ngit remote -v\ngit remote add origin https://github.com/ymat2/practice.git  # リモートリポジトリをoriginと命名して紐づける\ngit remote -v\ngit push -u origin main  # アップストリームブランチをoriginに設定して変更をpush\ngithubの方でREADME.mdが見えるかどうか確認する。"
+  },
+  {
+    "objectID": "git-circle/git-circle-index.html#どういう形式でやるか",
+    "href": "git-circle/git-circle-index.html#どういう形式でやるか",
+    "title": "Git, Githubを学ぶ",
+    "section": "",
+    "text": "トピックを小分けにして今までの輪読会形式でやる。\n\n\n\n課題を設定して各自が進める。輪読会ではできなかったところの共有やトラブルシューティングなどをやる。\n例: 次回までに新しいリポジトリを作ってテキストファイルをpushする。"
   }
 ]

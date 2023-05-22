@@ -12,4 +12,4 @@ format: html
 - [牧野研 技術輪読会: GNU nanoエディタを便利に使う](tech-circle/tech-circle-vol1.qmd)
 
 ## Git
-- [Kickoff](git_circle/git_circle_index.qmd)
+- [Kickoff](git-circle/git-circle-index.qmd)
