@@ -1,24 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Slides",
-    "section": "",
-    "text": "牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う\n牧野研 技術輪読会: GNU nanoエディタを便利に使う\n\n\n\n\n\nKickoff"
-  },
-  {
-    "objectID": "local/test.html",
-    "href": "local/test.html",
+    "objectID": "local/test.html#マークダウン記法のテスト用",
+    "href": "local/test.html#マークダウン記法のテスト用",
     "title": "Test slides",
-    "section": "",
-    "text": "マークダウン記法の見え方はこんな感じ\n\n太字\n斜体+太字\n斜体\n打ち消し\n\n引用\n\n\nここは引用\n\n\nインラインコードはprint()こんな感じ。\nリンク: Google\n\n\n\n\n左揃え\n中央揃え\n右揃え\n\n\n\n\n1\n2\n3\n\n\n4\n5\n6\n\n\n\n\n用語\n\n説明文１~~~~~\n\n\n説明文２~~~~~\n\n\n\nタスク1\nタスク2"
+    "section": "マークダウン記法のテスト用",
+    "text": "マークダウン記法のテスト用\n\nマークダウン記法の見え方はこんな感じ\n\n太字\n斜体+太字\n斜体\n打ち消し\n\n引用\n\n\nここは引用\n\n\nインラインコードはprint()こんな感じ。\nリンク: Google\n\n\n\n\n左揃え\n中央揃え\n右揃え\n\n\n\n\n1\n2\n3\n\n\n4\n5\n6\n\n\n\n\n用語\n\n説明文１~~~~~\n\n\n説明文２~~~~~\n\n\n\nタスク1\nタスク2"
   },
   {
     "objectID": "local/test.html#code-r",
     "href": "local/test.html#code-r",
     "title": "Test slides",
     "section": "Code: R",
-    "text": "Code: R\n\nggplot(mpg) + \n  aes(x=displ, y=cty, color=drv) +\n  geom_point() +\n  scale_color_viridis_d() +\n  theme_classic(base_size=18)"
+    "text": "Code: R\n\nggplot(mpg) +\n  aes(x=displ, y=cty, color=drv) +\n  geom_point() +\n  scale_color_viridis_d() +\n  theme_classic(base_size=18)"
   },
   {
     "objectID": "local/test.html#code-python",
@@ -33,69 +26,6 @@
     "title": "Test slides",
     "section": "Multiple columns",
     "text": "Multiple columns\n\n\nこっちは4割幅\n\nhoge\nfuga\npiyo\n\n\nこっちは6割幅\n\nほげ\nふが\nぴよ"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html",
-    "href": "tech-circle/tech-circle-20230425.html",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "",
-    "text": "GNUnanoはMacにもLinuxにも元から入っているテキストエディタ。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linux(Ubuntu)ならaptでインストール\nsudo apt install nano"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html#基本的な使い方",
-    "href": "tech-circle/tech-circle-20230425.html#基本的な使い方",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "基本的な使い方",
-    "text": "基本的な使い方\nファイル名を指定して開く。ファイルが存在しない場合は新しく作られる。\nnano sample.md\n\nControlX\n\n編集画面から出る。内容を変更している場合は上書きするかどうか聞かれる。\n\nControlO\n\n編集内容を反映。上書き保存のイメージ。\n\nControlK\n\n選択範囲を切り取る。範囲を選択していない場合カーソルのある行が切り取られる。\n\nControlU\n\n切り取った内容をカーソル位置に張り付ける。"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration",
-    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "nanoを便利に使う1: Configuration",
-    "text": "nanoを便利に使う1: Configuration\n~/.bash_profileみたいに、nanoも設定をファイルに書いておくことができる。\n読み込まれる順番は、以下の通り。\n\n/etc/nanorc # おそらくデフォルトで存在する\n~/.nanorc # これが一番楽\n~/.config/nano/nanorc # 遺伝研のnanoは古すぎてこれは読んでくれない\n\n\nホームに.nanorcを作ってみる:\ncd  # homeディレクトリに移動\nnano .nanorc  # .nanorcをnanoで編集"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration-1",
-    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う1-configuration-1",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "nanoを便利に使う1: Configuration",
-    "text": "nanoを便利に使う1: Configuration\nset <option>という書き方で設定をどんどん追加していく。\nよく使う & 便利そうな設定を抜粋:\nset tabsize 4     # Tabでインデントするときの幅をspace 4個分に。\nset autoindent    # 改行時にインデントを揃える\nset smooth        # スクロールがスムーズに\nset linenumbers   # 行番号を表示する\nその他のオプションは公式ドキュメントを参照。"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト",
-    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "nanoを便利に使う2: シンタクスハイライト",
-    "text": "nanoを便利に使う2: シンタクスハイライト\n\nシンタクスハイライトとは\n\n関数、文字列、予約語とかに色をつけてコードを見やすくするあれ。\n\n\n\n\n\n(/etc/nanorcの設定にもよるが、)Macのデフォルトのnanoはハイライトされていない…\nそれも.nanorcで設定できます!!"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト-1",
-    "href": "tech-circle/tech-circle-20230425.html#nanoを便利に使う2-シンタクスハイライト-1",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "nanoを便利に使う2: シンタクスハイライト",
-    "text": "nanoを便利に使う2: シンタクスハイライト\n\nハイライト定義ファイルが置かれている場所を探す。\n\nMac: /usr/local/share/nano/\nhomebrewで入れた場合: /usr/local/Cellar/nano/%v/share/doc/nano/\nLinux: /usr/share/nano/\n\n.nanorcに以下を追記:\ninclude '/usr/share/nano/*.nanorc'\n適当なスクリプトをnanoで開いて、ハイライトされているか見てみる。"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html#みなさんのおすすめエディタも教えてください",
-    "href": "tech-circle/tech-circle-20230425.html#みなさんのおすすめエディタも教えてください",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "みなさんのおすすめエディタも教えてください!!",
-    "text": "みなさんのおすすめエディタも教えてください!!\n\n私はnanoの設定こうしています！\nvimの方がはるかに高機能だというのを教えてあげよう\n何言ってんの、時代はvscodeでしょ\n\n個人的にvscodeを食わず嫌いしているのでぜひ誰かにやってほしい…\n\netc.\n\n\n\n技術輪読会のネタについて\n皆さんの意向をお聞きした上で、希望者が多ければgitを学ぶ回をやりたい。"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-20230425.html#smallでfriendlyなテキストエディタ-nano",
-    "href": "tech-circle/tech-circle-20230425.html#smallでfriendlyなテキストエディタ-nano",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "smallでfriendlyなテキストエディタ nano",
-    "text": "smallでfriendlyなテキストエディタ nano\nGNUnanoはMacにもLinuxにも元から入っているテキストエディタ。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linux(Ubuntu)ならaptでインストール\nsudo apt install nano"
-  },
-  {
-    "objectID": "local/test.html#マークダウン記法のテスト用",
-    "href": "local/test.html#マークダウン記法のテスト用",
-    "title": "Test slides",
-    "section": "マークダウン記法のテスト用",
-    "text": "マークダウン記法のテスト用\n\nマークダウン記法の見え方はこんな感じ\n\n太字\n斜体+太字\n斜体\n打ち消し\n\n引用\n\n\nここは引用\n\n\nインラインコードはprint()こんな感じ。\nリンク: Google\n\n\n\n\n左揃え\n中央揃え\n右揃え\n\n\n\n\n1\n2\n3\n\n\n4\n5\n6\n\n\n\n\n用語\n\n説明文１~~~~~\n\n\n説明文２~~~~~\n\n\n\nタスク1\nタスク2"
   },
   {
     "objectID": "tech-circle/tech-circle-vol2.html#遺伝研スパコンで外部の解析ソフトウェアを使う方法",
@@ -119,25 +49,32 @@
     "text": "BioContainers Apptainer (Singularity) Imagesを使う\nバイオインフォでよく使われる解析ソフトウェアが用意されている。\nls /usr/local/biotools/   # ツールの頭文字ごとに各ディレクトリにある\n 例えばorthofinderを使いたいとき:\nls /usr/local/biotools/o/orthofinder*   # 使えるバージョンを探す\n# ...\n# /usr/local/biotools/o/orthofinder:2.4.1--1  /usr/local/biotools/o/orthofinder:2.5.2--hdfd78af_1\n# /usr/local/biotools/o/orthofinder:2.5.1--0  /usr/local/biotools/o/orthofinder:2.5.3--hdfd78af_0\n# /usr/local/biotools/o/orthofinder:2.5.2--0  /usr/local/biotools/o/orthofinder:2.5.4--hdfd78af_0\nバージョンのパスを指定してコマンドを実行:\nmodule load singularity  # Apptainerを使えるようにする。\nsingularity exec /usr/local/biotools/o/orthofinder:2.5.2--0 orthofinder -f sample/"
   },
   {
-    "objectID": "tech-circle/tech-circle-vol2.html#biocontainers-apptainer-singularity-imagesを使う-1",
-    "href": "tech-circle/tech-circle-vol2.html#biocontainers-apptainer-singularity-imagesを使う-1",
+    "objectID": "tech-circle/tech-circle-vol2.html#パッケージ管理ツールを使ってインストールする",
+    "href": "tech-circle/tech-circle-vol2.html#パッケージ管理ツールを使ってインストールする",
     "title": "遺伝研スパコンで外部パッケージを使う",
-    "section": "BioContainers Apptainer (Singularity) Imagesを使う",
-    "text": "BioContainers Apptainer (Singularity) Imagesを使う\nバージョンのパスを指定してコマンドを実行:\nmodule load singularity  # Apptainerを使えるようにする。\nsingularity exec /usr/local/biotools/o/orthofinder:2.5.2--0 orthofinder -f sample/\n\nよく使うコマンドなら~/.bashrcとかにエイリアスを作成しておくと便利。\n\n\n.bashrc\n\nalias orthofinder=\"singularity exec /usr/local/biotools/o/orthofinder:2.5.2--0 orthofinder\""
+    "section": "パッケージ管理ツールを使ってインストールする",
+    "text": "パッケージ管理ツールを使ってインストールする\n\nパッケージ管理ツール?\n\napt, homebrewのように、ソフトウェアのインストール、バージョン管理を行えるツール。PATHも通るのでインストールしたらすぐ使える。\n\n遺伝研でもいくつかのパッケージ管理ツールが利用可能"
   },
   {
-    "objectID": "tech-circle/tech-circle-vol2.html",
-    "href": "tech-circle/tech-circle-vol2.html",
+    "objectID": "tech-circle/tech-circle-vol2.html#デフォルトユーザー権限で使えるguix",
+    "href": "tech-circle/tech-circle-vol2.html#デフォルトユーザー権限で使えるguix",
     "title": "遺伝研スパコンで外部パッケージを使う",
-    "section": "",
-    "text": "paml, vcftools, blastなどを解析で使いたい。\n\n\nユーザーのhome/下にインストールして$PATHを通す。(めんどい。最終手段。)\nBioContainers Apptainer (Singularity) Imagesを使う。（手軽。）\n用意されているパッケージ管理ツールを使ってインストールする。（上手く使えば便利。）\n\nGuixの使い方を紹介"
+    "section": "デフォルト、ユーザー権限で使えるGuix",
+    "text": "デフォルト、ユーザー権限で使えるGuix\n遺伝研が書いてる使い方ページ: https://sc.ddbj.nig.ac.jp/software/guix\n前準備:\n\n\n.bashrc\n\nexport GUIX_DAEMON_SOCKET=guix://at111\nexport GUIX_PROFILE=\"$HOME/.guix-profile\"\nsource \"$GUIX_PROFILE/etc/profile\"\n\nパッケージ検索:\nguix serach paml\nインストール:\nguix install paml\n デフォルトのインストールパスは~/.guix_profile/bin/"
   },
   {
-    "objectID": "tech-circle/tech-circle-vol1.html",
-    "href": "tech-circle/tech-circle-vol1.html",
+    "objectID": "tech-circle/tech-circle-vol2.html#まとめ",
+    "href": "tech-circle/tech-circle-vol2.html#まとめ",
+    "title": "遺伝研スパコンで外部パッケージを使う",
+    "section": "まとめ",
+    "text": "まとめ\n外部の解析ソフトウェアを遺伝研で使いたいとき:\n\nApptainer Imagesにあるかどうか探す。\n↓\nGuixで探してインストールする。\n↓\nそれでもなければ公式から落としてきてパスを通す。"
+  },
+  {
+    "objectID": "tech-circle/tech-circle-vol1.html#smallでfriendlyなテキストエディタ-nano",
+    "href": "tech-circle/tech-circle-vol1.html#smallでfriendlyなテキストエディタ-nano",
     "title": "GNU nanoエディタを便利に使う",
-    "section": "",
-    "text": "GNUnanoはMacにもLinuxにも元から入っているテキストエディタ。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linux(Ubuntu)ならaptでインストール\nsudo apt install nano"
+    "section": "smallでfriendlyなテキストエディタ nano",
+    "text": "smallでfriendlyなテキストエディタ nano\nGNUnanoはMacにもLinuxにも元から入っているテキストエディタ。ただしmacOS 12.3 Monterey以降、Macでnanoを打って起動するのはpicoなので、新しいのをhomebrewで入れる。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linux(Ubuntu)ならaptでインストール\nsudo apt install nano"
   },
   {
     "objectID": "tech-circle/tech-circle-vol1.html#基本的な使い方",
@@ -182,116 +119,11 @@
     "text": "みなさんのおすすめエディタも教えてください!!\n\n私はnanoの設定こうしています！\nvimの方がはるかに高機能だというのを教えてあげよう\n何言ってんの、時代はvscodeでしょ\n\n個人的にvscodeを食わず嫌いしているのでぜひ誰かにやってほしい…\n\netc.\n\n\n\n技術輪読会のネタについて\n皆さんの意向をお聞きした上で、希望者が多ければgitを学ぶ回をやりたい。"
   },
   {
-    "objectID": "tech-circle/tech-circle-vol1.html#smallでfriendlyなテキストエディタ-nano",
-    "href": "tech-circle/tech-circle-vol1.html#smallでfriendlyなテキストエディタ-nano",
-    "title": "GNU nanoエディタを便利に使う",
-    "section": "smallでfriendlyなテキストエディタ nano",
-    "text": "smallでfriendlyなテキストエディタ nano\nGNUnanoはMacにもLinuxにも元から入っているテキストエディタ。ただしmacOS 12.3 Monterey以降、Macでnanoを打って起動するのはpicoなので、新しいのをhomebrewで入れる。\n\n公式ドキュメント: nano-editor.org/dist/latest/nano.html\nこちらもよろしくお願いします: ymat2.github.io/commandline/nano/\n\n\n新しいバージョンを入れて使うのもよい:\n## Macならhomebrewでインストール\nbrew install nano\n\n## Linux(Ubuntu)ならaptでインストール\nsudo apt install nano"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-vol2.html#パッケージ管理ツールを使ってインストールする",
-    "href": "tech-circle/tech-circle-vol2.html#パッケージ管理ツールを使ってインストールする",
-    "title": "遺伝研スパコンで外部パッケージを使う",
-    "section": "パッケージ管理ツールを使ってインストールする",
-    "text": "パッケージ管理ツールを使ってインストールする\n\nパッケージ管理ツール?\n\napt, homebrewのように、ソフトウェアのインストール、バージョン管理を行えるツール。PATHも通るのでインストールしたらすぐ使える。\n\n遺伝研でもいくつかのパッケージ管理ツールが利用可能"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-vol2.html#デフォルトユーザー権限で使えるguix",
-    "href": "tech-circle/tech-circle-vol2.html#デフォルトユーザー権限で使えるguix",
-    "title": "遺伝研スパコンで外部パッケージを使う",
-    "section": "デフォルト、ユーザー権限で使えるGuix",
-    "text": "デフォルト、ユーザー権限で使えるGuix\n遺伝研が書いてる使い方ページ: https://sc.ddbj.nig.ac.jp/software/guix\n前準備:\n\n\n.bashrc\n\nexport GUIX_DAEMON_SOCKET=guix://at111\nexport GUIX_PROFILE=\"$HOME/.guix-profile\"\nsource \"$GUIX_PROFILE/etc/profile\"\n\nパッケージ検索:\nguix serach paml\nインストール:\nguix install paml\n デフォルトのインストールパスは~/.guix_profile/bin/"
-  },
-  {
-    "objectID": "tech-circle/tech-circle-vol2.html#まとめ",
-    "href": "tech-circle/tech-circle-vol2.html#まとめ",
-    "title": "遺伝研スパコンで外部パッケージを使う",
-    "section": "まとめ",
-    "text": "まとめ\n外部の解析ソフトウェアを遺伝研で使いたいとき:\n\nApptainer Imagesにあるかどうか探す。\n↓\nGuixで探してインストールする。\n↓\nそれでもなければ公式から落としてきてパスを通す。"
-  },
-  {
     "objectID": "tech-circle/tech-circle-vol1.html#補遺-遺伝研でnanoを使うとき",
     "href": "tech-circle/tech-circle-vol1.html#補遺-遺伝研でnanoを使うとき",
     "title": "GNU nanoエディタを便利に使う",
     "section": "補遺: 遺伝研でnanoを使うとき",
     "text": "補遺: 遺伝研でnanoを使うとき\n遺伝研のデフォルトのnanoは、version 2.3.1とかなり古い。(2023-05-09)\n\nキーバインドが結構違う。(ControlXとか基本的なやつは同じ。)\n~/.config/nano/nanorcを読んでくれない。\n.nanorcのワイルドカード*が効かない。\n\n\nデフォルトのnanoを使う場合、\n\n設定ファイルは~/.nanorc\n\n\nキーバインドは自分で設定したり、野生のやつを借りたり。\n\n\nシンタックスハイライトは1つ1つ直接指定: include \"usr/share/nano/python.nanorc\"\n\nおすすめは新しいnanoを入れること\n\nguixならversion 5.6.1が入る。(これもそこそこ古いけど。)\n\n\n*.nanorcもついてくる。(~/.guix-profile/share/nano/*.nanorc)\n\n\n公式から最新版(version 7.2)を落としてきてもいいかも。"
-  },
-  {
-    "objectID": "git_circle/git_circle_index.html",
-    "href": "git_circle/git_circle_index.html",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "2023-05-23 牧野研 技術輪読会\n\nMembers\n\nAminaga, Matsuda, Suzuki, Takara\n\nObserver\n\nMetal\n\n\n\n\n\n\nclone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc.\n\n\n\n\n\n\n\nDate\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nintroduction for git reading ciecle\n\n\n\n\n\n\n\n過去の牧野研での git 講習資料\ngit 公式リファレンス"
-  },
-  {
-    "objectID": "git_circle/git_circle_index.html#git-githubを学ぶ",
-    "href": "git_circle/git_circle_index.html#git-githubを学ぶ",
-    "title": "Slides",
-    "section": "",
-    "text": "2023-MM-DD 牧野研 技術輪読会\n\nMembers\n\nAminaga, Suzuki, Matsuda\n\nObserver\n\nMetal"
-  },
-  {
-    "objectID": "git_circle/git_circle_index.html#なにを学ぶかどこまで学ぶか",
-    "href": "git_circle/git_circle_index.html#なにを学ぶかどこまで学ぶか",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "clone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc."
-  },
-  {
-    "objectID": "git_circle/git_circle_index.html#誰がどこをやるか",
-    "href": "git_circle/git_circle_index.html#誰がどこをやるか",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "Date\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nintroduction for git reading ciecle"
-  },
-  {
-    "objectID": "git_circle/git_circle_index.html#参考",
-    "href": "git_circle/git_circle_index.html#参考",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "過去の牧野研での git 講習資料\ngit 公式リファレンス"
-  },
-  {
-    "objectID": "index.html#lt",
-    "href": "index.html#lt",
-    "title": "Slides",
-    "section": "",
-    "text": "牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う\n牧野研 技術輪読会: GNU nanoエディタを便利に使う"
-  },
-  {
-    "objectID": "index.html#git",
-    "href": "index.html#git",
-    "title": "Slides",
-    "section": "",
-    "text": "Kickoff"
-  },
-  {
-    "objectID": "git-circle/git-circle-index.html",
-    "href": "git-circle/git-circle-index.html",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "2023-05-23 牧野研 技術輪読会\n\nMembers\n\nAminaga, Ishida, Matsuda, Suzuki, Takara\n\nObserver\n\nMetal\n\n\n\n\n\n\nclone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc.\n\n\n\n\nGithub Pages\nActions\nとか？\n\n\n\n\n\n\n\nトピックを小分けにして今までの輪読会形式でやる。\n\n\n\n課題を設定して各自が進める。輪読会ではできなかったところの共有やトラブルシューティングなどをやる。\n例: 次回までに新しいリポジトリを作ってテキストファイルをpushする。\n\n\n\n\n\n\n\nDate\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nKickoff of git reading ciecle\n\n\n\n\n\n\n\n過去の牧野研での git 講習資料\ngit 公式リファレンス"
-  },
-  {
-    "objectID": "git-circle/git-circle-index.html#なにを学ぶかどこまで学ぶか",
-    "href": "git-circle/git-circle-index.html#なにを学ぶかどこまで学ぶか",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "clone, init, add, commit, status, log, diff, etc.\n\n\n\npush, pull, fetch, merge, etc.\n\n\n\nbranch, checkout, merge, etc.\n\n\n\nFork, Pull request, merge, etc.\n\n\n\n\nGithub Pages\nActions\nとか？"
-  },
-  {
-    "objectID": "git-circle/git-circle-index.html#誰がどこをやるか",
-    "href": "git-circle/git-circle-index.html#誰がどこをやるか",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "Date\nWho\nTopic\n\n\n\n\n2023-05-23\nMatsuda\nKickoff of git reading ciecle"
-  },
-  {
-    "objectID": "git-circle/git-circle-index.html#参考",
-    "href": "git-circle/git-circle-index.html#参考",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "過去の牧野研での git 講習資料\ngit 公式リファレンス"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#目次",
@@ -327,12 +159,5 @@
     "title": "Git 入門①",
     "section": "手元の変更をローカルリポジトリに反映させる: push",
     "text": "手元の変更をローカルリポジトリに反映させる: push\n\nもうひとつ別のファイルを作ってローカルリポジトリに commit\n\necho \"Hello, Git\" &gt;&gt; sample.txt\ngit add sample.txt\ngit commit -m \"Create sample.txt\"\n適宜 git status や git log で確認\n\n\nリモートリポジトリを紐づけて push\n\ngit branch -M main  # ブランチを明示的にmainと命名\ngit remote -v\ngit remote add origin https://github.com/ymat2/practice.git  # リモートリポジトリをoriginと命名して紐づける\ngit remote -v\ngit push -u origin main  # アップストリームブランチをoriginに設定して変更をpush\ngithubの方でREADME.mdが見えるかどうか確認する。"
-  },
-  {
-    "objectID": "git-circle/git-circle-index.html#どういう形式でやるか",
-    "href": "git-circle/git-circle-index.html#どういう形式でやるか",
-    "title": "Git, Githubを学ぶ",
-    "section": "",
-    "text": "トピックを小分けにして今までの輪読会形式でやる。\n\n\n\n課題を設定して各自が進める。輪読会ではできなかったところの共有やトラブルシューティングなどをやる。\n例: 次回までに新しいリポジトリを作ってテキストファイルをpushする。"
   }
 ]

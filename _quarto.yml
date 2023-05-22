@@ -3,8 +3,9 @@ project:
   type: website
   output-dir: docs
 
-format: 
+format:
   html:
+    theme: none
     css: static/top-page.css
   revealjs:
     theme: static/theme.css

@@ -20,63 +20,30 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
-  }
-}</script>
 
 
 <link rel="stylesheet" href="../static/top-page.css">
 </head>
 
-<body class="fullcontent">
-
-<div id="quarto-search-results"></div>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    
-<!-- main -->
-<main class="content" id="quarto-document-content">
+<body>
 
 
 
-<section id="git-githubを学ぶ" class="level1">
-<h1>Git, Githubを学ぶ</h1>
+
+<h1 id="git-githubを学ぶ">Git, Githubを学ぶ</h1>
 <p><img height="64" width="64" align="right" src="https://cdn.simpleicons.org/git"> <img height="64" width="64" align="right" src="https://cdn.simpleicons.org/github"></p>
 <p>2023-05-23 牧野研 技術輪読会</p>
 <dl>
@@ -89,48 +56,29 @@ Aminaga, Ishida, Matsuda, Suzuki, Takara
 Metal
 </dd>
 </dl>
-<section id="なにを学ぶかどこまで学ぶか" class="level2">
-<h2 class="anchored" data-anchor-id="なにを学ぶかどこまで学ぶか">なにを学ぶか、どこまで学ぶか</h2>
-<section id="基本操作" class="level3">
-<h3 class="anchored" data-anchor-id="基本操作">基本操作</h3>
+<h2 id="なにを学ぶかどこまで学ぶか" class="anchored">なにを学ぶか、どこまで学ぶか</h2>
+<h3 id="基本操作" class="anchored">基本操作</h3>
 <p><code>clone</code>, <code>init</code>, <code>add</code>, <code>commit</code>, <code>status</code>, <code>log</code>, <code>diff</code>, etc.</p>
-</section>
-<section id="リモートリポジトリ" class="level3">
-<h3 class="anchored" data-anchor-id="リモートリポジトリ">リモートリポジトリ</h3>
+<h3 id="リモートリポジトリ" class="anchored">リモートリポジトリ</h3>
 <p><code>push</code>, <code>pull</code>, <code>fetch</code>, <code>merge</code>, etc.</p>
-</section>
-<section id="branching-and-merging" class="level3">
-<h3 class="anchored" data-anchor-id="branching-and-merging">Branching and Merging</h3>
+<h3 id="branching-and-merging" class="anchored">Branching and Merging</h3>
 <p><code>branch</code>, <code>checkout</code>, <code>merge</code>, etc.</p>
-</section>
-<section id="collaboration" class="level3">
-<h3 class="anchored" data-anchor-id="collaboration">Collaboration</h3>
+<h3 id="collaboration" class="anchored">Collaboration</h3>
 <p>Fork, Pull request, <code>merge</code>, etc.</p>
-</section>
-<section id="その他" class="level3">
-<h3 class="anchored" data-anchor-id="その他">その他</h3>
+<h3 id="その他" class="anchored">その他</h3>
 <ul>
 <li><a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages">Github Pages</a></li>
 <li><a href="https://github.co.jp/features/actions">Actions</a></li>
 <li>とか？</li>
 </ul>
-</section>
-</section>
-<section id="どういう形式でやるか" class="level2">
-<h2 class="anchored" data-anchor-id="どういう形式でやるか">どういう形式でやるか</h2>
-<section id="案1" class="level3">
-<h3 class="anchored" data-anchor-id="案1">案1</h3>
+<h2 id="どういう形式でやるか" class="anchored">どういう形式でやるか</h2>
+<h3 id="案1" class="anchored">案1</h3>
 <p>トピックを小分けにして今までの輪読会形式でやる。</p>
-</section>
-<section id="案2" class="level3">
-<h3 class="anchored" data-anchor-id="案2">案2</h3>
+<h3 id="案2" class="anchored">案2</h3>
 <p>課題を設定して各自が進める。輪読会ではできなかったところの共有やトラブルシューティングなどをやる。</p>
 <p>例: 次回までに新しいリポジトリを作ってテキストファイルを<code>push</code>する。</p>
-</section>
-</section>
-<section id="誰がどこをやるか" class="level2">
-<h2 class="anchored" data-anchor-id="誰がどこをやるか">誰がどこをやるか</h2>
-<table class="table">
+<h2 id="誰がどこをやるか" class="anchored">誰がどこをやるか</h2>
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Date</th>
@@ -146,19 +94,13 @@ Metal
 </tr>
 </tbody>
 </table>
-</section>
-<section id="参考" class="level2">
-<h2 class="anchored" data-anchor-id="参考">参考</h2>
+<h2 id="参考" class="anchored">参考</h2>
 <ul>
 <li><a href="https://heavywatal.github.io/lectures/git2019makino.html">過去の牧野研での <code>git</code> 講習資料</a></li>
 <li><a href="https://git-scm.com/docs"><code>git</code> 公式リファレンス</a></li>
 </ul>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -179,6 +121,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -250,7 +196,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       },
       interactive: true,
       interactiveBorder: 10,
-      theme: 'quarto',
+      theme: 'light-border',
       placement: 'bottom-start'
     };
     window.tippy(el, config); 
@@ -392,7 +338,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</div> <!-- /content -->
 
 
 
