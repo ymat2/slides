@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Slides - Git入門2023　基本操作</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+
+
+<link rel="stylesheet" href="../static/top-page.css">
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Git入門2023　基本操作</h1>
+
+</header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#environment-環境" id="toc-environment-環境">Environment / 環境</a>
+  <ul>
+  <li><a href="#os" id="toc-os">OS</a></li>
+  <li><a href="#common" id="toc-common">Common</a></li>
+  <li><a href="#ssh-任意" id="toc-ssh-任意">SSH (任意)</a></li>
+  </ul></li>
+  <li><a href="#essential-commands-基本操作" id="toc-essential-commands-基本操作">Essential commands / 基本操作</a>
+  <ul>
+  <li><a href="#fetch-existing-repositories-clone" id="toc-fetch-existing-repositories-clone">Fetch existing repositories: <code>clone</code></a></li>
+  <li><a href="#create-new-repositories-init" id="toc-create-new-repositories-init">Create new repositories: <code>init</code></a></li>
+  <li><a href="#export-local-changes-to-a-remote-server-push" id="toc-export-local-changes-to-a-remote-server-push">Export local changes to a remote server: <code>push</code></a></li>
+  <li><a href="#import-changes-from-a-remote-server-fetch" id="toc-import-changes-from-a-remote-server-fetch">Import changes from a remote server: <code>fetch</code></a></li>
+  </ul></li>
+  <li><a href="#other-commands" id="toc-other-commands">Other commands</a>
+  <ul>
+  <li><a href="#diff" id="toc-diff">diff</a></li>
+  <li><a href="#rm-clean" id="toc-rm-clean">rm, clean</a></li>
+  </ul></li>
+  <li><a href="#tips" id="toc-tips">Tips</a></li>
+  <li><a href="#glossary-用語" id="toc-glossary-用語">Glossary / 用語</a></li>
+  <li><a href="#further-reading" id="toc-further-reading">Further reading</a></li>
+  </ul>
+</nav>
+<p>2019-10-30 東北大学 生命科学研究科 進化ゲノミクス分野 牧野研<br> メタルさんの<a href="https://heavywatal.github.io/lectures/git2019makino.html">Git入門2019</a>のコンパクト版です。</p>
+<h2 id="environment-環境" class="anchored">Environment / 環境</h2>
+<h3 id="os" class="anchored">OS</h3>
+<p>新しめのUNIX系OSが好ましい。</p>
+<ul>
+<li>macOS
+<ul>
+<li>11 Big Sur 以降</li>
+<li>Command Line Tools</li>
+<li>Gitは標準装備のやつで大丈夫</li>
+</ul></li>
+<li>Linux
+<ul>
+<li>Ubuntu 20.04以降 or CentOS 7以降</li>
+<li><code>build-essential</code>, <code>curl</code>, <code>file</code>, <code>git</code> をとりあえず入れておく</li>
+<li>普通にaptやyumで入るGitが古いv1系だったら、どうにかしてv2以降を入れる</li>
+</ul></li>
+<li>Windows
+<ul>
+<li>11</li>
+<li><a href="https://ymat2.github.io/commandline/wsl/">WSL2</a>を入れる</li>
+<li>あとはLinuxと同じ</li>
+</ul></li>
+</ul>
+<h3 id="common" class="anchored">Common</h3>
+<ul>
+<li><p>適当なテキストエディタ(開発環境)を入れておく。 初期状態でもGit/GitHubとの連携機能が付いていて、 変更箇所を色付けしてくれたりコマンド入力を肩代わりしてくれたりするのが便利。</p>
+<ul>
+<li><a href="https://code.visualstudio.com/">VSCode</a>: Microsoft製</li>
+<li><a href="https://www.rstudio.com/">RStudio</a>: RStudio製</li>
+</ul></li>
+<li><p><a href="https://github.com">GitHub<img height="16" width="16" src="https://cdn.simpleicons.org/github"></a>に個人アカウントを作る。</p></li>
+<li><p>Git<img height="16" width="16" src="https://cdn.simpleicons.org/git">の初期設定をターミナルから行う:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span>  <span class="co"># 2.0以上であることを確認</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Watal M. Iwasaki"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"heavywatalあmail.com"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> push.default simple</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.gitconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[user]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">  name </span><span class="ot">=</span><span class="st"> Watal M. Iwasaki</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">  email </span><span class="ot">=</span><span class="st"> heavywatalあmail.com</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">[push]</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">  default </span><span class="ot">=</span><span class="st"> simple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Enable macOS Keychain to skip password authentication:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper osxkeychain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<h3 id="ssh-任意" class="anchored">SSH (任意)</h3>
+<ul>
+<li><p>GitHubとの通信に2つの方式がある。</p>
+<ul>
+<li>HTTPS: 設定不要で高速だが、操作によってパスワード入力が必要</li>
+<li>SSH: 一旦ちゃんと設定すればパスワードなしで快適</li>
+</ul></li>
+<li><p>ダウンロード操作(clone/fetch/pull)は高速なHTTPSで、<br> アップロード操作(push)はパスワード無しのSSHで、というのが楽ちん。</p></li>
+<li><p><a href="https://ymat2.github.io/commandline/ssh/">SSH公開鍵を作って</a>ローカルマシンとGitHubに登録する。</p></li>
+<li><p>設定ファイル <code>~/.gitconfig</code> に <code>pushinsteadof</code> の設定を追加:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[url "git@github.com:"]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">  pushinsteadof </span><span class="ot">=</span><span class="st"> https://github.com/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<h2 id="essential-commands-基本操作" class="anchored">Essential commands / 基本操作</h2>
+<h3 id="fetch-existing-repositories-clone" class="anchored">Fetch existing repositories: <code>clone</code></h3>
+<ol type="1">
+<li><p>GitHub上の適当なリポジトリをひとつ選ぶ。 (e.g., <a href="https://github.com/heavywatal/tumopp" class="uri">https://github.com/heavywatal/tumopp</a>)</p></li>
+<li><p>右の方の緑の “Clone or download” ボタンを押す。</p></li>
+<li><p>SSHではなくHTTPSを選択し、URLをコピー。</p></li>
+<li><p>ターミナルにコマンドを入力:<br> <code>git clone https://github.com/heavywatal/tumopp.git</code></p></li>
+<li><p>中身を眺めてみる:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tumopp/</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p>最新版のスナップショットだけでなく、 履歴もごっそり複製するので、 このあとはオフラインでもいろいろ操作できる。</p>
+<h3 id="create-new-repositories-init" class="anchored">Create new repositories: <code>init</code></h3>
+<ol type="1">
+<li><p>GitHubの右上の “+” から “New repository” を選択。</p></li>
+<li><p>Repository name を例えば <code>helloworld</code> として “Create repository” を押す。 いくつかのファイル (<code>README.md</code>, <code>LICENSE</code>, <code>.gitignore</code>) をここで作ることもできるけど、今回はとりあえず空っぽのリポジトリを作る。</p></li>
+<li><p>手元のマシンにローカルリポジトリを作る:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> helloworld</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> helloworld/</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>リポジトリの本体 <code>.git/</code> が作成されたことを確認。</p></li>
+<li><p>空っぽのコミットを作る:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--allow-empty</span> <span class="at">-m</span> <span class="st">":beer: Create repository"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>事あるごとに <code>git status</code> や <code>git log</code> を確認すると安心。</p></li>
+<li><p>先程作ったリモートリポジトリを紐付けて、pushしてみる:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/YOUR_NAME/helloworld.git</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin master</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>GitHubで履歴を閲覧し、 <code>git log</code> と同じになってることを確認。</p></li>
+</ol>
+<h3 id="export-local-changes-to-a-remote-server-push" class="anchored">Export local changes to a remote server: <code>push</code></h3>
+<ol type="1">
+<li><p>上で作ったリポジトリに、適当なファイルを追加:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'# Hello, world'</span> <span class="op">&gt;</span> README.md</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> README.md</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>作ったファイルをstaging areaに追加:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>この変更をcommit:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">":memo: Create README.md"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>リモートにpush:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<h3 id="import-changes-from-a-remote-server-fetch" class="anchored">Import changes from a remote server: <code>fetch</code></h3>
+<ol type="1">
+<li><p>上のリポジトリでそのまま <code>git fetch</code> してみる。 ローカルとリモートは同じ状態なので当然何も起こらない。</p></li>
+<li><p>練習のためGitHub上で <code>LICENSE</code> ファイルを作成する。</p>
+<ol type="1">
+<li>GitHub上のリポジトリのトップページを開き “Create new file” ボタンを押す。</li>
+<li>ファイル名に <code>LICENSE</code> と入力。</li>
+<li>右に現れる “Choose a license template” というボタンを押す。</li>
+<li>とりあえず “MIT License” を選択。</li>
+<li>YearとNameを適当に埋めて “Review and submit”。</li>
+<li>“Commit directly to the <code>master</code> branch” を選択して “Commit new file”</li>
+</ol></li>
+<li><p>その変更をローカルリポジトリに取り寄せる:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--all</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>リポジトリ内部 <code>.git/</code> の <code>origin/master</code> は更新されたが、 working directoryにはまだ反映されていない。</p></li>
+<li><p><code>origin/master</code> の内容を手元のファイルに反映する:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p><code>git fetch</code> と <code>git merge</code> を一気にやってくれる <code>git pull</code> というコマンドもあり、 普段の一人作業ではよく使う。</p>
+<h2 id="other-commands" class="anchored">Other commands</h2>
+<h3 id="diff" class="anchored">diff</h3>
+<p>差分を表示:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HEAD vs working (staging前のファイルが対象)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># HEAD vs index (staging済みcommit前のファイルが対象)</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># HEAD vs working+index (commit前の全ファイルが対象)</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff HEAD</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 特定コミットの変更点 (diffじゃない...)</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> show <span class="pp">[</span><span class="ss">revision</span><span class="pp">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="rm-clean" class="anchored">rm, clean</h3>
+<p>tracking対象から外して忘れさせる(手元のファイルはそのまま):</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> <span class="op">&lt;</span>file<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>.gitignore</code> で無視されてるuntrackedファイルを消す:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clean <span class="at">-fdX</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>無視されていないuntrackedファイルも消したい場合は小文字の <code>-fdx</code> (危険)。</p>
+<h2 id="tips" class="anchored">Tips</h2>
+<ul>
+<li>習うより慣れる。 最初はコマンドが多くて難しそう・面倒くさそうに感じるけど、 だんだん意識しなくても使えるようになる。</li>
+<li><code>git status</code> やエラー文をちゃんと読む。 どうすればいいかだいたい書いてくれてるし、 そのままウェブ検索すればだいたい解決策が見つかる。</li>
+<li><code>--force</code> とか <code>-f</code> のような強制オプションは、 間違えると取り返しがつかなくなるので基本的に使わない。</li>
+<li>コミットを簡潔に要約するメッセージを書く。 <a href="https://www.google.co.jp/search?q=commit+message+best+practices">好ましいスタイルについては諸説ある</a>けど、 とりあえず大文字で始まる命令形の一文を書くところから始めたらよいのでは。 コミットの内容に応じた分類で<a href="https://github.com/carloscuesta/gitmoji/">先頭に絵文字を入れるスタイル</a>も人気になりつつある。</li>
+<li>GitHubにpushされたら自動的に <a href="https://slack.com/">Slack</a>や<a href="https://twitter.com/">Twitter</a>に投稿、 というような連携が可能。</li>
+<li>RStudioでもディレクトリを”Project”として扱うことでGitを活用できる。</li>
+</ul>
+<h2 id="glossary-用語" class="anchored">Glossary / 用語</h2>
+<p>https://help.github.com/articles/github-glossary/</p>
+<dl>
+<dt>repository</dt>
+<dd>
+commitの履歴を保持する拠点。 「ひとつのRパッケージ」とか「1冊の本の原稿」のような単位で作る。 <code>git init</code> で手元に新規作成するか、<code>git clone</code> でリモートから複製する。
+</dd>
+<dt>commit</dt>
+<dd>
+git内部でroot treeのsnapshotを指すオブジェクト。 root treeのハッシュID、著者、コメントなどの情報を持つ。 動詞としては、staging areaの情報をひとつのcommitとしてリポジトリに登録することを指す。
+</dd>
+<dt>tree</dt>
+<dd>
+git内部で1つのディレクトリを指すオブジェクトで、<code>commit</code>した時に作られる。 blobやファイル名などのメタデータに依存したハッシュIDを持ち、 その変化は親に伝播する。
+</dd>
+<dt>blob</dt>
+<dd>
+git内部で1つのファイルを指すオブジェクトで、<code>add</code>時に作られる。 ファイル名などのメタデータは持たず、 ファイルの内容にのみ依存したハッシュIDを持つ。
+</dd>
+<dt><code>origin</code></dt>
+<dd>
+remoteリポジトリの典型的なshortname。 <code>clone</code>時に自動的に追加され、 <code>push</code>先や<code>fetch</code>元を省略したときにデフォルトで使われる。 <code>git remote -v</code> で確認。
+</dd>
+<dt><code>master</code></dt>
+<dd>
+デフォルトのブランチの典型的な名前。
+</dd>
+<dt><code>HEAD</code>, <code>@</code></dt>
+<dd>
+現在checkoutしているbranch/commitを指すポインタ。 基本的には<code>master</code>の最新commitを指していることが多い。 1つ前は <code>HEAD^</code> か <code>HEAD~</code>、 2つ前は <code>HEAD^^</code> か <code>HEAD~~</code> か <code>HEAD~2</code>。 (<code>HEAD^2</code> は <code>merge</code> で複数の親がある場合の2番目)
+</dd>
+</dl>
+<p>zshの<code>EXTENDED_GLOB</code>が有効になってる場合は <code>HEAD^</code> がパターン扱いされてエラーになるので、 <code>HEAD\^</code> のようにエスケープするか <code>unsetopt NOMATCH</code> しておいたほうがいい。</p>
+<h2 id="further-reading" class="anchored">Further reading</h2>
+<ul>
+<li><a href="https://github.com/">GitHub</a>: 他人のGit活用事例が見放題。</li>
+<li><a href="https://lab.github.com/">GitHub Learning Lab</a>: 公式ボットが手取り足取り教えてくれるらしい。</li>
+<li><a href="https://git-scm.com/book/en/v2">Pro Git book</a>: Gitの公式？本。</li>
+<li><a href="https://bookdown.org/">Bookdown</a>: R Markdownで本を書く。</li>
+</ul>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+  tabsets.forEach(function(tabset) {
+    const tabby = new Tabby('#' + tabset.id);
+  });
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'light-border',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+
+
+
+</body></html>

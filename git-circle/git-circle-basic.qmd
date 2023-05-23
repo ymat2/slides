@@ -1,0 +1,328 @@
+---
+format:
+  html:
+    title: "Git入門2023　基本操作"
+    toc: true
+    code-line-numbers: false
+highlight-style: breeze
+---
+
+
+2019-10-30 東北大学 生命科学研究科 進化ゲノミクス分野 牧野研<br>
+メタルさんの[Git入門2019](https://heavywatal.github.io/lectures/git2019makino.html)のコンパクト版です。
+
+
+## Environment / 環境
+
+### OS
+
+新しめのUNIX系OSが好ましい。
+
+- macOS
+    -   11 Big Sur 以降
+    -   Command Line Tools
+    -   Gitは標準装備のやつで大丈夫
+- Linux
+    -   Ubuntu 20.04以降 or CentOS 7以降
+    -   `build-essential`, `curl`, `file`, `git` をとりあえず入れておく
+    -   普通にaptやyumで入るGitが古いv1系だったら、どうにかしてv2以降を入れる
+- Windows
+    -   11
+    -   [WSL2](https://ymat2.github.io/commandline/wsl/)を入れる
+    -   あとはLinuxと同じ
+
+
+### Common
+
+-   適当なテキストエディタ(開発環境)を入れておく。
+    初期状態でもGit/GitHubとの連携機能が付いていて、
+    変更箇所を色付けしてくれたりコマンド入力を肩代わりしてくれたりするのが便利。
+    - [VSCode](https://code.visualstudio.com/): Microsoft製
+    - [RStudio](https://www.rstudio.com/): RStudio製
+
+-   [GitHub<img height=16 width=16 src="https://cdn.simpleicons.org/github">](https://github.com)に個人アカウントを作る。
+
+-   Git<img height=16 width=16 src="https://cdn.simpleicons.org/git">の初期設定をターミナルから行う:
+
+    ```sh
+    git --version  # 2.0以上であることを確認
+    git config --global user.name "Watal M. Iwasaki"
+    git config --global user.email "heavywatalあmail.com"
+    git config --global push.default simple
+    cat ~/.gitconfig
+    ```
+    ```ini
+    [user]
+      name = Watal M. Iwasaki
+      email = heavywatalあmail.com
+    [push]
+      default = simple
+    ```
+
+-   Enable macOS Keychain to skip password authentication:
+
+    ```sh
+    git config --global credential.helper osxkeychain
+    ```
+
+
+### SSH (任意)
+
+-   GitHubとの通信に2つの方式がある。
+    - HTTPS: 設定不要で高速だが、操作によってパスワード入力が必要
+    - SSH: 一旦ちゃんと設定すればパスワードなしで快適
+-   ダウンロード操作(clone/fetch/pull)は高速なHTTPSで、<br>
+    アップロード操作(push)はパスワード無しのSSHで、というのが楽ちん。
+-   [SSH公開鍵を作って](https://ymat2.github.io/commandline/ssh/)ローカルマシンとGitHubに登録する。
+-   設定ファイル `~/.gitconfig` に `pushinsteadof` の設定を追加:
+
+    ```ini
+    [url "git@github.com:"]
+      pushinsteadof = https://github.com/
+    ```
+
+
+## Essential commands / 基本操作
+
+### Fetch existing repositories: `clone`
+
+1.  GitHub上の適当なリポジトリをひとつ選ぶ。
+    (e.g., <https://github.com/heavywatal/tumopp>)
+1.  右の方の緑の "Clone or download" ボタンを押す。
+1.  SSHではなくHTTPSを選択し、URLをコピー。
+1.  ターミナルにコマンドを入力:<br>
+    `git clone https://github.com/heavywatal/tumopp.git`
+1.  中身を眺めてみる:
+
+    ```sh
+    cd tumopp/
+    ls -al
+    git log
+    git remote -v
+    ```
+
+最新版のスナップショットだけでなく、
+履歴もごっそり複製するので、
+このあとはオフラインでもいろいろ操作できる。
+
+
+### Create new repositories: `init`
+
+1.  GitHubの右上の "+" から "New repository" を選択。
+1.  Repository name を例えば `helloworld` として "Create repository" を押す。
+    いくつかのファイル (`README.md`, `LICENSE`, `.gitignore`)
+    をここで作ることもできるけど、今回はとりあえず空っぽのリポジトリを作る。
+1.  手元のマシンにローカルリポジトリを作る:
+
+    ```sh
+    mkdir helloworld
+    cd helloworld/
+    git init
+    ls -al
+    ```
+
+    リポジトリの本体 `.git/` が作成されたことを確認。
+
+1.  空っぽのコミットを作る:
+
+    ```sh
+    git status
+    git commit --allow-empty -m ":beer: Create repository"
+    git status
+    git log
+    ```
+
+    事あるごとに `git status` や `git log` を確認すると安心。
+
+1.  先程作ったリモートリポジトリを紐付けて、pushしてみる:
+
+    ```sh
+    git remote -v
+    git remote add origin https://github.com/YOUR_NAME/helloworld.git
+    git remote -v
+    git push -u origin master
+    git status
+    ```
+
+1.  GitHubで履歴を閲覧し、 `git log` と同じになってることを確認。
+
+
+### Export local changes to a remote server: `push`
+
+1.  上で作ったリポジトリに、適当なファイルを追加:
+
+    ```sh
+    echo '# Hello, world' > README.md
+    cat README.md
+    git status
+    ```
+
+1.  作ったファイルをstaging areaに追加:
+
+    ```sh
+    git add README.md
+    git status
+    git diff --staged
+    ```
+
+1.  この変更をcommit:
+
+    ```sh
+    git commit -m ":memo: Create README.md"
+    git status
+    git log
+    git show
+    ```
+
+1.  リモートにpush:
+
+    ```sh
+    git push
+    git status
+    git log
+    ```
+
+### Import changes from a remote server: `fetch`
+
+1.  上のリポジトリでそのまま `git fetch` してみる。
+    ローカルとリモートは同じ状態なので当然何も起こらない。
+
+1.  練習のためGitHub上で `LICENSE` ファイルを作成する。
+    1.  GitHub上のリポジトリのトップページを開き
+        "Create new file" ボタンを押す。
+    1.  ファイル名に `LICENSE` と入力。
+    1.  右に現れる "Choose a license template" というボタンを押す。
+    1.  とりあえず "MIT License" を選択。
+    1.  YearとNameを適当に埋めて "Review and submit"。
+    1.  "Commit directly to the `master` branch" を選択して "Commit new file"
+
+1.  その変更をローカルリポジトリに取り寄せる:
+
+    ```sh
+    git fetch
+    git status
+    git log --all
+    ls -al
+    ```
+    リポジトリ内部 `.git/` の `origin/master` は更新されたが、
+    working directoryにはまだ反映されていない。
+
+1.  `origin/master` の内容を手元のファイルに反映する:
+
+    ```sh
+    git merge
+    git status
+    git log
+    git show
+    ls -al
+    ```
+
+`git fetch` と `git merge` を一気にやってくれる `git pull` というコマンドもあり、
+普段の一人作業ではよく使う。
+
+
+## Other commands
+
+### diff
+
+差分を表示:
+```sh
+# HEAD vs working (staging前のファイルが対象)
+git diff
+
+# HEAD vs index (staging済みcommit前のファイルが対象)
+git diff --staged
+
+# HEAD vs working+index (commit前の全ファイルが対象)
+git diff HEAD
+
+# 特定コミットの変更点 (diffじゃない...)
+git show [revision]
+```
+
+### rm, clean
+
+tracking対象から外して忘れさせる(手元のファイルはそのまま):
+```sh
+git rm --cached <file>
+```
+
+`.gitignore` で無視されてるuntrackedファイルを消す:
+```sh
+git clean -fdX
+```
+無視されていないuntrackedファイルも消したい場合は小文字の `-fdx` (危険)。
+
+
+## Tips
+
+-   習うより慣れる。
+    最初はコマンドが多くて難しそう・面倒くさそうに感じるけど、
+    だんだん意識しなくても使えるようになる。
+-   `git status` やエラー文をちゃんと読む。
+    どうすればいいかだいたい書いてくれてるし、
+    そのままウェブ検索すればだいたい解決策が見つかる。
+-   `--force` とか `-f` のような強制オプションは、
+    間違えると取り返しがつかなくなるので基本的に使わない。
+-   コミットを簡潔に要約するメッセージを書く。
+    [好ましいスタイルについては諸説ある](https://www.google.co.jp/search?q=commit+message+best+practices)けど、
+    とりあえず大文字で始まる命令形の一文を書くところから始めたらよいのでは。
+    コミットの内容に応じた分類で[先頭に絵文字を入れるスタイル](https://github.com/carloscuesta/gitmoji/)も人気になりつつある。
+-   GitHubにpushされたら自動的に
+    [Slack](https://slack.com/)や[Twitter](https://twitter.com/)に投稿、
+    というような連携が可能。
+-   RStudioでもディレクトリを"Project"として扱うことでGitを活用できる。
+
+
+## Glossary / 用語
+
+https://help.github.com/articles/github-glossary/
+
+repository
+: commitの履歴を保持する拠点。
+  「ひとつのRパッケージ」とか「1冊の本の原稿」のような単位で作る。
+  `git init` で手元に新規作成するか、`git clone` でリモートから複製する。
+
+commit
+: git内部でroot treeのsnapshotを指すオブジェクト。
+  root treeのハッシュID、著者、コメントなどの情報を持つ。
+  動詞としては、staging areaの情報をひとつのcommitとしてリポジトリに登録することを指す。
+
+tree
+: git内部で1つのディレクトリを指すオブジェクトで、`commit`した時に作られる。
+  blobやファイル名などのメタデータに依存したハッシュIDを持ち、
+  その変化は親に伝播する。
+
+blob
+: git内部で1つのファイルを指すオブジェクトで、`add`時に作られる。
+  ファイル名などのメタデータは持たず、
+  ファイルの内容にのみ依存したハッシュIDを持つ。
+
+`origin`
+: remoteリポジトリの典型的なshortname。
+  `clone`時に自動的に追加され、
+  `push`先や`fetch`元を省略したときにデフォルトで使われる。
+  `git remote -v` で確認。
+
+`master`
+: デフォルトのブランチの典型的な名前。
+
+`HEAD`, `@`
+: 現在checkoutしているbranch/commitを指すポインタ。
+  基本的には`master`の最新commitを指していることが多い。
+  1つ前は `HEAD^` か `HEAD~`、
+  2つ前は `HEAD^^` か `HEAD~~` か `HEAD~2`。
+  (`HEAD^2` は `merge` で複数の親がある場合の2番目)
+
+zshの`EXTENDED_GLOB`が有効になってる場合は
+`HEAD^` がパターン扱いされてエラーになるので、
+`HEAD\^` のようにエスケープするか `unsetopt NOMATCH` しておいたほうがいい。
+
+
+## Further reading
+
+- [GitHub](https://github.com/): 他人のGit活用事例が見放題。
+- [GitHub Learning Lab](https://lab.github.com/):
+  公式ボットが手取り足取り教えてくれるらしい。
+- [Pro Git book](https://git-scm.com/book/en/v2): Gitの公式？本。
+- [Bookdown](https://bookdown.org/): R Markdownで本を書く。

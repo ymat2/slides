@@ -1,11 +1,12 @@
 ---
 format:
   html:
+    title: "Git, Githubを学ぶ"
     code-line-numbers: false
 highlight-style: breeze
 ---
 
-# Git, Githubを学ぶ
+
 <img height="64" width="64" align="right" src="https://cdn.simpleicons.org/git">
 <img height="64" width="64" align="right" src="https://cdn.simpleicons.org/github">
 
@@ -45,6 +46,9 @@ Fork, Pull request, `merge`, etc.
 課題を設定して各自が進める。輪読会ではできなかったところの共有やトラブルシューティングなどをやる。
 
 例: 次回までに新しいリポジトリを作ってテキストファイルを`push`する。
+
+### 案3
+[基本的な使い方](git-circle-basic.html)を2時間くらいで一気に学んでしまって、Pull RequestとかSubmoduleとかの機能をそのあとみんなで使ってみる。
 
 ## 誰がどこをやるか
 |Date|Who|Topic|
