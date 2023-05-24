@@ -1,5 +1,96 @@
 [
   {
+    "objectID": "minicong/minicong.html#生物多様性の源は",
+    "href": "minicong/minicong.html#生物多様性の源は",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "生物多様性の源は?",
+    "text": "生物多様性の源は?\n現在の生物の多様性・複雑性は、単一の共通祖先に端を発する進化の歴史の中で形成されてきた。\n  https://en.wikipedia.org/wiki/"
+  },
+  {
+    "objectID": "minicong/minicong.html#生物の進化とはなにか",
+    "href": "minicong/minicong.html#生物の進化とはなにか",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "生物の「進化」とはなにか",
+    "text": "生物の「進化」とはなにか\n生物の性質が、世代を経るにつれて変化すること。\n↓ ちょっとアバウトすぎる\n親から子へと受け継がれる情報が変化し、その変化がやがて集団中に広まっていくこと。\n↓ もう少し学術的にいうと\n親から子へ遺伝する情報に変異が生じ、集団中における頻度が変化すること。\n\nキリンの例: (こんなに単純ではないだろうけど)\n\nとある遺伝子に変異が生じた結果、首の長い個体が現れた。\n首の長い個体は高いところの葉っぱも食べることができて生存に有利。\n首の長い個体ばっか生き残った結果、キリンの首が長くなった。\n\n\n決して高いところの葉を食べようとして首を長くしたわけではない。"
+  },
+  {
+    "objectID": "minicong/minicong.html#遺伝情報-遺伝子",
+    "href": "minicong/minicong.html#遺伝情報-遺伝子",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "遺伝情報？ 遺伝子？",
+    "text": "遺伝情報？ 遺伝子？\n\n遺伝情報(親から子へ伝わる情報)の実体\n\nDNAの配列 = DNAを構成する4種類の塩基(A, T, G, C)の並び\n\n遺伝子\n\nDNAのうち、タンパク質(体を形作る素材)をつくる領域\n\n\n https://theory.labster.com/"
+  },
+  {
+    "objectID": "minicong/minicong.html#バイオインフォマティクスとは",
+    "href": "minicong/minicong.html#バイオインフォマティクスとは",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "バイオインフォマティクスとは",
+    "text": "バイオインフォマティクスとは\n生物の持つ膨大な情報(主に遺伝情報)を、コンピュータの力を借りて扱う学問。\n\nある生物の遺伝情報(A, T, G, Cの並び)はどうなっているのか\nある種と別の種の遺伝情報はどこが同じで、どこが違うのか\n遺伝情報はどう変わってきたのか、どう変わりつつあるのか\n\n\n\n\n本日は野良データ + Python + Linuxで、バイオインフォマティクスの一部を体感。"
+  },
+  {
+    "objectID": "minicong/minicong.html#本日のお品書き",
+    "href": "minicong/minicong.html#本日のお品書き",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "本日のお品書き",
+    "text": "本日のお品書き\n野良データを使って、バイオインフォマティクスの解析の一部を体験してもらう。\nペットとしてお馴染みのイヌ( Canis lupus familiaris )と、オーストラリアに生息するイヌの近縁種であるディンゴ( Canis lupus dingo )のゲノムを、重複遺伝子の観点から比較する。\n \n\n- CONTENTS -\n\n重複遺伝子とは?\n種の環境適応と重複遺伝子\n重複遺伝子を調べるゲノミクス手法\nLet’s try on your computer!\n\n\nGithub: https://github.com/ymat2/minicong"
+  },
+  {
+    "objectID": "minicong/minicong.html#重複遺伝子とは",
+    "href": "minicong/minicong.html#重複遺伝子とは",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "重複遺伝子とは",
+    "text": "重複遺伝子とは\nもともと1つだった遺伝子が、さまざまな要因（組換えのミス、トランスポゾンの転移、etc.）で2つ以上になること。"
+  },
+  {
+    "objectID": "minicong/minicong.html#重複遺伝子は環境への適応に関与する",
+    "href": "minicong/minicong.html#重複遺伝子は環境への適応に関与する",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "重複遺伝子は環境への適応に関与する",
+    "text": "重複遺伝子は環境への適応に関与する"
+  },
+  {
+    "objectID": "minicong/minicong.html#アミラーゼ遺伝子の数",
+    "href": "minicong/minicong.html#アミラーゼ遺伝子の数",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "アミラーゼ遺伝子の数",
+    "text": "アミラーゼ遺伝子の数\n\nアミラーゼはでんぷんを分解する消化酵素。いろんなものを食べるヒトは5つのアミラーゼ遺伝子をもつ。: AMY1A, AMY1B, AMY1C, AMY2A, AMY2B\n\n  左: αアミラーゼ　右: βアミラーゼ\n\n\nこれまでの話と絡めると、多様な食事を摂る環境ではアミラーゼ遺伝子の重複が有利に働いたと言える。\nでは、長く人間のペットとして生きてきたイヌと、野生に暮らすディンゴでは、どちらの方がアミラーゼ遺伝子を多く持つだろう？"
+  },
+  {
+    "objectID": "minicong/minicong.html#重複遺伝子を調べるためのゲノミクス手法",
+    "href": "minicong/minicong.html#重複遺伝子を調べるためのゲノミクス手法",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "重複遺伝子を調べるためのゲノミクス手法",
+    "text": "重複遺伝子を調べるためのゲノミクス手法\n重複遺伝子どうしはもともとは1つの遺伝子（=同じ配列）なので、互いに似た配列を持つ。そこで、\n\nBLAST (Basic Local Alignment Search Tool)\n\nDNAの塩基配列あるいはタンパク質のアミノ酸配列のアライメントを行うためのアルゴリズム\n\n\nある閾値以上のスコアで類似する配列を発見することができる。"
+  },
+  {
+    "objectID": "minicong/minicong.html#実際にやってみよう-前準備",
+    "href": "minicong/minicong.html#実際にやってみよう-前準備",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "実際にやってみよう: 前準備",
+    "text": "実際にやってみよう: 前準備\n\nhomebrewのインストール:\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"\n\nsudo apt update\nsudo apt install install build-essential curl file git\n\necho 'export PATH=\"/home/linuxbrew/.linuxbrew/bin:$PATH\"' &gt;&gt; ~/.bash_profile\nsource ~/.bash_profile\nblastのインストール:\nbrew update\nbrew install blast\n今回使うリポジトリを取ってくる:\ngit clone https://github.com/ymat2/minicong.git"
+  },
+  {
+    "objectID": "minicong/minicong.html#実際にやってみよう",
+    "href": "minicong/minicong.html#実際にやってみよう",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "実際にやってみよう:",
+    "text": "実際にやってみよう:\n\nminicongに移動\ncd minicong\nイヌとディンゴの配列を取得\nsh src/get_sequence.sh\nblastpを実行 (1行ずつやってみてもいいよ)\nsh src/run_blastp.sh\n結果を確認してみる。\nls result\nless result/Canis_lupus_dingo.ASM325472v1.blastp"
+  },
+  {
+    "objectID": "minicong/minicong.html#アミラーゼ遺伝子の数は-イヌ-ディンゴ",
+    "href": "minicong/minicong.html#アミラーゼ遺伝子の数は-イヌ-ディンゴ",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "アミラーゼ遺伝子の数は イヌ > ディンゴ",
+    "text": "アミラーゼ遺伝子の数は イヌ &gt; ディンゴ\nヒトと共に生活し始めたことで雑食性に変化したこととの関与が示唆されている。\n\nSee also &gt; イヌの多様化における遺伝的背景（かずさDNA研究所）"
+  },
+  {
+    "objectID": "minicong/minicong.html#バイオインフォマティクスは生物学における強力な研究手法",
+    "href": "minicong/minicong.html#バイオインフォマティクスは生物学における強力な研究手法",
+    "title": "Minimal hands-on for Comparative Genomics",
+    "section": "バイオインフォマティクスは生物学における強力な研究手法",
+    "text": "バイオインフォマティクスは生物学における強力な研究手法\nゲノムを読む技術の発達に伴い、日々多くの種のゲノムが解読されている。バイオインフォマティクスは、蓄積されつつある大規模な情報を扱い多様な生命現象を解き明かす強力なツールである。\n\n\n\n\n\n\nSEE MORE &gt;\n\n東北大学 生命科学研究科 進化ゲノミクス分野"
+  },
+  {
     "objectID": "local/test.html#マークダウン記法のテスト用",
     "href": "local/test.html#マークダウン記法のテスト用",
     "title": "Test slides",
