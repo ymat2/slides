@@ -46,23 +46,17 @@ highlight-style: breeze
 
     ```sh
     git --version  # 2.0以上であることを確認
-    git config --global user.name "Watal M. Iwasaki"
-    git config --global user.email "heavywatalあmail.com"
+    git config --global user.name "Yuki Matsuda"
+    git config --global user.email "yuki.matsuda.r7あdc.tohoku.ac.jp"
     git config --global push.default simple
     cat ~/.gitconfig
     ```
     ```ini
     [user]
-      name = Watal M. Iwasaki
-      email = heavywatalあmail.com
+      name = Yuki Matsuda
+      email = yuki.matsuda.r7あdc.tohoku.ac.jp
     [push]
       default = simple
-    ```
-
--   Enable macOS Keychain to skip password authentication:
-
-    ```sh
-    git config --global credential.helper osxkeychain
     ```
 
 
@@ -79,6 +73,12 @@ highlight-style: breeze
     ```ini
     [url "git@github.com:"]
       pushinsteadof = https://github.com/
+    ```
+
+-   (Macの場合) keyhcainを使ってPassword入力をスキップする:
+
+    ```sh
+    git config --global credential.helper osxkeychain
     ```
 
 
@@ -134,13 +134,13 @@ highlight-style: breeze
 
     事あるごとに `git status` や `git log` を確認すると安心。
 
-1.  先程作ったリモートリポジトリを紐付けて、pushしてみる:
+1.  先程作ったリモートリポジトリを紐付けて、`push` してみる:
 
     ```sh
     git remote -v
     git remote add origin https://github.com/YOUR_NAME/helloworld.git
     git remote -v
-    git push -u origin master
+    git push -u origin main
     git status
     ```
 
@@ -289,27 +289,27 @@ commit
   動詞としては、staging areaの情報をひとつのcommitとしてリポジトリに登録することを指す。
 
 tree
-: git内部で1つのディレクトリを指すオブジェクトで、`commit`した時に作られる。
+: git内部で1つのディレクトリを指すオブジェクトで、`commit` した時に作られる。
   blobやファイル名などのメタデータに依存したハッシュIDを持ち、
   その変化は親に伝播する。
 
 blob
-: git内部で1つのファイルを指すオブジェクトで、`add`時に作られる。
+: git内部で1つのファイルを指すオブジェクトで、`add` 時に作られる。
   ファイル名などのメタデータは持たず、
   ファイルの内容にのみ依存したハッシュIDを持つ。
 
 `origin`
 : remoteリポジトリの典型的なshortname。
-  `clone`時に自動的に追加され、
-  `push`先や`fetch`元を省略したときにデフォルトで使われる。
+  `clone` 時に自動的に追加され、
+  `push `先や `fetch` 元を省略したときにデフォルトで使われる。
   `git remote -v` で確認。
 
-`master`
+`main` / `master`
 : デフォルトのブランチの典型的な名前。
 
 `HEAD`, `@`
 : 現在checkoutしているbranch/commitを指すポインタ。
-  基本的には`master`の最新commitを指していることが多い。
+  基本的には `main` の最新commitを指していることが多い。
   1つ前は `HEAD^` か `HEAD~`、
   2つ前は `HEAD^^` か `HEAD~~` か `HEAD~2`。
   (`HEAD^2` は `merge` で複数の親がある場合の2番目)

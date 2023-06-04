@@ -14,3 +14,4 @@ format: html
 ## Git
 - [Kickoff](git-circle/git-circle-index.html)
 - [Gitの基本操作](git-circle/git-circle-basic.html)
+- [Gitの基本操作: `fetch`, `merge`, `pull`](git-circle/git-circle-vol1.html)

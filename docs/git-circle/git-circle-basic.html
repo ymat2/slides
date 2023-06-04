@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -140,17 +140,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><a href="https://github.com">GitHub<img height="16" width="16" src="https://cdn.simpleicons.org/github"></a>に個人アカウントを作る。</p></li>
 <li><p>Git<img height="16" width="16" src="https://cdn.simpleicons.org/git">の初期設定をターミナルから行う:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span>  <span class="co"># 2.0以上であることを確認</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Watal M. Iwasaki"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"heavywatalあmail.com"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Yuki Matsuda"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"yuki.matsuda.r7あdc.tohoku.ac.jp"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> push.default simple</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.gitconfig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[user]</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">  name </span><span class="ot">=</span><span class="st"> Watal M. Iwasaki</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">  email </span><span class="ot">=</span><span class="st"> heavywatalあmail.com</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">  name </span><span class="ot">=</span><span class="st"> Yuki Matsuda</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">  email </span><span class="ot">=</span><span class="st"> yuki.matsuda.r7あdc.tohoku.ac.jp</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">[push]</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">  default </span><span class="ot">=</span><span class="st"> simple</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Enable macOS Keychain to skip password authentication:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper osxkeychain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <h3 id="ssh-任意" class="anchored">SSH (任意)</h3>
 <ul>
@@ -162,8 +160,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>ダウンロード操作(clone/fetch/pull)は高速なHTTPSで、<br> アップロード操作(push)はパスワード無しのSSHで、というのが楽ちん。</p></li>
 <li><p><a href="https://ymat2.github.io/commandline/ssh/">SSH公開鍵を作って</a>ローカルマシンとGitHubに登録する。</p></li>
 <li><p>設定ファイル <code>~/.gitconfig</code> に <code>pushinsteadof</code> の設定を追加:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[url "git@github.com:"]</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">  pushinsteadof </span><span class="ot">=</span><span class="st"> https://github.com/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[url "git@github.com:"]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">  pushinsteadof </span><span class="ot">=</span><span class="st"> https://github.com/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>(Macの場合) keyhcainを使ってPassword入力をスキップする:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> credential.helper osxkeychain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 <h2 id="essential-commands-基本操作" class="anchored">Essential commands / 基本操作</h2>
 <h3 id="fetch-existing-repositories-clone" class="anchored">Fetch existing repositories: <code>clone</code></h3>
@@ -195,11 +195,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>事あるごとに <code>git status</code> や <code>git log</code> を確認すると安心。</p></li>
-<li><p>先程作ったリモートリポジトリを紐付けて、pushしてみる:</p>
+<li><p>先程作ったリモートリポジトリを紐付けて、<code>push</code> してみる:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/YOUR_NAME/helloworld.git</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin master</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>GitHubで履歴を閲覧し、 <code>git log</code> と同じになってることを確認。</p></li>
 </ol>
@@ -291,23 +291,23 @@ git内部でroot treeのsnapshotを指すオブジェクト。 root treeのハ�
 </dd>
 <dt>tree</dt>
 <dd>
-git内部で1つのディレクトリを指すオブジェクトで、<code>commit</code>した時に作られる。 blobやファイル名などのメタデータに依存したハッシュIDを持ち、 その変化は親に伝播する。
+git内部で1つのディレクトリを指すオブジェクトで、<code>commit</code> した時に作られる。 blobやファイル名などのメタデータに依存したハッシュIDを持ち、 その変化は親に伝播する。
 </dd>
 <dt>blob</dt>
 <dd>
-git内部で1つのファイルを指すオブジェクトで、<code>add</code>時に作られる。 ファイル名などのメタデータは持たず、 ファイルの内容にのみ依存したハッシュIDを持つ。
+git内部で1つのファイルを指すオブジェクトで、<code>add</code> 時に作られる。 ファイル名などのメタデータは持たず、 ファイルの内容にのみ依存したハッシュIDを持つ。
 </dd>
 <dt><code>origin</code></dt>
 <dd>
-remoteリポジトリの典型的なshortname。 <code>clone</code>時に自動的に追加され、 <code>push</code>先や<code>fetch</code>元を省略したときにデフォルトで使われる。 <code>git remote -v</code> で確認。
+remoteリポジトリの典型的なshortname。 <code>clone</code> 時に自動的に追加され、 <code>push</code>先や <code>fetch</code> 元を省略したときにデフォルトで使われる。 <code>git remote -v</code> で確認。
 </dd>
-<dt><code>master</code></dt>
+<dt><code>main</code> / <code>master</code></dt>
 <dd>
 デフォルトのブランチの典型的な名前。
 </dd>
 <dt><code>HEAD</code>, <code>@</code></dt>
 <dd>
-現在checkoutしているbranch/commitを指すポインタ。 基本的には<code>master</code>の最新commitを指していることが多い。 1つ前は <code>HEAD^</code> か <code>HEAD~</code>、 2つ前は <code>HEAD^^</code> か <code>HEAD~~</code> か <code>HEAD~2</code>。 (<code>HEAD^2</code> は <code>merge</code> で複数の親がある場合の2番目)
+現在checkoutしているbranch/commitを指すポインタ。 基本的には <code>main</code> の最新commitを指していることが多い。 1つ前は <code>HEAD^</code> か <code>HEAD~</code>、 2つ前は <code>HEAD^^</code> か <code>HEAD~~</code> か <code>HEAD~2</code>。 (<code>HEAD^2</code> は <code>merge</code> で複数の親がある場合の2番目)
 </dd>
 </dl>
 <p>zshの<code>EXTENDED_GLOB</code>が有効になってる場合は <code>HEAD^</code> がパターン扱いされてエラーになるので、 <code>HEAD\^</code> のようにエスケープするか <code>unsetopt NOMATCH</code> しておいたほうがいい。</p>
