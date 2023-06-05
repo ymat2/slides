@@ -1,12 +1,7 @@
 ---
 title: "Git 基本操作②"
 subtitle: "2023-MM-DD 牧野研 技術輪読会 `git`編"
-format:
-  revealjs:
-    scrollable: true
-    slide-number: c/t
-    code-line-numbers: false
-    auto-stretch: false
+format: revealjs
 highlight-style: breeze
 ---
 

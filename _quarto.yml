@@ -9,3 +9,8 @@ format:
     css: static/top-page.css
   revealjs:
     theme: static/theme.css
+    scrollable: true
+    history: false
+    slide-number: c/t
+    code-line-numbers: false
+    auto-stretch: false

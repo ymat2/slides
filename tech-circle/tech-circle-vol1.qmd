@@ -1,11 +1,7 @@
 ---
 title: "GNU nanoエディタを便利に使う"
 subtitle: "2023-05-09 牧野研 技術輪読会"
-format:
-  revealjs:
-    scrollable: true
-    slide-number: c/t
-    code-line-numbers: false
+format: revealjs
 highlight-style: breeze
 ---
 

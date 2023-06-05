@@ -1,11 +1,7 @@
 ---
 title: "遺伝研スパコンで外部パッケージを使う"
 subtitle: "2023-MM-DD 牧野研 技術輪読会"
-format: 
-  revealjs:
-    scrollable: true
-    slide-number: c/t
-    code-line-numbers: false
+format: revealjs
 highlight-style: breeze
 ---
 
@@ -24,7 +20,7 @@ highlight-style: breeze
 3. [用意されているパッケージ管理ツール](https://sc.ddbj.nig.ac.jp/software/#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3)を使ってインストールする。(上手く使えば便利。)
     - [Guix](https://sc.ddbj.nig.ac.jp/software/guix)の使い方を紹介
     - Spackってのも使えるらしい
-    
+
 ## ユーザーの`home/`下にインストールして`$PATH`を通す
 
 例えば`orthofinder`を使いたいとき:
@@ -110,7 +106,7 @@ guix install paml
 1. [Apptainer Images](https://sc.ddbj.nig.ac.jp/software/BioContainers/)にあるかどうか探す。
 
     ↓
-    
+
 2. `Guix`で探してインストールする。
 
     ↓

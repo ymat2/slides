@@ -1,12 +1,7 @@
 ---
 title: "Minimal hands-on for Comparative Genomics"
 subtitle: "ダイジェスト版 バイオインフォマティクス"
-format:
-  revealjs:
-    scrollable: true
-    slide-number: c/t
-    code-line-numbers: false
-    auto-stretch: false
+format: revealjs
 highlight-style: breeze
 ---
 
