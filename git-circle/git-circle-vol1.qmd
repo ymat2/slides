@@ -1,22 +1,24 @@
 ---
-title: "Git 基本操作②"
-subtitle: "2023-MM-DD 牧野研 技術輪読会 `git`編"
+title: "Git 基本操作② — `fetch`, `merge`, `pull`"
+subtitle: "2023-06-13 牧野研 技術輪読会 `git`編"
 format: revealjs
 highlight-style: breeze
 ---
 
 
-## 目次
+## 今日やること
 
 1. 前回の復習
 
-2. ローカルリポジトリの変更を手元に反映させる
+2. リモートリポジトリの変更を手元に反映させる
 
 3. あえて競合を起こしてそれを解決してみる
 
 参考
+: [すずえもんの前回の資料](https://drive.google.com/drive/u/0/folders/1lQ1zf6SsRHXyMxO_0xsnGyuNEcFVxhOu)
 : [過去の牧野研での `git` 講習資料](https://heavywatal.github.io/lectures/git2019makino.html)
 : [`git` 公式リファレンス](https://git-scm.com/docs)
+: [kaito256さん: Github演習](https://github.com/kaityo256/github)
 
 
 ## 前回の復習: `git` を使い始める
@@ -99,20 +101,20 @@ highlight-style: breeze
 
 `clone` はどんな時に使う?
 : 他人の作ったソフトウェアをインストールして使うとき
-: 新しいPCで作業をするとき
+: 新しいPCで最初に作業を始めるとき
 : etc.
 
 
-## リモートの変更を手元に取り寄せる
+## リモートリポジトリの変更を手元に反映させる
 
-複数人で同じリポジトリを使う場合や、個人でも複数のマシンで開発する場合など、別のひと/マシンが `push` した変更を手元に取り寄せるという操作が必要になる。
+複数人で同じリポジトリを使う場合や、個人で複数のマシンを使って開発する場合など、別のひと/マシンが `push` した変更を手元に取り寄せるという操作が必要になる。
 
-`git fetch` + `git merge` や `git pull` といったコマンドで、リモートの変更を手元に反映させる。
+`git fetch` + `git merge` や `git pull` といったコマンドで、リモートリポジトリの変更を手元に反映させる。
 
 ![](image/push_and_pull.png){width="900"}
 
 
-## リモートの変更を手元に取り寄せる
+## リモートリポジトリの変更を手元に反映させる
 
 `git fetch`
 : リモートリポジトリの変更をローカルリポジトリに取り込む。
@@ -123,6 +125,31 @@ highlight-style: breeze
 
 `git pull`
 : `git fetch` と `git merge` を一緒に実行するコマンド。
+
+
+## `merge` の役割は「ブランチの統合」
+
+`git merge` は複数のブランチを一本にまとめるときに使う。
+
+fast-forward(早送り) マージ
+:   `main` ブランチに変更がない場合、マージするブランチに追いつくだけでいい。
+:   ![](image/ff_merge.png){width="450"}
+
+
+## `merge` の役割は「ブランチの統合」
+
+`git merge` は複数のブランチを一本にまとめるときに使う。
+
+non-fast forward マージ
+:   `main` ブランチにも変更がある場合、両者の変更を取り込んだコミットをつくる。
+:   ![](image/non_ff_merge.png){width="450"}
+
+
+## `merge` の役割は「ブランチの統合」
+
+Pull時の `git merge` は、手元の `main` ブランチに、`git fetch` で変更を反映したした「リモート追跡ブランチ」をマージする。
+
+![](image/fetch_and_merge.png){width="900"}
 
 
 ## 実際にやってみる
@@ -141,17 +168,17 @@ highlight-style: breeze
 
     ```sh
     git fetch
-    git status
+    git log
     ```
 
 3. 手元のファイルに反映する:
 
     ```sh
     git merge
-    git status
+    git log
     ```
 
-🔰 練習: もう一度リモートで編集して `git pull` してみる。
+🔰 練習: もう一度リモートで編集して `git pull` で一気に反映する。
 
 
 ## 手元でもファイルを変更していたらどうなるの??
@@ -361,3 +388,47 @@ git push
 🔰 練習3: 手元とリモートで同じ行に異なる編集をする。
 
 - まずは手元ではコミットせずに `git fetch` してから `git merge` してみる。どんなメッセージが出る？
+
+
+## 余談: Fast-forward onlyの設定
+
+リモートとローカルの両方の変更を取り込んだ場合、"merge commit"が自動的につくられる。
+
+```sh
+*   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'
+|\
+| * 798b869 Edit line.5
+* | 16117cc Edit line.2
+|/
+* 335b76a Some commit
+```
+
+<br>
+
+`git pull` をした時も同様。「いい感じに`merge`する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。
+
+↓
+
+そこで、「`git pull`のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をする。
+
+
+## 余談: Fast-forward onlyの設定
+
+方法1
+:   `--ff-only`オプション付きで`git pull`する。
+
+    ```sh
+    git pull --ff-only
+    ```
+
+方法2
+:   `~/.gitconfig`に`--ff-only`の設定をする。
+
+    ```sh
+    git config --global pull.ff only
+    ```
+    もしくは
+    ```{.ini filename="~/.gitconfig"}
+    [pull]
+        ff = only
+    ```

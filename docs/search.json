@@ -217,94 +217,129 @@
     "text": "補遺: 遺伝研でnanoを使うとき\n遺伝研のデフォルトのnanoは、version 2.3.1とかなり古い。(2023-05-09)\n\nキーバインドが結構違う。(ControlXとか基本的なやつは同じ。)\n~/.config/nano/nanorcを読んでくれない。\n.nanorcのワイルドカード*が効かない。\n\n\nデフォルトのnanoを使う場合、\n\n設定ファイルは~/.nanorc\n\n\nキーバインドは自分で設定したり、野生のやつを借りたり。\n\n\nシンタックスハイライトは1つ1つ直接指定: include \"usr/share/nano/python.nanorc\"\n\nおすすめは新しいnanoを入れること\n\nguixならversion 5.6.1が入る。(これもそこそこ古いけど。)\n\n\n*.nanorcもついてくる。(~/.guix-profile/share/nano/*.nanorc)\n\n\n公式から最新版(version 7.2)を落としてきてもいいかも。"
   },
   {
-    "objectID": "git-circle/git-circle-vol1.html#目次",
-    "href": "git-circle/git-circle-vol1.html#目次",
-    "title": "Git 基本操作②",
-    "section": "目次",
-    "text": "目次\n\n前回の復習\nローカルリポジトリの変更を手元に反映させる\nあえて競合を起こしてそれを解決してみる\n\n\n参考\n\n過去の牧野研での git 講習資料\n\n\ngit 公式リファレンス"
+    "objectID": "git-circle/git-circle-vol1.html#今日やること",
+    "href": "git-circle/git-circle-vol1.html#今日やること",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "今日やること",
+    "text": "今日やること\n\n前回の復習\nリモートリポジトリの変更を手元に反映させる\nあえて競合を起こしてそれを解決してみる\n\n\n参考\n\nすずえもんの前回の資料\n\n\n過去の牧野研での git 講習資料\n\n\ngit 公式リファレンス\n\n\nkaito256さん: Github演習"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#前回の復習-git-を使い始める",
     "href": "git-circle/git-circle-vol1.html#前回の復習-git-を使い始める",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "前回の復習: git を使い始める",
     "text": "前回の復習: git を使い始める\n\ngit  をインストールする。\nGithub  に個人アカウントをつくる。\nGitの初期設定をする: ~/.gitconfig\nSSHの設定をする: ~/.ssh/"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#前回の復習-手元のプロジェクトをgitで管理する",
     "href": "git-circle/git-circle-vol1.html#前回の復習-手元のプロジェクトをgitで管理する",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "前回の復習: 手元のプロジェクトをGitで管理する",
     "text": "前回の復習: 手元のプロジェクトをGitで管理する\n\n適当なディレクトリを作ってテキストファイルを新規作成する:\nmkdir new_project && cd new_project\necho \"Hello, world!\" &gt; sample.md\nローカルリポジトリをつくる:\ngit init\nローカルリポジトリに sample.md をコミットする。\n最初は git status や git log で頻繁に確認すると安心。\ngit status\ngit add sample.md  # sample.mdをindexに登録\ngit status\ngit commit -m \"Create sample.md\" # コミットメッセージを添えてコミット\ngit status"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#前回の復習-手元のプロジェクトをgithubでも管理する",
     "href": "git-circle/git-circle-vol1.html#前回の復習-手元のプロジェクトをgithubでも管理する",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "前回の復習: 手元のプロジェクトをGithubでも管理する",
     "text": "前回の復習: 手元のプロジェクトをGithubでも管理する\n\nGitHubアカウントページの右上の “+” から “New repository” を選択する。\n適当なリポジトリ名（基本は手元と同じ）をつけて “Create repository” を押す。\n手順が表示されるので基本的にそれに従う:\ngit remote add origin https://github.com/USER_NAME/new_project.git  # リモートリポジトリを紐づける\ngit remote -v # ちゃんと紐づいたか確認\ngit status\ngit push -u origin main # リモートにpush\ngit status\nリポジトリのページを更新してsample.mdが見えるか確認する。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#前回の復習-すでにあるリポジトリを手元に落としてくる",
     "href": "git-circle/git-circle-vol1.html#前回の復習-すでにあるリポジトリを手元に落としてくる",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "前回の復習: すでにあるリポジトリを手元に落としてくる",
-    "text": "前回の復習: すでにあるリポジトリを手元に落としてくる\n\nGitHub上の適当なリポジトリをひとつ選ぶ。 (e.g., https://github.com/ymat2/practice_git)\n右の方の &lt;&gt;Code▼ ボタンを押す。\nSSHではなくHTTPSを選択し、URLをコピー。\ngit clone https://github.com/ymat2/practice-git.git\n中身を眺めてみる:\ncd practice-git\nls -al\ngit log\n\n\n\nclone はどんな時に使う?\n\n他人の作ったソフトウェアをインストールして使うとき\n\n\n新しいPCで作業をするとき\n\n\netc."
+    "text": "前回の復習: すでにあるリポジトリを手元に落としてくる\n\nGitHub上の適当なリポジトリをひとつ選ぶ。 (e.g., https://github.com/ymat2/practice_git)\n右の方の &lt;&gt;Code▼ ボタンを押す。\nSSHではなくHTTPSを選択し、URLをコピー。\ngit clone https://github.com/ymat2/practice-git.git\n中身を眺めてみる:\ncd practice-git\nls -al\ngit log\n\n\n\nclone はどんな時に使う?\n\n他人の作ったソフトウェアをインストールして使うとき\n\n\n新しいPCで最初に作業を始めるとき\n\n\netc."
   },
   {
-    "objectID": "git-circle/git-circle-vol1.html#リモートの変更を手元に取り寄せる",
-    "href": "git-circle/git-circle-vol1.html#リモートの変更を手元に取り寄せる",
-    "title": "Git 基本操作②",
-    "section": "リモートの変更を手元に取り寄せる",
-    "text": "リモートの変更を手元に取り寄せる\n複数人で同じリポジトリを使う場合や、個人でも複数のマシンで開発する場合など、別のひと/マシンが push した変更を手元に取り寄せるという操作が必要になる。\ngit fetch + git merge や git pull といったコマンドで、リモートの変更を手元に反映させる。"
+    "objectID": "git-circle/git-circle-vol1.html#リモートリポジトリの変更を手元に反映させる",
+    "href": "git-circle/git-circle-vol1.html#リモートリポジトリの変更を手元に反映させる",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "リモートリポジトリの変更を手元に反映させる",
+    "text": "リモートリポジトリの変更を手元に反映させる\n複数人で同じリポジトリを使う場合や、個人で複数のマシンを使って開発する場合など、別のひと/マシンが push した変更を手元に取り寄せるという操作が必要になる。\ngit fetch + git merge や git pull といったコマンドで、リモートリポジトリの変更を手元に反映させる。"
   },
   {
-    "objectID": "git-circle/git-circle-vol1.html#リモートの変更を手元に取り寄せる-1",
-    "href": "git-circle/git-circle-vol1.html#リモートの変更を手元に取り寄せる-1",
-    "title": "Git 基本操作②",
-    "section": "リモートの変更を手元に取り寄せる",
-    "text": "リモートの変更を手元に取り寄せる\n\ngit fetch\n\nリモートリポジトリの変更をローカルリポジトリに取り込む。\n\n\nこの時点では .git/ 内だけが変更されているため、手元のファイルはそのまま。\n\ngit merge\n\nローカルリポジトリの内容を、手元のファイルに反映する。\n\ngit pull\n\ngit fetch と git merge を一緒に実行するコマンド。"
+    "objectID": "git-circle/git-circle-vol1.html#リモートリポジトリの変更を手元に反映させる-1",
+    "href": "git-circle/git-circle-vol1.html#リモートリポジトリの変更を手元に反映させる-1",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "リモートリポジトリの変更を手元に反映させる",
+    "text": "リモートリポジトリの変更を手元に反映させる\n\ngit fetch\n\nリモートリポジトリの変更をローカルリポジトリに取り込む。\n\n\nこの時点では .git/ 内だけが変更されているため、手元のファイルはそのまま。\n\ngit merge\n\nローカルリポジトリの内容を、手元のファイルに反映する。\n\ngit pull\n\ngit fetch と git merge を一緒に実行するコマンド。"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#merge-の役割はブランチの統合",
+    "href": "git-circle/git-circle-vol1.html#merge-の役割はブランチの統合",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "merge の役割は「ブランチの統合」",
+    "text": "merge の役割は「ブランチの統合」\ngit merge は複数のブランチを一本にまとめるときに使う。\n\nfast-forward(早送り) マージ\n\nmain ブランチに変更がない場合、マージするブランチに追いつくだけでいい。"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#merge-の役割はブランチの統合-1",
+    "href": "git-circle/git-circle-vol1.html#merge-の役割はブランチの統合-1",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "merge の役割は「ブランチの統合」",
+    "text": "merge の役割は「ブランチの統合」\ngit merge は複数のブランチを一本にまとめるときに使う。\n\nnon-fast forward マージ\n\nmain ブランチにも変更がある場合、両者の変更を取り込んだコミットをつくる。"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#merge-の役割はブランチの統合-2",
+    "href": "git-circle/git-circle-vol1.html#merge-の役割はブランチの統合-2",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "merge の役割は「ブランチの統合」",
+    "text": "merge の役割は「ブランチの統合」\nPull時の git merge は、手元の main ブランチに、git fetch で変更を反映したした「リモート追跡ブランチ」をマージする。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#実際にやってみる",
     "href": "git-circle/git-circle-vol1.html#実際にやってみる",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "実際にやってみる",
-    "text": "実際にやってみる\n\nリモートでの変更を再現するために、Githubページ上で sample.md を編集する。\n\nsample.md をクリック -&gt; 右上のペンマーク 🖊 から編集画面に入る。\n“This line is edited online.” など適当に編集して、右上の Commit changes を押す。\n表示されるウィンドウはとりあえずそのままで Commit changes\n変更されていることを確認する。\n\nその変更をローカルリポジトリに取り寄せる:\ngit fetch\ngit status\n手元のファイルに反映する:\ngit merge\ngit status\n\n🔰 練習: もう一度リモートで編集して git pull してみる。"
+    "text": "実際にやってみる\n\nリモートでの変更を再現するために、Githubページ上で sample.md を編集する。\n\nsample.md をクリック -&gt; 右上のペンマーク 🖊 から編集画面に入る。\n“This line is edited online.” など適当に編集して、右上の Commit changes を押す。\n表示されるウィンドウはとりあえずそのままで Commit changes\n変更されていることを確認する。\n\nその変更をローカルリポジトリに取り寄せる:\ngit fetch\ngit log\n手元のファイルに反映する:\ngit merge\ngit log\n\n🔰 練習: もう一度リモートで編集して git pull で一気に反映する。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#手元でもファイルを変更していたらどうなるの",
     "href": "git-circle/git-circle-vol1.html#手元でもファイルを変更していたらどうなるの",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "手元でもファイルを変更していたらどうなるの??",
     "text": "手元でもファイルを変更していたらどうなるの??\n「別のファイルの変更」や「同じファイルの別の箇所の変更」である場合、git merge は両方の変更を取り入れる。\n\n\n手元の変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はイヌである。\n\n## 第2章\nあなたもネコである。\n\nリモートの変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもイヌである。\n\n\n\n↓\ngit fetch + git merge\n↓\n\n## 第1章\n私はイヌである。\n\n## 第2章\nあなたもイヌである。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#手元でもファイルを変更していたらどうなるの-1",
     "href": "git-circle/git-circle-vol1.html#手元でもファイルを変更していたらどうなるの-1",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "手元でもファイルを変更していたらどうなるの??",
     "text": "手元でもファイルを変更していたらどうなるの??\n「同じファイルの同じ箇所の変更」である場合、conflict が発生する。\n\n\n手元の変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はイヌである。\n\n## 第2章\nあなたもネコである。\n\nリモートの変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はサルである。\n\n## 第2章\nあなたもネコである。\n\n\n\n↓\ngit fetch + git merge\n↓\n\n$ git merge\n# Auto-merging sample.md\n# CONFLICT (content): Merge conflict in sample.md\n# Automatic merge failed; fix conflicts and then commit the result."
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#conflictを解消する",
     "href": "git-circle/git-circle-vol1.html#conflictを解消する",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "conflictを解消する",
     "text": "conflictを解消する\nconflict が生じたファイル( sample.md )を開いてみるとこんな風になっている。\n## 第1章\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\n私はイヌである。\n=======\n私はサルである。\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; refs/remotes/origin/main\n\n## 第2章\nあなたもネコである。\n\n======= を挟んで、\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD は手元での変更\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; refs/remotes/origin/main はリモートからの変更\n\nを示している。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#conflictを解消する-1",
     "href": "git-circle/git-circle-vol1.html#conflictを解消する-1",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "conflictを解消する",
     "text": "conflictを解消する\nファイルを編集して conflict を解消する。例えば:\n## 第1章\n私はイヌであるし、サルでもある。\n\n## 第2章\nあなたもネコである。\n\nこの変更をコミットしてリモートにも反映する:\ngit add sample.md\ngit commit -m \"Solve a conflict\"\ngit push"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#とにかく使ってみる",
     "href": "git-circle/git-circle-vol1.html#とにかく使ってみる",
-    "title": "Git 基本操作②",
+    "title": "Git 基本操作② — fetch, merge, pull",
     "section": "とにかく使ってみる",
     "text": "とにかく使ってみる\n🔰 練習1: 先ほどつくった sample.md を編集して複数行の内容にする。できたらコミットしてプッシュ。\n\n🔰 練習2: 手元とリモートで異なる行を編集する。git fetch してから git merge してみる。\n\n手元: 編集したらコミット\nリモート: 編集したらCommit changes\n\n\n🔰 練習3: 手元とリモートで同じ行に異なる編集をする。\n\nまずは手元ではコミットせずに git fetch してから git merge してみる。どんなメッセージが出る？"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定",
+    "href": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "余談: Fast-forward onlyの設定",
+    "text": "余談: Fast-forward onlyの設定\nリモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。\n*   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'\n|\\\n| * 798b869 Edit line.5\n* | 16117cc Edit line.2\n|/\n* 335b76a Some commit\n\ngit pull をした時も同様。「いい感じにmergeする」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。\n↓\nそこで、「git pullのときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をする。"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-1",
+    "href": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-1",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "余談: Fast-forward onlyの設定",
+    "text": "余談: Fast-forward onlyの設定\n\n方法1\n\n--ff-onlyオプション付きでgit pullする。\ngit pull --ff-only\n\n方法2\n\n~/.gitconfigに--ff-onlyの設定をする。\ngit config --global pull.ff only\nもしくは\n\n\n~/.gitconfig\n\n[pull]\n    ff = only"
   }
 ]

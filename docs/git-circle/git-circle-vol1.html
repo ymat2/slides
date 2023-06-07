@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.361">
 
-  <title>Slides - Git 基本操作②</title>
+  <title>Slides - Git 基本操作② — fetch, merge, pull</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -390,27 +390,33 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Git 基本操作②</h1>
-  <p class="subtitle">2023-MM-DD 牧野研 技術輪読会 <code>git</code>編</p>
+  <h1 class="title">Git 基本操作② — <code>fetch</code>, <code>merge</code>, <code>pull</code></h1>
+  <p class="subtitle">2023-06-13 牧野研 技術輪読会 <code>git</code>編</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="目次" class="slide level2">
-<h2>目次</h2>
+<section id="今日やること" class="slide level2">
+<h2>今日やること</h2>
 <ol type="1">
 <li><p>前回の復習</p></li>
-<li><p>ローカルリポジトリの変更を手元に反映させる</p></li>
+<li><p>リモートリポジトリの変更を手元に反映させる</p></li>
 <li><p>あえて競合を起こしてそれを解決してみる</p></li>
 </ol>
 <dl>
 <dt>参考</dt>
 <dd>
+<a href="https://drive.google.com/drive/u/0/folders/1lQ1zf6SsRHXyMxO_0xsnGyuNEcFVxhOu">すずえもんの前回の資料</a>
+</dd>
+<dd>
 <a href="https://heavywatal.github.io/lectures/git2019makino.html">過去の牧野研での <code>git</code> 講習資料</a>
 </dd>
 <dd>
 <a href="https://git-scm.com/docs"><code>git</code> 公式リファレンス</a>
+</dd>
+<dd>
+<a href="https://github.com/kaityo256/github">kaito256さん: Github演習</a>
 </dd>
 </dl>
 </section>
@@ -473,21 +479,21 @@
 他人の作ったソフトウェアをインストールして使うとき
 </dd>
 <dd>
-新しいPCで作業をするとき
+新しいPCで最初に作業を始めるとき
 </dd>
 <dd>
 etc.
 </dd>
 </dl>
 </section>
-<section id="リモートの変更を手元に取り寄せる" class="slide level2">
-<h2>リモートの変更を手元に取り寄せる</h2>
-<p>複数人で同じリポジトリを使う場合や、個人でも複数のマシンで開発する場合など、別のひと/マシンが <code>push</code> した変更を手元に取り寄せるという操作が必要になる。</p>
-<p><code>git fetch</code> + <code>git merge</code> や <code>git pull</code> といったコマンドで、リモートの変更を手元に反映させる。</p>
+<section id="リモートリポジトリの変更を手元に反映させる" class="slide level2">
+<h2>リモートリポジトリの変更を手元に反映させる</h2>
+<p>複数人で同じリポジトリを使う場合や、個人で複数のマシンを使って開発する場合など、別のひと/マシンが <code>push</code> した変更を手元に取り寄せるという操作が必要になる。</p>
+<p><code>git fetch</code> + <code>git merge</code> や <code>git pull</code> といったコマンドで、リモートリポジトリの変更を手元に反映させる。</p>
 <p><img data-src="image/push_and_pull.png" width="900"></p>
 </section>
-<section id="リモートの変更を手元に取り寄せる-1" class="slide level2">
-<h2>リモートの変更を手元に取り寄せる</h2>
+<section id="リモートリポジトリの変更を手元に反映させる-1" class="slide level2">
+<h2>リモートリポジトリの変更を手元に反映させる</h2>
 <dl>
 <dt><code>git fetch</code></dt>
 <dd>
@@ -506,6 +512,37 @@ etc.
 </dd>
 </dl>
 </section>
+<section id="merge-の役割はブランチの統合" class="slide level2">
+<h2><code>merge</code> の役割は「ブランチの統合」</h2>
+<p><code>git merge</code> は複数のブランチを一本にまとめるときに使う。</p>
+<dl>
+<dt>fast-forward(早送り) マージ</dt>
+<dd>
+<code>main</code> ブランチに変更がない場合、マージするブランチに追いつくだけでいい。
+</dd>
+<dd>
+<img data-src="image/ff_merge.png" width="450">
+</dd>
+</dl>
+</section>
+<section id="merge-の役割はブランチの統合-1" class="slide level2">
+<h2><code>merge</code> の役割は「ブランチの統合」</h2>
+<p><code>git merge</code> は複数のブランチを一本にまとめるときに使う。</p>
+<dl>
+<dt>non-fast forward マージ</dt>
+<dd>
+<code>main</code> ブランチにも変更がある場合、両者の変更を取り込んだコミットをつくる。
+</dd>
+<dd>
+<img data-src="image/non_ff_merge.png" width="450">
+</dd>
+</dl>
+</section>
+<section id="merge-の役割はブランチの統合-2" class="slide level2">
+<h2><code>merge</code> の役割は「ブランチの統合」</h2>
+<p>Pull時の <code>git merge</code> は、手元の <code>main</code> ブランチに、<code>git fetch</code> で変更を反映したした「リモート追跡ブランチ」をマージする。</p>
+<p><img data-src="image/fetch_and_merge.png" width="900"></p>
+</section>
 <section id="実際にやってみる" class="slide level2">
 <h2>実際にやってみる</h2>
 <ol type="1">
@@ -518,12 +555,12 @@ etc.
 </ol></li>
 <li><p>その変更をローカルリポジトリに取り寄せる:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>手元のファイルに反映する:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
-<p>🔰 練習: もう一度リモートで編集して <code>git pull</code> してみる。</p>
+<p>🔰 練習: もう一度リモートで編集して <code>git pull</code> で一気に反映する。</p>
 </section>
 <section id="手元でもファイルを変更していたらどうなるの" class="slide level2">
 <h2>手元でもファイルを変更していたらどうなるの??</h2>
@@ -658,6 +695,43 @@ etc.
 <ul>
 <li>まずは手元ではコミットせずに <code>git fetch</code> してから <code>git merge</code> してみる。どんなメッセージが出る？</li>
 </ul>
+</section>
+<section id="余談-fast-forward-onlyの設定" class="slide level2">
+<h2>余談: Fast-forward onlyの設定</h2>
+<p>リモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   03899a3 Merge remote-tracking branch <span class="st">'refs/remotes/origin/main'</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="dt">\</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">*</span> 798b869 Edit line.5</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> <span class="kw">|</span> <span class="ex">16117cc</span> Edit line.2</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="ex">/</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 335b76a Some commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p><code>git pull</code> をした時も同様。「いい感じに<code>merge</code>する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。</p>
+<p>↓</p>
+<p>そこで、「<code>git pull</code>のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をする。</p>
+</section>
+<section id="余談-fast-forward-onlyの設定-1" class="slide level2">
+<h2>余談: Fast-forward onlyの設定</h2>
+<dl>
+<dt>方法1</dt>
+<dd>
+<p><code>--ff-only</code>オプション付きで<code>git pull</code>する。</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</dd>
+<dt>方法2</dt>
+<dd>
+<p><code>~/.gitconfig</code>に<code>--ff-only</code>の設定をする。</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.ff only</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>もしくは</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>~/.gitconfig</strong></pre>
+</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[pull]</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="dt">    ff </span><span class="ot">=</span><span class="st"> only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</dd>
+</dl>
 
 <div class="footer footer-default">
 
