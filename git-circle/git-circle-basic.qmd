@@ -4,7 +4,7 @@ format:
     title: "Git入門2023　基本操作"
     toc: true
     code-line-numbers: false
-highlight-style: breeze
+highlight-style: github
 ---
 
 

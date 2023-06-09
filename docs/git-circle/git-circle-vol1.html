@@ -58,41 +58,41 @@
       }
     pre.numberSource { margin-left: 3em;  padding-left: 4px; }
     div.sourceCode
-      { color: #1f1c1b;  }
+      { color: #24292e;  }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #1f1c1b; } /* Normal */
-    code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
-    code span.an { color: #ca60ca; } /* Annotation */
-    code span.at { color: #0057ae; } /* Attribute */
-    code span.bn { color: #b08000; } /* BaseN */
-    code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-    code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #924c9d; } /* Char */
-    code span.cn { color: #aa5500; } /* Constant */
-    code span.co { color: #898887; } /* Comment */
-    code span.cv { color: #0095ff; } /* CommentVar */
-    code span.do { color: #607880; } /* Documentation */
-    code span.dt { color: #0057ae; } /* DataType */
-    code span.dv { color: #b08000; } /* DecVal */
-    code span.er { color: #bf0303; text-decoration: underline; } /* Error */
-    code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-    code span.fl { color: #b08000; } /* Float */
-    code span.fu { color: #644a9b; } /* Function */
-    code span.im { color: #ff5500; } /* Import */
-    code span.in { color: #b08000; } /* Information */
-    code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-    code span.op { color: #ca60ca; } /* Operator */
-    code span.ot { color: #006e28; } /* Other */
-    code span.pp { color: #006e28; } /* Preprocessor */
-    code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
-    code span.sc { color: #3daee9; } /* SpecialChar */
-    code span.ss { color: #ff5500; } /* SpecialString */
-    code span.st { color: #bf0303; } /* String */
-    code span.va { color: #0057ae; } /* Variable */
-    code span.vs { color: #bf0303; } /* VerbatimString */
-    code span.wa { color: #bf0303; } /* Warning */
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -401,8 +401,9 @@
 <h2>今日やること</h2>
 <ol type="1">
 <li><p>前回の復習</p></li>
+<li><p><code>git status</code> と <code>git log</code> に慣れる</p></li>
 <li><p>リモートリポジトリの変更を手元に反映させる</p></li>
-<li><p>あえて競合を起こしてそれを解決してみる</p></li>
+<li><p>あえて競合を起こしてそれを解決してみる（時間があれば）</p></li>
 </ol>
 <dl>
 <dt>参考</dt>
@@ -432,18 +433,19 @@
 <section id="前回の復習-手元のプロジェクトをgitで管理する" class="slide level2">
 <h2>前回の復習: 手元のプロジェクトをGitで管理する</h2>
 <ol type="1">
-<li><p>適当なディレクトリを作ってテキストファイルを新規作成する:</p>
+<li><p>適当なディレクトリを作ってテキストファイル <code>README.md</code> を新規作成する:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> new_project <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> new_project</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello, world!"</span> <span class="op">&gt;</span> sample.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> Hello, world! <span class="op">&gt;</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>ローカルリポジトリをつくる:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>ローカルリポジトリに <code>sample.md</code> をコミットする。</p>
+<li><p>ローカルリポジトリに <code>README.md</code> をコミットする。</p>
 <p>最初は <code>git status</code> や <code>git log</code> で頻繁に確認すると安心。</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add sample.md  <span class="co"># sample.mdをindexに登録</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md  <span class="co"># README.mdをindexに登録</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Create sample.md"</span> <span class="co"># コミットメッセージを添えてコミット</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Create README.md"</span> <span class="co"># コミットメッセージを添えてコミット</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
 </section>
 <section id="前回の復習-手元のプロジェクトをgithubでも管理する" class="slide level2">
@@ -454,10 +456,10 @@
 <li><p>手順が表示されるので基本的にそれに従う:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/USER_NAME/new_project.git  <span class="co"># リモートリポジトリを紐づける</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span> <span class="co"># ちゃんと紐づいたか確認</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># git branch -M main  # ブランチの名前をmainに</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main <span class="co"># リモートにpush</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>リポジトリのページを更新してsample.mdが見えるか確認する。</p></li>
+<li><p>リポジトリのページを更新して <code>README.md</code> が見えるか確認する。</p></li>
 </ol>
 </section>
 <section id="前回の復習-すでにあるリポジトリを手元に落としてくる" class="slide level2">
@@ -486,6 +488,110 @@ etc.
 </dd>
 </dl>
 </section>
+<section id="今日の内容に入る前に-git-status-と-git-log-に慣れる" class="slide level2">
+<h2>今日の内容に入る前に:　<code>git status</code> と <code>git log</code> に慣れる</h2>
+<p>まずは何もしていない状態で <code>git status</code> &amp; <code>git log</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On branch main</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your branch is up to date with 'origin/main'.</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nothing to commit, working tree clean</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span>   <span class="co"># 1コミット1行で, グラフィカルに</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># * 36d0617 (HEAD -&gt; main, origin/main) Create README.md</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<dl>
+<dt><code>origin</code></dt>
+<dd>
+リモートリポジトリのこと。
+</dd>
+<dd>
+<code>origin/main</code> はリモートリポジトリのmainブランチ。
+</dd>
+<dt><code>HEAD</code></dt>
+<dd>
+いま見ているブランチ/commitを指す目印。
+</dd>
+<dd>
+基本的には「最新のcommit」を表す。
+</dd>
+</dl>
+</section>
+<section id="今日の内容に入る前に-git-status-と-git-log-に慣れる-1" class="slide level2">
+<h2>今日の内容に入る前に:　<code>git status</code> と <code>git log</code> に慣れる</h2>
+<p><code>README.md</code> をさらに編集してみる:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Hello, world!</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>This is a practice of <span class="in">`git`</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p><code>git status</code> すると:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On branch main</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your branch is up to date with 'origin/main'.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Changes not staged for commit:</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   (use "git add &lt;file&gt;..." to update what will be committed)</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   (use "git restore &lt;file&gt;..." to discard changes in working directory)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   modified:   README.md</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># no changes added to commit (use "git add" and/or "git commit -a")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="今日の内容に入る前に-git-status-と-git-log-に慣れる-2" class="slide level2">
+<h2>今日の内容に入る前に:　<code>git status</code> と <code>git log</code> に慣れる</h2>
+<p><code>README.md</code> をindexに加える:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p>ここでも <code>git status</code> :</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On branch main</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your branch is up to date with 'origin/main'.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Changes to be committed:</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   (use "git restore --staged &lt;file&gt;..." to unstage)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   modified:   README.md</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>↑ 「間違えて <code>add</code> しちゃった」って時は <code>git restore --staged README.md</code> すればいい。</p>
+</section>
+<section id="今日の内容に入る前に-git-status-と-git-log-に慣れる-3" class="slide level2">
+<h2>今日の内容に入る前に:　<code>git status</code> と <code>git log</code> に慣れる</h2>
+<p><code>README.md</code> の変更をコミットする:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update README.md"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [main 0f1a686] Update README.md</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  1 file changed, 2 insertions(+), 1 deletion(-)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p>ここで <code>git status</code> &amp; <code>git log</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># On branch main</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Your branch is ahead of 'origin/main' by 1 commit.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   (use "git push" to publish your local commits)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># nothing to commit, working tree clean</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># * 0f1a686 (HEAD -&gt; main) Update README.md     &lt;- HEAD(ローカル)はここに移動</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># * 36d0617 (origin/main) Create README.md      &lt;- origin(リモート)はまだここ</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="今日の内容に入る前に-git-status-と-git-log-に慣れる-4" class="slide level2">
+<h2>今日の内容に入る前に:　<code>git status</code> と <code>git log</code> に慣れる</h2>
+<p>最後に <code>git push</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p><code>git log</code> で確認:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># * 0f1a686 (HEAD -&gt; main, origin/main) Update README.md        &lt;- originも追いついた</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># * 36d0617 Create README.md</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p>「あれ、いまどういう状態だっけ？」</p>
+<p>↓</p>
+<p><strong>常に <code>git status</code>, <code>git log</code> を確認することが大事。</strong></p>
+</section>
+<section id="休憩-質問タイム" class="slide level2">
+<h2>休憩 &amp; 質問タイム</h2>
+<p><strong>今日やること</strong></p>
+<ol type="1">
+<li><p><del>前回の復習</del></p></li>
+<li><p><del><code>git status</code> と <code>git log</code> に慣れる</del></p></li>
+<li><p>リモートリポジトリの変更を手元に反映させる</p></li>
+<li><p>あえて競合を起こしてそれを解決してみる（時間があれば）</p></li>
+</ol>
+</section>
 <section id="リモートリポジトリの変更を手元に反映させる" class="slide level2">
 <h2>リモートリポジトリの変更を手元に反映させる</h2>
 <p>複数人で同じリポジトリを使う場合や、個人で複数のマシンを使って開発する場合など、別のひと/マシンが <code>push</code> した変更を手元に取り寄せるという操作が必要になる。</p>
@@ -506,92 +612,94 @@ etc.
 <dd>
 ローカルリポジトリの内容を、手元のファイルに反映する。
 </dd>
-<dt><code>git pull</code></dt>
-<dd>
-<code>git fetch</code> と <code>git merge</code> を一緒に実行するコマンド。
-</dd>
 </dl>
-</section>
-<section id="merge-の役割はブランチの統合" class="slide level2">
-<h2><code>merge</code> の役割は「ブランチの統合」</h2>
-<p><code>git merge</code> は複数のブランチを一本にまとめるときに使う。</p>
-<dl>
-<dt>fast-forward(早送り) マージ</dt>
-<dd>
-<code>main</code> ブランチに変更がない場合、マージするブランチに追いつくだけでいい。
-</dd>
-<dd>
-<img data-src="image/ff_merge.png" width="450">
-</dd>
-</dl>
-</section>
-<section id="merge-の役割はブランチの統合-1" class="slide level2">
-<h2><code>merge</code> の役割は「ブランチの統合」</h2>
-<p><code>git merge</code> は複数のブランチを一本にまとめるときに使う。</p>
-<dl>
-<dt>non-fast forward マージ</dt>
-<dd>
-<code>main</code> ブランチにも変更がある場合、両者の変更を取り込んだコミットをつくる。
-</dd>
-<dd>
-<img data-src="image/non_ff_merge.png" width="450">
-</dd>
-</dl>
-</section>
-<section id="merge-の役割はブランチの統合-2" class="slide level2">
-<h2><code>merge</code> の役割は「ブランチの統合」</h2>
-<p>Pull時の <code>git merge</code> は、手元の <code>main</code> ブランチに、<code>git fetch</code> で変更を反映したした「リモート追跡ブランチ」をマージする。</p>
-<p><img data-src="image/fetch_and_merge.png" width="900"></p>
+<p><img data-src="image/fetch_and_merge.png" width="720"></p>
+<p><code>git pull</code> は <code>git fetch</code> と <code>git merge</code> を一緒にやるコマンド。</p>
 </section>
 <section id="実際にやってみる" class="slide level2">
 <h2>実際にやってみる</h2>
 <ol type="1">
-<li><p>リモートでの変更を再現するために、Githubページ上で <code>sample.md</code> を編集する。</p>
+<li><p>リモートでの変更を再現するために、Githubページ上で <code>README.md</code> を編集する。</p>
 <ol type="1">
-<li><p><code>sample.md</code> をクリック -&gt; 右上のペンマーク 🖊 から編集画面に入る。</p></li>
+<li><p><code>README.md</code> をクリック -&gt; 右上のペンマーク 🖊 から編集画面に入る。</p></li>
 <li><p>“This line is edited online.” など適当に編集して、右上の <kbd style="background-color:#008000; color:#fff;">Commit changes</kbd> を押す。</p></li>
 <li><p>表示されるウィンドウはとりあえずそのままで <kbd style="background-color:#008000; color:#fff;">Commit changes</kbd></p></li>
 <li><p>変更されていることを確認する。</p></li>
 </ol></li>
-<li><p>その変更をローカルリポジトリに取り寄せる:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>手元のファイルに反映する:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ol>
+<p><br></p>
+<ol start="2" type="1">
+<li><p>その変更を <code>fetch</code> でローカルリポジトリに取り寄せる:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span> <span class="at">--all</span>    <span class="co"># コミット全部</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># * 47d354f (origin/main) Update README.md      &lt;- origin(リモート)の変更が.git/に反映された</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># * 0f1a686 (HEAD -&gt; main) Update README.md     &lt;- HEAD(ローカル)はまだここ</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># * 36d0617 Create README.md</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="実際にやってみる-1" class="slide level2">
+<h2>実際にやってみる</h2>
+<ol start="3" type="1">
+<li><p><code>merge</code> で手元のファイルに反映する:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fast-forward</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  README.md | 2 ++</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  1 file changed, 2 insertions(+)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># * 47d354f (HEAD -&gt; main, origin/main) Update README.md    &lt;- HEADがoriginに追いついた</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># * 0f1a686 Update README.md</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># * 36d0617 Create README.md</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<p><br></p>
 <p>🔰 練習: もう一度リモートで編集して <code>git pull</code> で一気に反映する。</p>
+</section>
+<section id="head-を-origin-に追いつかせるマージ" class="slide level2">
+<h2><code>HEAD</code> を <code>origin</code> に追いつかせるマージ</h2>
+<p>手元のファイルに変更がない場合、<code>fetch</code> してきた <code>origin</code> に追いつくだけでいい。 このようなマージを<strong>fast-forward(早送り) マージ</strong>という。</p>
+<p><img data-src="image/ff_merge.png" width="900"></p>
+<p><small>(このあとFast-Forwardじゃないマージも出てきます。)</small></p>
+</section>
+<section id="ここから先は時間があれば進む" class="slide level2">
+<h2>ここから先は時間があれば進む</h2>
+</section>
+<section id="fast-forwardじゃないマージ" class="slide level2">
+<h2>Fast-Forwardじゃないマージ</h2>
+<p>手元のファイルも変更していた場合、<code>fetch</code> してきた <code>origin</code> に追いつくのではなく、 分岐した両者を再び1つにするマージが必要。</p>
+<p>このようなマージを<strong>non-fast forward マージ</strong>という。</p>
+<p><img data-src="image/non_ff_merge.png" width="900"></p>
 </section>
 <section id="手元でもファイルを変更していたらどうなるの" class="slide level2">
 <h2>手元でもファイルを変更していたらどうなるの??</h2>
-<p>「別のファイルの変更」や「同じファイルの別の箇所の変更」である場合、<code>git merge</code> は両方の変更を取り入れる。</p>
+<p>「別のファイルの変更」や「同じファイルの別の箇所の変更」である場合、non-fast forward マージで両方の変更を取り入れる。</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>手元の変更:</p>
-<div class="sourceCode" id="cb8" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>私はネコである。</span>
-<span id="cb8-3"><a href="#cb8-3"></a></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>私はネコである。</span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>↓</p>
-<div class="sourceCode" id="cb9" data-code-line-numbers="2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>私はイヌである。</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18" data-code-line-numbers="2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>私はイヌである。</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
 <p>リモートの変更:</p>
-<div class="sourceCode" id="cb10" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>私はネコである。</span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>私はネコである。</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>↓</p>
-<div class="sourceCode" id="cb11" data-code-line-numbers="5"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>私はネコである。</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>あなたもイヌである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20" data-code-line-numbers="5"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>私はネコである。</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>あなたもイヌである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div style="text-align:center;">
@@ -599,11 +707,11 @@ etc.
 <p><code>git fetch</code> + <code>git merge</code></p>
 <p>↓</p>
 </div>
-<div class="sourceCode" id="cb12" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>私はイヌである。</span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>あなたもイヌである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>私はイヌである。</span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>あなたもイヌである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="手元でもファイルを変更していたらどうなるの-1" class="slide level2">
 <h2>手元でもファイルを変更していたらどうなるの??</h2>
@@ -611,30 +719,30 @@ etc.
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>手元の変更:</p>
-<div class="sourceCode" id="cb13" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>私はネコである。</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>私はネコである。</span>
+<span id="cb22-3"><a href="#cb22-3"></a></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>↓</p>
-<div class="sourceCode" id="cb14" data-code-line-numbers="2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>私はイヌである。</span>
-<span id="cb14-3"><a href="#cb14-3"></a></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23" data-code-line-numbers="2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>私はイヌである。</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
 <p>リモートの変更:</p>
-<div class="sourceCode" id="cb15" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>私はネコである。</span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-code-line-numbers="true"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>私はネコである。</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>↓</p>
-<div class="sourceCode" id="cb16" data-code-line-numbers="2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>私はサルである。</span>
-<span id="cb16-3"><a href="#cb16-3"></a></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">## 第2章</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-code-line-numbers="2"><pre class="sourceCode numberSource md number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>私はサルである。</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="fu">## 第2章</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div style="text-align:center;">
@@ -642,23 +750,23 @@ etc.
 <p><code>git fetch</code> + <code>git merge</code></p>
 <p>↓</p>
 </div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git merge</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Auto-merging sample.md</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CONFLICT (content): Merge conflict in sample.md</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatic merge failed; fix conflicts and then commit the result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git merge</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Auto-merging README.md</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CONFLICT (content): Merge conflict in README.md</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatic merge failed; fix conflicts and then commit the result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="conflictを解消する" class="slide level2">
 <h2>conflictを解消する</h2>
-<p><code>conflict</code> が生じたファイル( <code>sample.md</code> )を開いてみるとこんな風になっている。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>私はイヌである。</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">=======</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>私はサルである。</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;&gt;&gt;&gt;&gt;&gt;&gt; refs/remotes/origin/main</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第2章</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>conflict</code> が生じたファイル( <code>README.md</code> )を開いてみるとこんな風になっている。</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>私はイヌである。</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">=======</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>私はサルである。</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;&gt;&gt;&gt;&gt;&gt;&gt; refs/remotes/origin/main</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第2章</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <p><code>=======</code> を挟んで、</p>
 <ul>
@@ -670,20 +778,20 @@ etc.
 <section id="conflictを解消する-1" class="slide level2">
 <h2>conflictを解消する</h2>
 <p>ファイルを編集して <code>conflict</code> を解消する。例えば:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第1章</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>私はイヌであるし、サルでもある。</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第2章</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第1章</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>私はイヌであるし、サルでもある。</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第2章</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>あなたもネコである。</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <p>この変更をコミットしてリモートにも反映する:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add sample.md</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Solve a conflict"</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Solve a conflict"</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="とにかく使ってみる" class="slide level2">
 <h2>とにかく使ってみる</h2>
-<p>🔰 練習1: 先ほどつくった <code>sample.md</code> を編集して複数行の内容にする。できたらコミットしてプッシュ。</p>
+<p>🔰 練習1: 先ほどつくった <code>README.md</code> を編集して複数行の内容にする。できたらコミットしてプッシュ。</p>
 <p><br></p>
 <p>🔰 練習2: 手元とリモートで異なる行を編集する。<code>git fetch</code> してから <code>git merge</code> してみる。</p>
 <ul>
@@ -699,12 +807,12 @@ etc.
 <section id="余談-fast-forward-onlyの設定" class="slide level2">
 <h2>余談: Fast-forward onlyの設定</h2>
 <p>リモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   03899a3 Merge remote-tracking branch <span class="st">'refs/remotes/origin/main'</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="dt">\</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">*</span> 798b869 Edit line.5</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> <span class="kw">|</span> <span class="ex">16117cc</span> Edit line.2</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="ex">/</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 335b76a Some commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   03899a3 Merge remote-tracking branch <span class="st">'refs/remotes/origin/main'</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="dt">\</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">*</span> 798b869 Edit line.5</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> <span class="kw">|</span> <span class="ex">16117cc</span> Edit line.2</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="ex">/</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 335b76a Some commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <p><code>git pull</code> をした時も同様。「いい感じに<code>merge</code>する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。</p>
 <p>↓</p>
@@ -716,19 +824,19 @@ etc.
 <dt>方法1</dt>
 <dd>
 <p><code>--ff-only</code>オプション付きで<code>git pull</code>する。</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 <dt>方法2</dt>
 <dd>
 <p><code>~/.gitconfig</code>に<code>--ff-only</code>の設定をする。</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.ff only</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.ff only</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>もしくは</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>~/.gitconfig</strong></pre>
 </div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[pull]</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="dt">    ff </span><span class="ot">=</span><span class="st"> only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[pull]</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="dt">    ff </span><span class="ot">=</span><span class="st"> only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </dd>
 </dl>
