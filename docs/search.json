@@ -224,11 +224,11 @@
     "text": "今日やること\n\n前回の復習\ngit status と git log に慣れる\nリモートリポジトリの変更を手元に反映させる\nあえて競合を起こしてそれを解決してみる（時間があれば）\n\n\n参考\n\nすずえもんの前回の資料\n\n\n過去の牧野研での git 講習資料\n\n\ngit 公式リファレンス\n\n\nkaito256さん: Github演習"
   },
   {
-    "objectID": "git-circle/git-circle-vol1.html#前回の復習-git-を使い始める",
-    "href": "git-circle/git-circle-vol1.html#前回の復習-git-を使い始める",
+    "objectID": "git-circle/git-circle-vol1.html#前回やったこと",
+    "href": "git-circle/git-circle-vol1.html#前回やったこと",
     "title": "Git 基本操作② — fetch, merge, pull",
-    "section": "前回の復習: git を使い始める",
-    "text": "前回の復習: git を使い始める\n\ngit  をインストールする。\nGithub  に個人アカウントをつくる。\nGitの初期設定をする: ~/.gitconfig\nSSHの設定をする: ~/.ssh/"
+    "section": "前回やったこと",
+    "text": "前回やったこと\n\ngit  をインストールする。\nGithub  に個人アカウントをつくる。\nGitの初期設定をする: ~/.gitconfig\nSSHの設定をする: ~/.ssh/"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#前回の復習-手元のプロジェクトをgitで管理する",
@@ -242,7 +242,7 @@
     "href": "git-circle/git-circle-vol1.html#前回の復習-手元のプロジェクトをgithubでも管理する",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "前回の復習: 手元のプロジェクトをGithubでも管理する",
-    "text": "前回の復習: 手元のプロジェクトをGithubでも管理する\n\nGitHubアカウントページの右上の “+” から “New repository” を選択する。\n適当なリポジトリ名（基本は手元と同じ）をつけて “Create repository” を押す。\n手順が表示されるので基本的にそれに従う:\ngit remote add origin https://github.com/USER_NAME/new_project.git  # リモートリポジトリを紐づける\ngit remote -v # ちゃんと紐づいたか確認\n# git branch -M main  # ブランチの名前をmainに\ngit push -u origin main # リモートにpush\ngit status\nリポジトリのページを更新して README.md が見えるか確認する。"
+    "text": "前回の復習: 手元のプロジェクトをGithubでも管理する\n\nGitHubアカウントページの右上の “+” から “New repository” を選択する。\n適当なリポジトリ名（基本は手元と同じ）をつけて “Create repository” を押す。\n手順が表示されるので基本的にそれに従う:\ngit remote add origin https://github.com/USER_NAME/new_project.git  # リモートリポジトリを紐づける\ngit remote -v               # ちゃんと紐づいたか確認\n# git branch -M main        # ブランチの名前をmainに\ngit push -u origin main     # リモートにpush\ngit status\nリポジトリのページを更新して README.md が見えるか確認する。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#前回の復習-すでにあるリポジトリを手元に落としてくる",
@@ -284,7 +284,7 @@
     "href": "git-circle/git-circle-vol1.html#今日の内容に入る前に-git-status-と-git-log-に慣れる-4",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "今日の内容に入る前に:　git status と git log に慣れる",
-    "text": "今日の内容に入る前に:　git status と git log に慣れる\n最後に git push:\ngit push\n\ngit log で確認:\ngit log --oneline --graph\n# * 0f1a686 (HEAD -&gt; main, origin/main) Update README.md        &lt;- originも追いついた\n# * 36d0617 Create README.md\n\n「あれ、いまどういう状態だっけ？」\n↓\n常に git status, git log を確認することが大事。"
+    "text": "今日の内容に入る前に:　git status と git log に慣れる\n最後に git push:\ngit push\n\ngit log で確認:\ngit log --oneline --graph\n# * 0f1a686 (HEAD -&gt; main, origin/main) Update README.md        &lt;- originも追いついた\n# * 36d0617 Create README.md\n\n「あれ、いまどういう状態だっけ？」\n↓\n常に git status, git log を確認する癖をつける。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#休憩-質問タイム",
@@ -305,7 +305,7 @@
     "href": "git-circle/git-circle-vol1.html#リモートリポジトリの変更を手元に反映させる-1",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "リモートリポジトリの変更を手元に反映させる",
-    "text": "リモートリポジトリの変更を手元に反映させる\n\ngit fetch\n\nリモートリポジトリの変更をローカルリポジトリに取り込む。\n\n\nこの時点では .git/ 内だけが変更されているため、手元のファイルはそのまま。\n\ngit merge\n\nローカルリポジトリの内容を、手元のファイルに反映する。\n\n\n\ngit pull は git fetch と git merge を一緒にやるコマンド。"
+    "text": "リモートリポジトリの変更を手元に反映させる\n\ngit fetch\n\nリモートリポジトリの変更をローカルリポジトリに取り込む。\n\n\nこの時点では .git/ 内だけが変更されているため、手元のファイルはそのまま。\n\ngit merge\n\nローカルリポジトリの内容を、手元のファイルに反映する。\n\n\n\ngit pull は git fetch と git merge を一気にやるコマンド。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#実際にやってみる",
@@ -354,7 +354,7 @@
     "href": "git-circle/git-circle-vol1.html#手元でもファイルを変更していたらどうなるの-1",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "手元でもファイルを変更していたらどうなるの??",
-    "text": "手元でもファイルを変更していたらどうなるの??\n「同じファイルの同じ箇所の変更」である場合、conflict が発生する。\n\n\n手元の変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はイヌである。\n\n## 第2章\nあなたもネコである。\n\nリモートの変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はサルである。\n\n## 第2章\nあなたもネコである。\n\n\n\n↓\ngit fetch + git merge\n↓\n\n$ git merge\n# Auto-merging README.md\n# CONFLICT (content): Merge conflict in README.md\n# Automatic merge failed; fix conflicts and then commit the result."
+    "text": "手元でもファイルを変更していたらどうなるの??\n「同じファイルの同じ箇所の変更」である場合、conflict が発生する。\n\n\n手元の変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はイヌである。\n\n## 第2章\nあなたもネコである。\n\nリモートの変更:\n## 第1章\n私はネコである。\n\n## 第2章\nあなたもネコである。\n↓\n## 第1章\n私はサルである。\n\n## 第2章\nあなたもネコである。\n\n\n\n↓\ngit fetch + git merge\n↓\n\ngit merge\n# Auto-merging README.md\n# CONFLICT (content): Merge conflict in README.md\n# Automatic merge failed; fix conflicts and then commit the result."
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#conflictを解消する",
@@ -382,13 +382,13 @@
     "href": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "余談: Fast-forward onlyの設定",
-    "text": "余談: Fast-forward onlyの設定\nリモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。\n*   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'\n|\\\n| * 798b869 Edit line.5\n* | 16117cc Edit line.2\n|/\n* 335b76a Some commit\n\ngit pull をした時も同様。「いい感じにmergeする」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。\n↓\nそこで、「git pullのときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をする。"
+    "text": "余談: Fast-forward onlyの設定\nリモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。\ngit log --oneline --graph\n# *   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'\n# |\\\n# | * 798b869 Edit line.5\n# * | 16117cc Edit line.2\n# |/\n# * 335b76a Some commit\n\ngit pull をした時も同様。「いい感じに merge する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。\n↓\nそこで、「 git pull のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をしておくと安全。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-1",
     "href": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-1",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "余談: Fast-forward onlyの設定",
-    "text": "余談: Fast-forward onlyの設定\n\n方法1\n\n--ff-onlyオプション付きでgit pullする。\ngit pull --ff-only\n\n方法2\n\n~/.gitconfigに--ff-onlyの設定をする。\ngit config --global pull.ff only\nもしくは\n\n\n~/.gitconfig\n\n[pull]\n    ff = only"
+    "text": "余談: Fast-forward onlyの設定\n\n方法1\n\n--ff-only オプション付きで git pull する。\ngit pull --ff-only\n\n方法2\n\n~/.gitconfig に --ff-only の設定をする。\ngit config --global pull.ff only\nもしくは\n\n\n~/.gitconfig\n\n[pull]\n    ff = only"
   }
 ]

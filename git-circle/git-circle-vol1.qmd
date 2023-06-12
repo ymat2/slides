@@ -23,7 +23,7 @@ highlight-style: github
 : [kaito256さん: Github演習](https://github.com/kaityo256/github)
 
 
-## 前回の復習: `git` を使い始める
+## 前回やったこと
 
 1. `git` <img height="24" style="margin:0;" src="https://cdn.simpleicons.org/git"> をインストールする。
 
@@ -73,9 +73,9 @@ highlight-style: github
 
     ```sh
     git remote add origin https://github.com/USER_NAME/new_project.git  # リモートリポジトリを紐づける
-    git remote -v # ちゃんと紐づいたか確認
-    # git branch -M main  # ブランチの名前をmainに
-    git push -u origin main # リモートにpush
+    git remote -v               # ちゃんと紐づいたか確認
+    # git branch -M main        # ブランチの名前をmainに
+    git push -u origin main     # リモートにpush
     git status
     ```
 
@@ -84,15 +84,16 @@ highlight-style: github
 
 ## 前回の復習: すでにあるリポジトリを手元に落としてくる
 
-1. GitHub上の適当なリポジトリをひとつ選ぶ。 (e.g., https://github.com/ymat2/practice_git)
+1. GitHub上の適当なリポジトリをひとつ選ぶ。
+   (e.g., [https://github.com/ymat2/practice_git](https://github.com/ymat2/practice-git))
 
-1. 右の方の <kbd style="background-color:#008000; color:#fff;"><>Code▼</kbd> ボタンを押す。
+2. 右の方の <kbd style="background-color:#008000; color:#fff;"><>Code▼</kbd> ボタンを押す。
 
-1. SSHではなくHTTPSを選択し、URLをコピー。
+3. SSHではなくHTTPSを選択し、URLをコピー。
 
-1. `git clone https://github.com/ymat2/practice-git.git`
+4. `git clone https://github.com/ymat2/practice-git.git`
 
-1. 中身を眺めてみる:
+5. 中身を眺めてみる:
 
      ```sh
      cd practice-git
@@ -235,7 +236,7 @@ git log --oneline --graph
 
 ↓
 
-**常に `git status`, `git log` を確認することが大事。**
+**常に `git status`, `git log` を確認する癖をつける。**
 
 
 ## 休憩 & 質問タイム
@@ -271,7 +272,7 @@ git log --oneline --graph
 
 ![](image/fetch_and_merge.png){width="720"}
 
-`git pull` は `git fetch` と `git merge` を一緒にやるコマンド。
+`git pull` は `git fetch` と `git merge` を一気にやるコマンド。
 
 
 ## 実際にやってみる
@@ -478,7 +479,7 @@ git log --oneline --graph
 </div>
 
 ```sh
-$ git merge
+git merge
 # Auto-merging README.md
 # CONFLICT (content): Merge conflict in README.md
 # Automatic merge failed; fix conflicts and then commit the result.
@@ -558,34 +559,35 @@ git push
 リモートとローカルの両方の変更を取り込んだ場合、"merge commit"が自動的につくられる。
 
 ```sh
-*   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'
-|\
-| * 798b869 Edit line.5
-* | 16117cc Edit line.2
-|/
-* 335b76a Some commit
+git log --oneline --graph
+# *   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'
+# |\
+# | * 798b869 Edit line.5
+# * | 16117cc Edit line.2
+# |/
+# * 335b76a Some commit
 ```
 
 <br>
 
-`git pull` をした時も同様。「いい感じに`merge`する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。
+`git pull` をした時も同様。「いい感じに `merge` する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。
 
 ↓
 
-そこで、「`git pull`のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をする。
+そこで、「 `git pull` のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をしておくと安全。
 
 
 ## 余談: Fast-forward onlyの設定
 
 方法1
-:   `--ff-only`オプション付きで`git pull`する。
+:   `--ff-only` オプション付きで `git pull` する。
 
     ```sh
     git pull --ff-only
     ```
 
 方法2
-:   `~/.gitconfig`に`--ff-only`の設定をする。
+:   `~/.gitconfig` に `--ff-only` の設定をする。
 
     ```sh
     git config --global pull.ff only

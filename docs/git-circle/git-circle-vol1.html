@@ -421,8 +421,8 @@
 </dd>
 </dl>
 </section>
-<section id="前回の復習-git-を使い始める" class="slide level2">
-<h2>前回の復習: <code>git</code> を使い始める</h2>
+<section id="前回やったこと" class="slide level2">
+<h2>前回やったこと</h2>
 <ol type="1">
 <li><p><code>git</code> <img height="24" style="margin:0;" src="https://cdn.simpleicons.org/git"> をインストールする。</p></li>
 <li><p>Github <img height="24" style="margin:0;" src="https://cdn.simpleicons.org/github"> に個人アカウントをつくる。</p></li>
@@ -455,9 +455,9 @@
 <li><p>適当なリポジトリ名（基本は手元と同じ）をつけて “Create repository” を押す。</p></li>
 <li><p>手順が表示されるので基本的にそれに従う:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/USER_NAME/new_project.git  <span class="co"># リモートリポジトリを紐づける</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span> <span class="co"># ちゃんと紐づいたか確認</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># git branch -M main  # ブランチの名前をmainに</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main <span class="co"># リモートにpush</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span>               <span class="co"># ちゃんと紐づいたか確認</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># git branch -M main        # ブランチの名前をmainに</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main     <span class="co"># リモートにpush</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>リポジトリのページを更新して <code>README.md</code> が見えるか確認する。</p></li>
 </ol>
@@ -465,7 +465,7 @@
 <section id="前回の復習-すでにあるリポジトリを手元に落としてくる" class="slide level2">
 <h2>前回の復習: すでにあるリポジトリを手元に落としてくる</h2>
 <ol type="1">
-<li><p>GitHub上の適当なリポジトリをひとつ選ぶ。 (e.g., https://github.com/ymat2/practice_git)</p></li>
+<li><p>GitHub上の適当なリポジトリをひとつ選ぶ。 (e.g., <a href="https://github.com/ymat2/practice-git">https://github.com/ymat2/practice_git</a>)</p></li>
 <li><p>右の方の <kbd style="background-color:#008000; color:#fff;">&lt;&gt;Code▼</kbd> ボタンを押す。</p></li>
 <li><p>SSHではなくHTTPSを選択し、URLをコピー。</p></li>
 <li><p><code>git clone https://github.com/ymat2/practice-git.git</code></p></li>
@@ -580,7 +580,7 @@ etc.
 <p><br></p>
 <p>「あれ、いまどういう状態だっけ？」</p>
 <p>↓</p>
-<p><strong>常に <code>git status</code>, <code>git log</code> を確認することが大事。</strong></p>
+<p><strong>常に <code>git status</code>, <code>git log</code> を確認する癖をつける。</strong></p>
 </section>
 <section id="休憩-質問タイム" class="slide level2">
 <h2>休憩 &amp; 質問タイム</h2>
@@ -614,7 +614,7 @@ etc.
 </dd>
 </dl>
 <p><img data-src="image/fetch_and_merge.png" width="720"></p>
-<p><code>git pull</code> は <code>git fetch</code> と <code>git merge</code> を一緒にやるコマンド。</p>
+<p><code>git pull</code> は <code>git fetch</code> と <code>git merge</code> を一気にやるコマンド。</p>
 </section>
 <section id="実際にやってみる" class="slide level2">
 <h2>実際にやってみる</h2>
@@ -750,7 +750,7 @@ etc.
 <p><code>git fetch</code> + <code>git merge</code></p>
 <p>↓</p>
 </div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git merge</span>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Auto-merging README.md</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># CONFLICT (content): Merge conflict in README.md</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatic merge failed; fix conflicts and then commit the result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -807,28 +807,29 @@ etc.
 <section id="余談-fast-forward-onlyの設定" class="slide level2">
 <h2>余談: Fast-forward onlyの設定</h2>
 <p>リモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span>   03899a3 Merge remote-tracking branch <span class="st">'refs/remotes/origin/main'</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="dt">\</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">*</span> 798b869 Edit line.5</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> <span class="kw">|</span> <span class="ex">16117cc</span> Edit line.2</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span><span class="ex">/</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 335b76a Some commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># *   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># |\</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># | * 798b869 Edit line.5</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># * | 16117cc Edit line.2</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># |/</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># * 335b76a Some commit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
-<p><code>git pull</code> をした時も同様。「いい感じに<code>merge</code>する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。</p>
+<p><code>git pull</code> をした時も同様。「いい感じに <code>merge</code> する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。</p>
 <p>↓</p>
-<p>そこで、「<code>git pull</code>のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をする。</p>
+<p>そこで、「 <code>git pull</code> のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をしておくと安全。</p>
 </section>
 <section id="余談-fast-forward-onlyの設定-1" class="slide level2">
 <h2>余談: Fast-forward onlyの設定</h2>
 <dl>
 <dt>方法1</dt>
 <dd>
-<p><code>--ff-only</code>オプション付きで<code>git pull</code>する。</p>
+<p><code>--ff-only</code> オプション付きで <code>git pull</code> する。</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 <dt>方法2</dt>
 <dd>
-<p><code>~/.gitconfig</code>に<code>--ff-only</code>の設定をする。</p>
+<p><code>~/.gitconfig</code> に <code>--ff-only</code> の設定をする。</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.ff only</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>もしくは</p>
 <div class="code-with-filename">
