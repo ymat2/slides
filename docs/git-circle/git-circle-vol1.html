@@ -458,7 +458,8 @@
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span>               <span class="co"># ちゃんと紐づいたか確認</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># git branch -M main        # ブランチの名前をmainに</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main     <span class="co"># リモートにpush</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><small> “Private” リポジトリの場合、SSHで紐付けしないと下り( <code>fetch</code>, <code>pull</code> )でもパスワードを聞かれる。</small></p></li>
 <li><p>リポジトリのページを更新して <code>README.md</code> が見えるか確認する。</p></li>
 </ol>
 </section>
@@ -512,7 +513,7 @@ etc.
 いま見ているブランチ/commitを指す目印。
 </dd>
 <dd>
-基本的には「最新のcommit」を表す。
+基本的には「手元の最新のcommit」を表す。
 </dd>
 </dl>
 </section>
@@ -806,39 +807,78 @@ etc.
 </section>
 <section id="余談-fast-forward-onlyの設定" class="slide level2">
 <h2>余談: Fast-forward onlyの設定</h2>
-<p>リモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。</p>
+<p><code>git merge</code> でリモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># *   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># |\</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># |\                                                    ↑ マージコミット</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># | * 798b869 Edit line.5</span></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># * | 16117cc Edit line.2</span></span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># |/</span></span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># * 335b76a Some commit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br></p>
-<p><code>git pull</code> をした時も同様。「いい感じに <code>merge</code> する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。</p>
-<p>↓</p>
-<p>そこで、「 <code>git pull</code> のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をしておくと安全。</p>
 </section>
 <section id="余談-fast-forward-onlyの設定-1" class="slide level2">
+<h2>余談: Fast-forward onlyの設定</h2>
+<p><code>git pull</code> をした時は、「どういう方法でマージするか」を設定していないと自動的なmergeも起こらない。</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> You have divergent branches and need to specify how to reconcile them.</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> You can do so by running one of the following commands sometime before</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> your next pull:</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span>   git config pull.rebase false  <span class="co"># merge (the default strategy)</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span>   git config pull.rebase true   <span class="co"># rebase</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span>   git config pull.ff only       <span class="co"># fast-forward only</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> You can replace <span class="st">"git config"</span> with <span class="st">"git config --global"</span> to set a default</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> preference for all repositories. You can also pass <span class="at">--rebase,</span> <span class="at">--no-rebase,</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> or <span class="at">--ff-only</span> on the command line to override the configured default per</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> invocation.</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="ex">fatal:</span> Need to specify how to reconcile divergent branches.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p>そこで、「fast-forwardでのmergeのみを試みる。」という設定をしておく。</p>
+</section>
+<section id="余談-fast-forward-onlyの設定-2" class="slide level2">
 <h2>余談: Fast-forward onlyの設定</h2>
 <dl>
 <dt>方法1</dt>
 <dd>
 <p><code>--ff-only</code> オプション付きで <code>git pull</code> する。</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </dd>
 <dt>方法2</dt>
 <dd>
 <p><code>~/.gitconfig</code> に <code>--ff-only</code> の設定をする。</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.ff only</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> pull.ff only</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>もしくは</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>~/.gitconfig</strong></pre>
 </div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[pull]</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="dt">    ff </span><span class="ot">=</span><span class="st"> only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[pull]</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="dt">    ff </span><span class="ot">=</span><span class="st"> only</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</dd>
+</dl>
+</section>
+<section id="余談2-その他の-git-便利機能" class="slide level2">
+<h2>余談2: その他の <code>git</code> 便利機能</h2>
+<dl>
+<dt><span style="font-weight: normal;">「あのファイルとこのファイル、どこが変わったんだっけ」</span></dt>
+<dd>
+<code>git diff</code>
+</dd>
+<dt><span style="font-weight: normal;">「間違えて〇〇しちゃった、取り消したい」</span></dt>
+<dd>
+<code>git reset</code>
+</dd>
+<dt><span style="font-weight: normal;">「ソースコードは管理したいけど、データや画像は外に出したくないな」</span></dt>
+<dd>
+<code>.gitignore</code>
+</dd>
+</dl>
+<p><br></p>
+<dl>
+<dt>see more</dt>
+<dd>
+<a href="https://git-scm.com/docs"><code>git</code> 公式リファレンス</a>
 </dd>
 </dl>
 

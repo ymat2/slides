@@ -242,7 +242,7 @@
     "href": "git-circle/git-circle-vol1.html#前回の復習-手元のプロジェクトをgithubでも管理する",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "前回の復習: 手元のプロジェクトをGithubでも管理する",
-    "text": "前回の復習: 手元のプロジェクトをGithubでも管理する\n\nGitHubアカウントページの右上の “+” から “New repository” を選択する。\n適当なリポジトリ名（基本は手元と同じ）をつけて “Create repository” を押す。\n手順が表示されるので基本的にそれに従う:\ngit remote add origin https://github.com/USER_NAME/new_project.git  # リモートリポジトリを紐づける\ngit remote -v               # ちゃんと紐づいたか確認\n# git branch -M main        # ブランチの名前をmainに\ngit push -u origin main     # リモートにpush\ngit status\nリポジトリのページを更新して README.md が見えるか確認する。"
+    "text": "前回の復習: 手元のプロジェクトをGithubでも管理する\n\nGitHubアカウントページの右上の “+” から “New repository” を選択する。\n適当なリポジトリ名（基本は手元と同じ）をつけて “Create repository” を押す。\n手順が表示されるので基本的にそれに従う:\ngit remote add origin https://github.com/USER_NAME/new_project.git  # リモートリポジトリを紐づける\ngit remote -v               # ちゃんと紐づいたか確認\n# git branch -M main        # ブランチの名前をmainに\ngit push -u origin main     # リモートにpush\ngit status\n “Private” リポジトリの場合、SSHで紐付けしないと下り( fetch, pull )でもパスワードを聞かれる。\nリポジトリのページを更新して README.md が見えるか確認する。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#前回の復習-すでにあるリポジトリを手元に落としてくる",
@@ -256,7 +256,7 @@
     "href": "git-circle/git-circle-vol1.html#今日の内容に入る前に-git-status-と-git-log-に慣れる",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "今日の内容に入る前に:　git status と git log に慣れる",
-    "text": "今日の内容に入る前に:　git status と git log に慣れる\nまずは何もしていない状態で git status & git log\ngit status\n# On branch main\n# Your branch is up to date with 'origin/main'.\n#\n# nothing to commit, working tree clean\n\ngit log --oneline --graph   # 1コミット1行で, グラフィカルに\n# * 36d0617 (HEAD -&gt; main, origin/main) Create README.md\n\norigin\n\nリモートリポジトリのこと。\n\n\norigin/main はリモートリポジトリのmainブランチ。\n\nHEAD\n\nいま見ているブランチ/commitを指す目印。\n\n\n基本的には「最新のcommit」を表す。"
+    "text": "今日の内容に入る前に:　git status と git log に慣れる\nまずは何もしていない状態で git status & git log\ngit status\n# On branch main\n# Your branch is up to date with 'origin/main'.\n#\n# nothing to commit, working tree clean\n\ngit log --oneline --graph   # 1コミット1行で, グラフィカルに\n# * 36d0617 (HEAD -&gt; main, origin/main) Create README.md\n\norigin\n\nリモートリポジトリのこと。\n\n\norigin/main はリモートリポジトリのmainブランチ。\n\nHEAD\n\nいま見ているブランチ/commitを指す目印。\n\n\n基本的には「手元の最新のcommit」を表す。"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#今日の内容に入る前に-git-status-と-git-log-に慣れる-1",
@@ -382,13 +382,27 @@
     "href": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "余談: Fast-forward onlyの設定",
-    "text": "余談: Fast-forward onlyの設定\nリモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。\ngit log --oneline --graph\n# *   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'\n# |\\\n# | * 798b869 Edit line.5\n# * | 16117cc Edit line.2\n# |/\n# * 335b76a Some commit\n\ngit pull をした時も同様。「いい感じに merge する」という部分は便利な反面、作るつもりのない余計なコミットが勝手にできてしまうのは避けたい。\n↓\nそこで、「 git pull のときはfast-forwardでのmergeのみを試みて、できなければfetchまでで止める。」という設定をしておくと安全。"
+    "text": "余談: Fast-forward onlyの設定\ngit merge でリモートとローカルの両方の変更を取り込んだ場合、“merge commit”が自動的につくられる。\ngit log --oneline --graph\n# *   03899a3 Merge remote-tracking branch 'refs/remotes/origin/main'\n# |\\                                                    ↑ マージコミット\n# | * 798b869 Edit line.5\n# * | 16117cc Edit line.2\n# |/\n# * 335b76a Some commit"
   },
   {
     "objectID": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-1",
     "href": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-1",
     "title": "Git 基本操作② — fetch, merge, pull",
     "section": "余談: Fast-forward onlyの設定",
+    "text": "余談: Fast-forward onlyの設定\ngit pull をした時は、「どういう方法でマージするか」を設定していないと自動的なmergeも起こらない。\nhint: You have divergent branches and need to specify how to reconcile them.\nhint: You can do so by running one of the following commands sometime before\nhint: your next pull:\nhint:\nhint:   git config pull.rebase false  # merge (the default strategy)\nhint:   git config pull.rebase true   # rebase\nhint:   git config pull.ff only       # fast-forward only\nhint:\nhint: You can replace \"git config\" with \"git config --global\" to set a default\nhint: preference for all repositories. You can also pass --rebase, --no-rebase,\nhint: or --ff-only on the command line to override the configured default per\nhint: invocation.\nfatal: Need to specify how to reconcile divergent branches.\n\nそこで、「fast-forwardでのmergeのみを試みる。」という設定をしておく。"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-2",
+    "href": "git-circle/git-circle-vol1.html#余談-fast-forward-onlyの設定-2",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "余談: Fast-forward onlyの設定",
     "text": "余談: Fast-forward onlyの設定\n\n方法1\n\n--ff-only オプション付きで git pull する。\ngit pull --ff-only\n\n方法2\n\n~/.gitconfig に --ff-only の設定をする。\ngit config --global pull.ff only\nもしくは\n\n\n~/.gitconfig\n\n[pull]\n    ff = only"
+  },
+  {
+    "objectID": "git-circle/git-circle-vol1.html#余談2-その他の-git-便利機能",
+    "href": "git-circle/git-circle-vol1.html#余談2-その他の-git-便利機能",
+    "title": "Git 基本操作② — fetch, merge, pull",
+    "section": "余談2: その他の git 便利機能",
+    "text": "余談2: その他の git 便利機能\n\n「あのファイルとこのファイル、どこが変わったんだっけ」\n\ngit diff\n\n「間違えて〇〇しちゃった、取り消したい」\n\ngit reset\n\n「ソースコードは管理したいけど、データや画像は外に出したくないな」\n\n.gitignore\n\n\n\n\nsee more\n\ngit 公式リファレンス"
   }
 ]
