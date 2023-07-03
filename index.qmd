@@ -8,6 +8,7 @@ format: html
 # Slides
 
 ## LT
+- [牧野研 技術輪読会: WEBサイト作成の基礎知識](tech-circle/html-css.html)
 - [牧野研 技術輪読会: 遺伝研スパコンで外部パッケージを使う](tech-circle/tech-circle-vol2.html)
 - [牧野研 技術輪読会: GNU nanoエディタを便利に使う](tech-circle/tech-circle-vol1.html)
 

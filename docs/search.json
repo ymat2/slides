@@ -217,6 +217,55 @@
     "text": "補遺: 遺伝研でnanoを使うとき\n遺伝研のデフォルトのnanoは、version 2.3.1とかなり古い。(2023-05-09)\n\nキーバインドが結構違う。(ControlXとか基本的なやつは同じ。)\n~/.config/nano/nanorcを読んでくれない。\n.nanorcのワイルドカード*が効かない。\n\n\nデフォルトのnanoを使う場合、\n\n設定ファイルは~/.nanorc\n\n\nキーバインドは自分で設定したり、野生のやつを借りたり。\n\n\nシンタックスハイライトは1つ1つ直接指定: include \"usr/share/nano/python.nanorc\"\n\nおすすめは新しいnanoを入れること\n\nguixならversion 5.6.1が入る。(これもそこそこ古いけど。)\n\n\n*.nanorcもついてくる。(~/.guix-profile/share/nano/*.nanorc)\n\n\n公式から最新版(version 7.2)を落としてきてもいいかも。"
   },
   {
+    "objectID": "tech-circle/html-css.html#お品書き",
+    "href": "tech-circle/html-css.html#お品書き",
+    "title": "WEBサイト作成のための基礎知識",
+    "section": "お品書き",
+    "text": "お品書き\n\n\nHTML\n\nWEBブラウザで「なにを」見せるか\n\n\n\nCSS\n\nWEBブラウザで「どう」見せるか\n\n\n\nJavaScript\n\n静的サイトにも動きをつける\n\n\n\n静的サイトジェネレータ\n\n牧野研の人たちがよく使うWEBサイト作成技術"
+  },
+  {
+    "objectID": "tech-circle/html-css.html#htmlは文書の中身と構造を決める",
+    "href": "tech-circle/html-css.html#htmlは文書の中身と構造を決める",
+    "title": "WEBサイト作成のための基礎知識",
+    "section": "HTMLは文書の中身と構造を決める",
+    "text": "HTMLは文書の中身と構造を決める\n\nHTML(Hyper Text Markup Language)\n\nWEBサイトを記述するマークアップ言語\n\n\n文書の中身と構造(見出し、段落、列挙など)を規定する。\n\n\n&lt;タグ&gt;テキスト&lt;/タグ&gt; という形で記述する。\n\n\n\n\n\n&lt;html&gt;\n  &lt;body&gt;\n    &lt;h2&gt;コーヒーとは&lt;/h2&gt;\n    &lt;p&gt;世界一美味しい飲み物である。&lt;/p&gt;\n    &lt;h3&gt;世界三大コーヒー&lt;/h3&gt;\n    &lt;ul&gt;\n      &lt;li&gt;キリマンジャロ&lt;/li&gt;\n      &lt;li&gt;ブルーマウンテン&lt;/li&gt;\n      &lt;li&gt;コナ&lt;/li&gt;\n    &lt;/ul&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n\n\n\n\nコーヒーとは\n\n\n世界一美味しい飲み物である。\n\n\n世界三大コーヒー\n\n\n\nキリマンジャロ\n\n\nブルーマウンテン\n\n\nコナ"
+  },
+  {
+    "objectID": "tech-circle/html-css.html#cssは文書の見た目を決める",
+    "href": "tech-circle/html-css.html#cssは文書の見た目を決める",
+    "title": "WEBサイト作成のための基礎知識",
+    "section": "CSSは文書の見た目を決める",
+    "text": "CSSは文書の見た目を決める\n\nCSS(Cascading Style Sheets)\n\nフォント、サイズ、色、レイアウトなど、Webサイトの見た目を規定する。\n\n\nセレクタ { プロパティ: 値}という形で記述する。 例えばh2の色を赤くしたければ: h2 { color: #ff0000}\n\n\n外部ファイル(.css)を読み込んだり、HTMLに直接書いたり。\n\n\n\n\n\nh2 {\n  color: #ff0000  /*文字色を赤く*/\n}\n\nh3 {\n  font-size: 0.5em  /*文字サイズを半分に*/\n}\n\nul{\n  margin-left: 20px  /*左側に余白をとる*/\n}\n\n\n\n\nコーヒーとは\n\n\n世界一美味しい飲み物である。\n\n\n世界三大コーヒー\n\n\n\nキリマンジャロ\n\n\nブルーマウンテン\n\n\nコナ"
+  },
+  {
+    "objectID": "tech-circle/html-css.html#javascriptはhtmlに動きをつける",
+    "href": "tech-circle/html-css.html#javascriptはhtmlに動きをつける",
+    "title": "WEBサイト作成のための基礎知識",
+    "section": "JavaScriptはHTMLに動きをつける",
+    "text": "JavaScriptはHTMLに動きをつける\n\nJavaScript\n\nプログラミング言語のひとつ\n\n\nWEBサイトをよりレスポンシブルにできる。\n\n\nゲームや シミュレータを作ったり、 スライドっぽく見せたり(reveal.js)。\n\n\nJavaはまったく別の言語\n\n\n\n\n\n// 文字色をランダムに変更\nfunction changeBackgroundColor() {\n  var colors = [\"red\", \"blue\", \"green\",\n                \"yellow\", \"orange\", \"purple\"];\n  var randomColor = colors[\n    Math.floor(Math.random() * colors.length)\n  ];\n  var targetElement = document.querySelector(\"h3.sample\");\n  targetElement.style.backgroundColor = randomColor;\n}\n\n\n\n\nJavaScriptサンプル\n\n\n文字色を変更"
+  },
+  {
+    "objectID": "tech-circle/html-css.html#html-css-javascript-でウェブサイトが作られる",
+    "href": "tech-circle/html-css.html#html-css-javascript-でウェブサイトが作られる",
+    "title": "WEBサイト作成のための基礎知識",
+    "section": "HTML + CSS (+ JavaScript) でウェブサイトが作られる",
+    "text": "HTML + CSS (+ JavaScript) でウェブサイトが作られる\n🔰 適当なウェブサイトを開いて、「右クリック → “検証”」や「余白で右クリック → “ページのソースを表示”」から そのページのHTMLやCSSを見てみる。\n🔰 生のHTMLを書いてブラウザで見てみる。\n\n骨格↓をindex.html というファイルにコピペして編集する。\n&lt;html&gt;\n  &lt;body&gt;\n    &lt;h1&gt;ここにタイトル&lt;/h1&gt;\n    &lt;h2&gt;以下のタグを使ってみる&lt;/h2&gt;\n    &lt;p&gt;段落&lt;/p&gt;\n    &lt;p&gt;強調もできる。たとえば&lt;em&gt;斜体&lt;/em&gt;や&lt;strong&gt;太字&lt;/strong&gt;。&lt;/p&gt;\n    &lt;ul&gt;\n      &lt;li&gt;これはリスト&lt;/li&gt;\n      &lt;li&gt;これもリスト&lt;/li&gt;\n    &lt;/ul&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\nダブルクリックや open コマンドで開いて閲覧する。"
+  },
+  {
+    "objectID": "tech-circle/html-css.html#でもhtmlを直接書くことは少ない",
+    "href": "tech-circle/html-css.html#でもhtmlを直接書くことは少ない",
+    "title": "WEBサイト作成のための基礎知識",
+    "section": "でもHTMLを直接書くことは少ない",
+    "text": "でもHTMLを直接書くことは少ない\n軽量マークアップ言語であるMarkdown(.md, .Rmd, .qmd)を書いて、 それをHTMLに変換する。\n\n\n\n## コーヒーとは\n\n世界一美味しい飲み物である。\n\n### 世界三大コーヒー\n\n- キリマンジャロ\n- ブルーマウンテン\n- コナ\n\n\n\n\nコーヒーとは\n\n\n世界一美味しい飲み物である。\n\n\n世界三大コーヒー\n\n\n\nキリマンジャロ\n\n\nブルーマウンテン\n\n\nコナ"
+  },
+  {
+    "objectID": "tech-circle/html-css.html#md-.html-を便利にする静的サイトジェネレータ",
+    "href": "tech-circle/html-css.html#md-.html-を便利にする静的サイトジェネレータ",
+    "title": "WEBサイト作成のための基礎知識",
+    "section": ".md → .html を便利にする静的サイトジェネレータ",
+    "text": ".md → .html を便利にする静的サイトジェネレータ\n\nHUGO\n\n高速な静的サイト生成フレームワーク\n\n\nいい感じの見た目にするテーマが豊富\n\n\n\n\nquarto\n\n文書作成・公開のためのフレームワーク\n\n\nコマンドライン以外にも、Jupyter notebooks、Rstudio、VScodeで使える。\n\n\nWEBサイト以外にも、スライド作りにも便利"
+  },
+  {
     "objectID": "git-circle/git-circle-vol1.html#今日やること",
     "href": "git-circle/git-circle-vol1.html#今日やること",
     "title": "Git 基本操作② — fetch, merge, pull",
